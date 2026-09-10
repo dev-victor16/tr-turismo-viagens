@@ -65,11 +65,6 @@ function renderHeroContent(hero) {
     ctaBtn.innerHTML = `${hero.ctaPrimaryText} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>`;
     ctaBtn.href = hero.ctaPrimaryLink || '#destinos';
   }
-
-  const heroPhotoImg = document.querySelector('.hero-photo-main-frame img');
-  if (heroPhotoImg && hero.backgroundImage) {
-    heroPhotoImg.src = hero.backgroundImage;
-  }
 }
 
 /**
@@ -180,6 +175,7 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
   }
 
   container.innerHTML = html;
+  if (window.refreshScrollObserver) window.refreshScrollObserver();
 }
 
 /**
@@ -224,11 +220,13 @@ function renderEditorialReviews(company, testimonials) {
   const scoreEl = document.getElementById('google-reviews-score');
   if (scoreEl && company.googleRating) {
     scoreEl.textContent = company.googleRating.toFixed(1);
+    scoreEl.setAttribute('data-counter', company.googleRating.toString());
   }
 
   const countEl = document.getElementById('google-reviews-count');
   if (countEl && company.googleReviewCount) {
     countEl.textContent = `• Mais de ${company.googleReviewCount} avaliações reais`;
+    countEl.setAttribute('data-counter', company.googleReviewCount.toString());
   }
 
   const container = document.getElementById('editorial-reviews-container');
@@ -246,6 +244,8 @@ function renderEditorialReviews(company, testimonials) {
       </div>
     </div>
   `).join('');
+
+  if (window.refreshScrollObserver) window.refreshScrollObserver();
 }
 
 /**
