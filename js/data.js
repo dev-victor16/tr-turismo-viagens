@@ -24,7 +24,7 @@ const TR_DEFAULT_DATA = {
     facebook: "https://www.facebook.com/people/Simone-tr-turismo-viagens/100057476839352/",
     googleRating: 4.9,
     googleReviewCount: 112,
-    logo: "images/tr-logo-oficial.png",
+    logo: "images/tr-logo-transparente.png",
     googleMapsEmbed: "https://maps.google.com/maps?q=Rua%20Bar%C3%A9,%2092%20-%20Industrial%20de%20Ibirit%C3%A9,%20Ibirit%C3%A9%20-%20MG&t=&z=15&ie=UTF8&iwloc=&output=embed",
     googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Rua+Bar%C3%A9+92+Industrial+Ibirite+MG"
   },
@@ -36,7 +36,7 @@ const TR_DEFAULT_DATA = {
     ctaPrimaryLink: "#destinos",
     ctaSecondaryText: "RESERVAR NO WHATSAPP",
     ctaSecondaryLink: "https://wa.me/5531995724285?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20TR%20Turismo%20e%20gostaria%20de%20fazer%20uma%20reserva.",
-    backgroundImage: "images/foto-praia-tropical.jpg"
+    backgroundImage: "images/tr-hero-bg-momentos.jpg"
   },
   about: {
     headline: "Quem é a TR Turismo Viagens",
@@ -244,7 +244,7 @@ const TR_DEFAULT_DATA = {
 
 // Gerenciador de Estado / LocalStorage
 const StorageManager = {
-  STORAGE_KEY: "TR_TURISMO_DATA_V4",
+  STORAGE_KEY: "TR_TURISMO_DATA_V5",
   ADMIN_AUTH_KEY: "TR_TURISMO_ADMIN_AUTH",
 
   getData() {
