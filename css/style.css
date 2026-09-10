@@ -377,7 +377,7 @@ button {
 .hero-editorial-real {
   position: relative;
   overflow: hidden;
-  padding: 6.5rem 0 5.5rem 0;
+  padding: 4.8rem 0 3.8rem 0;
   color: #ffffff;
   background-color: var(--color-primary-dark);
 }
@@ -401,9 +401,9 @@ button {
   width: 58%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  opacity: 0.50;
-  filter: contrast(1.06) saturate(1.12);
+  object-position: center center;
+  opacity: 0.52;
+  filter: contrast(1.05) saturate(1.1);
   transition: opacity var(--transition-smooth);
 }
 
@@ -416,9 +416,9 @@ button {
   background: linear-gradient(
     90deg,
     rgba(10, 25, 47, 0.98) 0%,
-    rgba(10, 25, 47, 0.92) 40%,
-    rgba(10, 25, 47, 0.60) 70%,
-    rgba(10, 25, 47, 0.32) 100%
+    rgba(10, 25, 47, 0.92) 42%,
+    rgba(10, 25, 47, 0.55) 70%,
+    rgba(10, 25, 47, 0.28) 100%
   );
 }
 
@@ -437,6 +437,10 @@ button {
 .hero-content-relative {
   position: relative;
   z-index: 3;
+}
+
+.hero-copy-compact {
+  max-width: 640px;
 }
 
 .hero-magazine-grid {
@@ -1685,26 +1689,28 @@ button {
     left: 0;
   }
   .hero-editorial-real {
-    padding: 3.5rem 0 3rem 0;
+    padding: 3rem 0 2.25rem 0;
   }
   .hero-bg-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 15%;
-    opacity: 0.30;
+    object-position: center top;
+    opacity: 0.25;
   }
   .hero-bg-overlay {
     background: linear-gradient(
       180deg,
       rgba(10, 25, 47, 0.97) 0%,
       rgba(10, 25, 47, 0.88) 35%,
-      rgba(10, 25, 47, 0.72) 70%,
-      rgba(10, 25, 47, 0.85) 100%
+      rgba(10, 25, 47, 0.75) 100%
     );
   }
+  .hero-copy-compact {
+    max-width: 100%;
+  }
   .hero-heading-main {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
   .hero-lead-editorial {
     font-size: 1rem;
