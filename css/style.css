@@ -1,21 +1,22 @@
 /* ==========================================================================
-   TR TURISMO VIAGENS - DESIGN SYSTEM EDITORIAL & REFINAMENTO VISUAL
-   Estética: Premium • Editorial de Turismo • Fotografia • Humana
+   TR TURISMO VIAGENS - DESIGN SYSTEM EDITORIAL & IDENTIDADE DE MARCA
+   Alinhamento com o Instagram oficial: @trturismoviagens
    Sede: Ibirité - Minas Gerais
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Paleta Editorial & Turismo Brasileiro */
+  /* Cores Oficiais da TR Turismo Viagens */
   --color-primary: #0a1727;          /* Azul Noite Mineral */
-  --color-primary-dark: #050d18;     /* Fundo Profundo */
+  --color-primary-dark: #050d18;     /* Fundo Noturno */
   --color-primary-light: #15253b;    /* Superfície Noturna */
-  --color-accent: #d97706;           /* Âmbar / Terracota Quente */
+  --color-accent: #d97706;           /* Âmbar / Terracota Quente do Sol */
   --color-accent-hover: #b45309;     /* Âmbar Intenso */
-  --color-accent-soft: #fef3c7;      /* Toque Suave */
-  --color-green-wa: #25d366;         /* WhatsApp */
+  --color-accent-soft: #fef3c7;      /* Toque Solar Suave */
+  --color-green-wa: #25d366;         /* WhatsApp Oficial */
   --color-green-wa-dark: #128c7e;
+  --color-instagram-pink: #e1306c;   /* Rosa/Degradê Oficial Instagram */
 
   /* Superfícies & Tons Naturais */
   --bg-page: #fbfaf8;                /* Areia / Off-white Editorial */
@@ -37,14 +38,6 @@
   /* Tipografia */
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  /* Espaçamentos & Respiro */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4.5rem;
-  --space-2xl: 7rem;
 
   /* Raios e Sombras Orgânicas */
   --radius-sm: 6px;
@@ -177,11 +170,11 @@ button {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(10, 23, 39, 0.95);
+  background: rgba(10, 23, 39, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background var(--transition-smooth), padding var(--transition-smooth);
+  transition: background var(--transition-smooth);
 }
 
 .main-header.scrolled {
@@ -248,7 +241,7 @@ button {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.85rem;
   list-style: none;
 }
 
@@ -288,7 +281,7 @@ button {
 }
 
 /* ==========================================================================
-   BOTÕES ELE SulTADOS E NATURAIS
+   BOTÕES ELEGANTES E NATURAIS
    ========================================================================== */
 .btn {
   display: inline-flex;
@@ -336,6 +329,19 @@ button {
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
 }
 
+.btn-instagram-brand {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(225, 48, 108, 0.35);
+}
+
+.btn-instagram-brand:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(225, 48, 108, 0.45);
+  color: #ffffff;
+}
+
 .btn-sm {
   padding: 0.5rem 1.1rem;
   font-size: 0.85rem;
@@ -347,7 +353,7 @@ button {
 }
 
 /* ==========================================================================
-   HERO EDITORIAL & CINEMATOGRÁFICO
+   HERO EDITORIAL COM ASSINATURA DA TR TURISMO
    ========================================================================== */
 .hero-editorial {
   position: relative;
@@ -368,7 +374,7 @@ button {
   background: linear-gradient(
     90deg,
     rgba(5, 13, 24, 0.92) 0%,
-    rgba(10, 23, 39, 0.78) 55%,
+    rgba(10, 23, 39, 0.8) 55%,
     rgba(10, 23, 39, 0.45) 100%
   );
   z-index: 1;
@@ -565,11 +571,93 @@ button {
 }
 
 /* ==========================================================================
+   NOVA SEÇÃO: "VIVEMOS ESSAS EXPERIÊNCIAS" (MOMENTOS REAIS DE VIAGEM)
+   ========================================================================== */
+.section-experiences {
+  padding: 6.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.experiences-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.experiences-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.experience-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  background: var(--color-primary-dark);
+  height: 380px;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card);
+}
+
+.experience-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.experience-card:hover .experience-img {
+  transform: scale(1.05);
+}
+
+.experience-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(5, 13, 24, 0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  color: #ffffff;
+}
+
+.experience-location-tag {
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.experience-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.experience-desc {
+  font-size: 0.825rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
    DESTINOS & PRÓXIMAS VIAGENS (ASSIMÉTRICO TIPO REVISTA)
    ========================================================================== */
 .section-destinations {
   padding: 6.5rem 0;
-  background: #ffffff;
+  background: var(--bg-page);
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -714,7 +802,7 @@ button {
 }
 
 .destination-sub-card {
-  background: var(--bg-page);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -956,6 +1044,103 @@ button {
 .author-stars {
   color: #fbbf24;
   font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   NOVA SEÇÃO: INSTAGRAM OFICIAL (@TRTURISMOVIAGENS)
+   ========================================================================== */
+.section-instagram-feed {
+  padding: 6rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.instagram-banner-box {
+  background: linear-gradient(135deg, #0a1727 0%, #15253b 100%);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem;
+  color: #ffffff;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.instagram-handle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.4rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.instagram-handle-badge svg {
+  color: #e1306c;
+}
+
+.instagram-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  max-width: 680px;
+}
+
+.instagram-subtitle {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+.instagram-grid-curated {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.instagram-post-preview {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 200px;
+}
+
+.instagram-post-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.instagram-post-preview:hover img {
+  transform: scale(1.08);
+}
+
+.instagram-post-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 23, 39, 0.45);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.instagram-post-preview:hover .instagram-post-overlay {
+  opacity: 1;
 }
 
 /* ==========================================================================
@@ -1233,12 +1418,18 @@ button {
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE (MOBILE & TABLET EXCELLENCE)
+   RESPONSIVIDADE
    ========================================================================== */
 @media (max-width: 1024px) {
   .editorial-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+  .experiences-mosaic {
+    grid-template-columns: 1fr 1fr;
+  }
+  .instagram-grid-curated {
+    grid-template-columns: 1fr 1fr;
   }
   .magazine-destinations-layout {
     grid-template-columns: 1fr;
@@ -1290,6 +1481,15 @@ button {
   }
   .hero-cta-group .btn {
     width: 100%;
+  }
+  .experiences-mosaic {
+    grid-template-columns: 1fr;
+  }
+  .instagram-banner-box {
+    padding: 2rem 1.25rem;
+  }
+  .instagram-grid-curated {
+    grid-template-columns: 1fr 1fr;
   }
   .quote-container-compact {
     padding: 2rem 1.5rem;

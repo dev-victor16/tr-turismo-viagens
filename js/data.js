@@ -1,7 +1,7 @@
 /**
  * TR TURISMO VIAGENS - DATA STORE & STATE MANAGEMENT
  * Dados verificados da empresa em Ibirité - MG
- * Textos humanizados, autênticos e comerciais sem clichês de IA
+ * Identidade conectada ao Instagram oficial @trturismoviagens
  */
 
 const TR_DEFAULT_DATA = {
@@ -18,7 +18,7 @@ const TR_DEFAULT_DATA = {
     state: "MG",
     zipCode: "32415-166",
     workingHours: "Segunda a Sexta: 08h00 às 18h00 | Sábado: 08h00 às 13h00",
-    instagram: "https://instagram.com",
+    instagram: "https://www.instagram.com/trturismoviagens/",
     facebook: "https://www.facebook.com/people/Simone-tr-turismo-viagens/100057476839352/",
     googleRating: 4.9,
     googleReviewCount: 112,
@@ -26,9 +26,9 @@ const TR_DEFAULT_DATA = {
     googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Rua+Bar%C3%A9+92+Industrial+Ibirite+MG"
   },
   hero: {
-    badge: "Agência em Ibirité • CNPJ 62.424.112/0001-27",
-    title: "Bora viajar? A estrada é com a gente.",
-    subtitle: "Excursões rodoviárias e viagens organizadas saindo de Ibirité e região. Você só se preocupa em fazer as malas — do transporte ao hotel, o roteiro é com a TR Turismo.",
+    badge: "Agência Oficial em Ibirité • CNPJ 62.424.112/0001-27",
+    title: "VIAJE COM A TR TURISMO",
+    subtitle: "Excursões rodoviárias e viagens completas saindo de Ibirité e região. A gente cuida do ônibus, da hospedagem e de cada detalhe do roteiro para você só aproveitar.",
     ctaPrimaryText: "VER PRÓXIMAS VIAGENS",
     ctaPrimaryLink: "#destinos",
     ctaSecondaryText: "FALAR NO WHATSAPP",
@@ -44,8 +44,8 @@ const TR_DEFAULT_DATA = {
     features: [
       {
         icon: "map-pin",
-        title: "Embarque Fácil em Ibirité e BH",
-        desc: "Pontos de encontro organizados na nossa região para você não perder tempo no dia da viagem."
+        title: "Embarques em Ibirité e BH",
+        desc: "Pontos de encontro práticos e organizados na nossa região para você não perder tempo."
       },
       {
         icon: "users",
@@ -103,9 +103,9 @@ const TR_DEFAULT_DATA = {
       id: "dest-1",
       name: "Cabo Frio & Arraial do Cabo",
       category: "Praias",
-      tag: "O Queridinho dos Mineiros",
+      tag: "O Queridinho da TR Turismo",
       image: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=1000&q=85",
-      description: "Praias de água transparente na Região dos Lagos. Roteiro clássico com tempo livre para passeios de barco e descanso.",
+      description: "Praias de água transparente na Região dos Lagos. Roteiro clássico da agência com tempo livre para passeios de barco e descanso.",
       duration: "Excursão de Final de Semana ou Feriado",
       departure: "Embarques em Ibirité e BH",
       inclusions: ["Ônibus executivo com ar-condicionado", "Pousada com café da manhã farto", "Guia da TR Turismo"],
@@ -186,7 +186,7 @@ const TR_DEFAULT_DATA = {
 
 // Gerenciador de Estado / LocalStorage
 const StorageManager = {
-  STORAGE_KEY: "TR_TURISMO_DATA_V2",
+  STORAGE_KEY: "TR_TURISMO_DATA_V3",
   ADMIN_AUTH_KEY: "TR_TURISMO_ADMIN_AUTH",
 
   getData() {
