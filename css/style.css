@@ -372,111 +372,75 @@ button {
 }
 
 /* ==========================================================================
-   1. HERO COM FOTOGRAFIA REAL EM PROPORÇÃO 4:3 (DESKTOP & MOBILE)
+   1. HERO COM FOTOGRAFIA REAL NO FUNDO & ADAPTADA PARA CELULAR
    ========================================================================== */
 .hero-editorial-real {
   position: relative;
   overflow: hidden;
-  padding: 5rem 0 4.5rem 0;
+  padding: 5.5rem 0 4.5rem 0;
   color: #ffffff;
   background-color: var(--color-primary-dark);
 }
 
-.hero-ambient-backdrop {
+/* Camada de Fundo Responsiva da Fotografia Real (4:3) */
+.hero-bg-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 80% 35%, rgba(0, 102, 204, 0.22) 0%, transparent 60%),
-    radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-    var(--color-primary-dark);
-  pointer-events: none;
   z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.58;
+  filter: contrast(1.06) saturate(1.12);
+  transition: opacity var(--transition-smooth);
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 25, 47, 0.98) 0%,
+    rgba(10, 25, 47, 0.92) 42%,
+    rgba(10, 25, 47, 0.55) 70%,
+    rgba(10, 25, 47, 0.22) 100%
+  );
+}
+
+.hero-editorial-real::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 85% 30%, rgba(0, 102, 204, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .hero-content-relative {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
-.hero-layout-43 {
-  display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.hero-copy-col {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Moldura Fotográfica 4:3 com Visual Editorial */
-.hero-visual-43-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-photo-frame-43 {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(255, 255, 255, 0.14),
-    0 0 30px rgba(245, 158, 11, 0.15);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-}
-
-.hero-photo-frame-43:hover {
-  transform: translateY(-4px);
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(245, 158, 11, 0.4),
-    0 0 40px rgba(245, 158, 11, 0.25);
-}
-
-.hero-photo-img-43 {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  transition: transform var(--transition-smooth);
-}
-
-.hero-photo-frame-43:hover .hero-photo-img-43 {
-  transform: scale(1.02);
-}
-
-.hero-photo-badge-43 {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  background: rgba(10, 25, 47, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-full);
-  padding: 0.55rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
-}
-
-.hero-photo-star {
-  color: #fbbf24;
+.hero-copy-compact {
+  max-width: 640px;
 }
 
 
@@ -1634,13 +1598,22 @@ button {
    RESPONSIVIDADE (MOBILE & TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
-  .hero-layout-43 {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-position: center top;
+    opacity: 0.40;
   }
-  .hero-photo-frame-43 {
-    max-width: 520px;
-    margin: 0 auto;
+  .hero-bg-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 25, 47, 0.94) 0%,
+      rgba(10, 25, 47, 0.82) 45%,
+      rgba(10, 25, 47, 0.60) 100%
+    );
+  }
+  .hero-copy-compact {
+    max-width: 100%;
   }
   .hero-photo-main-frame {
     height: 380px;
@@ -1701,50 +1674,49 @@ button {
   }
   .hero-editorial-real {
     padding: 2.5rem 0 2rem 0;
-  }
-  .hero-layout-43 {
+    min-height: 520px;
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    align-items: center;
   }
-  .hero-copy-col {
-    display: contents;
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 12%;
+    opacity: 0.48;
+    filter: contrast(1.08) saturate(1.15);
   }
-  .hero-eyebrow-tag {
-    order: 1;
-    margin-bottom: 0.75rem;
+  .hero-bg-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 25, 47, 0.72) 0%,
+      rgba(10, 25, 47, 0.52) 30%,
+      rgba(10, 25, 47, 0.85) 70%,
+      rgba(10, 25, 47, 0.98) 100%
+    );
+  }
+  .hero-copy-compact {
+    max-width: 100%;
+    background: rgba(10, 25, 47, 0.68);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.85rem 1.25rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
   }
   .hero-heading-main {
-    order: 2;
-    font-size: 2.1rem;
-    margin-bottom: 1.25rem;
+    font-size: 2rem;
+    margin-bottom: 0.85rem;
+    line-height: 1.15;
   }
   .hero-lead-editorial {
-    order: 3;
-    font-size: 1rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-  .hero-visual-43-col {
-    order: 4;
-    width: 100%;
+    font-size: 0.95rem;
     margin-bottom: 1.5rem;
-  }
-  .hero-photo-frame-43 {
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.14);
-  }
-  .hero-photo-badge-43 {
-    bottom: 0.75rem;
-    left: 0.75rem;
-    right: 0.75rem;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.75rem;
+    line-height: 1.6;
+    color: #e2e8f0;
   }
   .hero-actions {
-    order: 5;
     flex-direction: column;
     align-items: stretch;
     gap: 0.75rem;
@@ -1754,7 +1726,6 @@ button {
     width: 100%;
   }
   .hero-proof-bar {
-    order: 6;
     padding-top: 1.25rem;
   }
   .pillar-photo-box {
