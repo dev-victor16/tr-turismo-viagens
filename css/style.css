@@ -1,61 +1,62 @@
 /* ==========================================================================
-   TR TURISMO VIAGENS - DESIGN SYSTEM EDITORIAL BASEADO EM FOTOS REAIS
-   Identidade visual inspirada na marca oficial e no Instagram @trturismoviagens
-   Sede: Rua Baré, 92 – Industrial de Ibirité - MG
+   TR TURISMO VIAGENS — DESIGN SYSTEM EDITORIAL & CINEMATOGRÁFICO
+   Inspirado em publicações editoriais de viagem de luxo (Condé Nast, Kinfolk)
+   Tipografia: Playfair Display + Plus Jakarta Sans
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
+/* --------------------------------------------------------------------------
+   1. Variáveis & Tokens Globais
+   -------------------------------------------------------------------------- */
 :root {
-  /* ==========================================================================
-     PALETA DE CORES OFICIAL DA TR TURISMO (EXTRAÍDA DA MARCA E FOTOGRAFIAS)
-     ========================================================================== */
-  --color-primary: #0066cc;          /* Azul Royal TR (Mar e Céu das Artes) */
-  --color-primary-dark: #0a192f;     /* Azul Noturno Profundo / Marinho */
-  --color-primary-light: #0284c7;    /* Azul Turquesa / Ciano */
-  --color-accent: #f59e0b;           /* Dourado Solar (Sol da Logo Oficial) */
-  --color-accent-hover: #d97706;     /* Âmbar Intenso */
-  --color-green: #10b981;            /* Verde Tropical (Coqueiros e WhatsApp) */
-  --color-green-dark: #059669;
-  --color-whatsapp: #25d366;
-  --color-instagram: #e1306c;
+  /* Famílias Tipográficas */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Superfícies Acolhedoras (Tom de Areia do Instagram da TR Turismo) */
-  --bg-page: #f8f6f0;                /* Fundo Areia Suave / Kraft Oficial */
-  --bg-surface: #ffffff;             /* Branco Limpo */
-  --bg-sand: #f3efe6;                /* Areia Texturizada Suave */
-  --bg-dark: #0a192f;                /* Fundo Noturno */
-  --bg-dark-surface: #112240;
+  /* Paleta Mineral e Sofisticada */
+  --bg-primary: #0b0f17;        /* Grafite profundo mineral */
+  --bg-surface-dark: #121824;   /* Ardósia noturna */
+  --bg-surface-elevated: #182030;
+  --bg-warm-light: #faf8f5;     /* Calcário suave editorial */
+  --bg-linen: #f3efe8;          /* Linho natural */
+  --bg-warm-card: #ffffff;
 
-  /* Textos & Tipografia */
-  --text-main: #1e293b;              /* Grafite Escuro */
-  --text-muted: #64748b;             /* Cinza Médio Neutro */
-  --text-light: #94a3b8;
-  --text-white: #ffffff;
+  /* Cores de Texto */
+  --text-light-high: #f9fafb;
+  --text-light-mid: #cbd5e1;
+  --text-light-dim: #94a3b8;
+  --text-dark-high: #0f172a;
+  --text-dark-mid: #334155;
+  --text-dark-dim: #64748b;
 
-  /* Bordas e Divisórias Naturais */
-  --border-subtle: #e7e4dc;
-  --border-light: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(245, 158, 11, 0.3);
+  /* Cor de Destaque Sóbria (Usada com Parcimônia) */
+  --accent-gold: #d4af37;
+  --accent-gold-hover: #e2b442;
+  --accent-gold-soft: rgba(212, 175, 55, 0.12);
+  --accent-gold-border: rgba(212, 175, 55, 0.35);
 
-  /* Fontes */
-  --font-display: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Linhas e Bordas Ultrafinas */
+  --border-light-subtle: rgba(255, 255, 255, 0.08);
+  --border-light-visible: rgba(255, 255, 255, 0.14);
+  --border-dark-subtle: rgba(11, 15, 23, 0.08);
+  --border-dark-visible: rgba(11, 15, 23, 0.14);
 
-  /* Raios e Sombras Fotográficas */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-full: 9999px;
+  /* WhatsApp Oficial */
+  --color-wa: #25d366;
+  --color-wa-hover: #20ba59;
 
-  --shadow-subtle: 0 4px 20px -2px rgba(10, 25, 47, 0.05);
-  --shadow-card: 0 12px 32px -4px rgba(10, 25, 47, 0.08);
-  --shadow-elevated: 0 24px 48px -12px rgba(10, 25, 47, 0.16);
+  /* Espaçamentos & Layout */
+  --container-width: 1240px;
+  --container-narrow: 1040px;
+  --space-section: clamp(5rem, 8vw, 8.5rem);
 
-  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Transições Refinadas */
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s ease;
 }
 
-/* Reset e Base */
+/* --------------------------------------------------------------------------
+   2. Reset & Estilos Base
+   -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -65,1500 +66,1820 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-light-high);
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-page);
-  color: var(--text-main);
+  font-weight: 400;
   line-height: 1.65;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-light-high);
   overflow-x: hidden;
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-smooth);
+  transition: color var(--transition-fast);
 }
 
-button {
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
+button, input, textarea, select {
+  font: inherit;
 }
 
-/* Container de Layout com Respiro */
 .container {
   width: 100%;
-  max-width: 1220px;
+  max-width: var(--container-width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: clamp(1.25rem, 4vw, 3rem);
+  padding-right: clamp(1.25rem, 4vw, 3rem);
 }
 
-/* ==========================================================================
-   TOPBAR INFORMATIVA (DOIS NÚMEROS CONFIRMADOS & ENDEREÇO EM IBIRITÉ)
-   ========================================================================== */
-.topbar {
-  background: var(--color-primary-dark);
-  color: #94a3b8;
-  font-size: 0.8125rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+/* Kicker / Eyebrow Editorial Universal */
+.section-kicker {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  margin-bottom: 0.85rem;
 }
 
-.topbar-content {
+.editorial-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   3. Cabeçalho Editorial (Translúcido, Minimalista)
+   -------------------------------------------------------------------------- */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.25rem 0;
+  background: rgba(11, 15, 23, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light-subtle);
+  transition: all var(--transition-smooth);
+}
+
+.main-header.scrolled {
+  background: rgba(11, 15, 23, 0.94);
+  padding: 0.9rem 0;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.header-inner {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.topbar-left {
+/* Logotipo */
+.brand-link {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  gap: 0.9rem;
 }
 
-.topbar-item {
-  display: inline-flex;
+.brand-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform var(--transition-smooth);
+}
+
+.brand-link:hover .brand-logo {
+  transform: scale(1.03);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.brand-name em {
+  font-style: normal;
+  color: var(--accent-gold);
+}
+
+.brand-sub {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-light-dim);
+  margin-top: 0.15rem;
+}
+
+/* Menu Desktop */
+.nav-desktop {
+  display: block;
+}
+
+.nav-links {
+  display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 2rem;
+  list-style: none;
 }
 
-.topbar-item svg {
-  color: var(--color-accent);
+.nav-item {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light-mid);
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 0.35rem 0;
 }
 
-.topbar-right {
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background: var(--accent-gold);
+  transition: width var(--transition-smooth);
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* Contato no Cabeçalho */
+.header-actions {
   display: flex;
   align-items: center;
   gap: 1.25rem;
 }
 
-.topbar-badge-minimal {
-  font-size: 0.75rem;
-  color: #cbd5e1;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.topbar-badge-minimal strong {
-  color: #fbbf24;
-}
-
-.admin-link-discrete {
-  color: #64748b;
-  font-size: 0.75rem;
-  transition: color var(--transition-smooth);
-}
-
-.admin-link-discrete:hover {
-  color: var(--color-accent);
-}
-
-/* ==========================================================================
-   HEADER PRINCIPAL & LOGOTIPO OFICIAL
-   ========================================================================== */
-.main-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(10, 25, 47, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background var(--transition-smooth);
-}
-
-.main-header.scrolled {
-  background: rgba(5, 15, 30, 0.98);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-}
-
-/* Logotipo Oficial da TR Turismo Viagens */
-.brand-logo-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.brand-logo-img {
-  height: 52px;
-  width: auto;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  transition: transform var(--transition-smooth);
-}
-
-.brand-logo-container:hover .brand-logo-img {
-  transform: scale(1.03);
-}
-
-.brand-text-header {
+.header-contact-link {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  border-left: 1px solid var(--border-light-subtle);
+  padding-left: 1.25rem;
 }
 
-.brand-title-header {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.brand-title-header span {
-  color: var(--color-accent);
-}
-
-.brand-tag-header {
-  font-size: 0.7rem;
+.contact-label {
+  font-size: 0.685rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #94a3b8;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.contact-phone {
+  font-size: 0.875rem;
   font-weight: 600;
-}
-
-/* Links de Navegação */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-  list-style: none;
-}
-
-.nav-link {
-  color: #cbd5e1;
-  font-size: 0.925rem;
-  font-weight: 500;
-  position: relative;
-  padding: 0.5rem 0;
-}
-
-.nav-link:hover, .nav-link.active {
   color: #ffffff;
+  letter-spacing: 0.02em;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-accent);
-  transition: width var(--transition-smooth);
-}
-
-.nav-link:hover::after {
-  width: 100%;
+.header-contact-link:hover .contact-phone {
+  color: var(--accent-gold);
 }
 
 .mobile-toggle {
   display: none;
   background: transparent;
-  color: #ffffff;
-  padding: 0.5rem;
-}
-
-/* ==========================================================================
-   BOTÕES EDITORIAIS DE ALTA CONVERSÃO
-   ========================================================================== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.85rem 1.65rem;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-smooth);
-  text-decoration: none;
+  border: none;
   cursor: pointer;
-  letter-spacing: 0.02em;
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: #050d18;
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
-}
-
-.btn-primary:hover {
-  background: var(--color-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
-  color: #050d18;
-}
-
-.btn-whatsapp-solid {
-  background: var(--color-whatsapp);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.btn-whatsapp-solid:hover {
-  background: #1ebc59;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-  color: #ffffff;
-}
-
-.btn-outline-white {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.btn-outline-white:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #ffffff;
-}
-
-.btn-outline-dark {
-  background: transparent;
-  color: var(--color-primary-dark);
-  border: 1px solid var(--border-subtle);
-}
-
-.btn-outline-dark:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: #ffffff;
-}
-
-.btn-instagram-brand {
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: #ffffff;
-  box-shadow: 0 6px 20px rgba(220, 39, 67, 0.35);
-}
-
-.btn-instagram-brand:hover {
-  opacity: 0.95;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(220, 39, 67, 0.45);
-}
-
-.btn-lg {
-  padding: 1.05rem 2.2rem;
-  font-size: 1rem;
-}
-
-.btn-sm {
-  padding: 0.55rem 1.15rem;
-  font-size: 0.85rem;
-}
-
-/* ==========================================================================
-   1. HERO EDITORIAL INSTITUCIONAL (SEM FOTO AVULSA)
-   Foco em autoridade, credibilidade e conversão direta
-   ========================================================================== */
-.hero-editorial-real {
-  background: linear-gradient(135deg, #0a192f 0%, #0d2342 65%, #102a50 100%);
-  color: #ffffff;
-  padding: 6.5rem 0 5.5rem 0;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.hero-editorial-real::before {
-  content: '';
-  position: absolute;
-  top: -150px;
-  right: -100px;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(0, 102, 204, 0.22) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-editorial-real::after {
-  content: '';
-  position: absolute;
-  bottom: -150px;
-  left: -100px;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-centered-content {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
+  padding: 0.5rem;
   flex-direction: column;
-  align-items: center;
+  gap: 6px;
+}
+
+.toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  transition: transform var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   4. Hero Cinematográfico (95vh)
+   -------------------------------------------------------------------------- */
+.hero-cinematic {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 9rem 0 5.5rem 0;
+  overflow: hidden;
+}
+
+.hero-cinematic-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-cinematic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  transform: scale(1.04);
+  animation: heroKenBurnsSlow 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroKenBurnsSlow {
+  0% { transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { transform: scale(1.10) translate3d(-1%, -1%, 0); }
+}
+
+/* Scrim / Degradê Fotográfico Fino */
+.hero-cinematic-scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 15, 23, 0.45) 0%,
+    rgba(11, 15, 23, 0.25) 35%,
+    rgba(11, 15, 23, 0.75) 75%,
+    rgba(11, 15, 23, 0.98) 100%
+  );
+}
+
+.hero-cinematic-inner {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
-.hero-eyebrow-tag {
+.hero-cinematic-content {
+  max-width: 820px;
+}
+
+.hero-editorial-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(11, 15, 23, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--accent-gold-border);
+}
+
+.label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+}
+
+.hero-cinematic-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.8vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.hero-cinematic-lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-light-mid);
+  margin-bottom: 2.25rem;
+  max-width: 620px;
+}
+
+.hero-cinematic-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Botões Editoriais Sofisticados */
+.btn-editorial-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 1.05rem 2rem;
+  border-radius: 2px;
+  background: var(--accent-gold);
+  color: #0b0f17;
+  border: 1px solid var(--accent-gold);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.btn-editorial-primary:hover {
+  background: var(--accent-gold-hover);
+  border-color: var(--accent-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
+  color: #0b0f17;
+}
+
+.btn-editorial-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-size: 0.8125rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-accent);
-  margin-bottom: 1.5rem;
-  background: rgba(245, 158, 11, 0.1);
-  padding: 0.45rem 1.15rem;
-  border-radius: 999px;
-  border: 1px solid rgba(245, 158, 11, 0.28);
+  padding: 0.9rem 1.75rem;
+  border-radius: 2px;
+  background: var(--accent-gold);
+  color: #0b0f17;
+  border: 1px solid var(--accent-gold);
+  transition: all var(--transition-smooth);
+  cursor: pointer;
 }
 
-.hero-heading-main {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.4rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-  max-width: 860px;
+.btn-editorial-gold:hover {
+  background: var(--accent-gold-hover);
+  transform: translateY(-2px);
+  color: #0b0f17;
 }
 
-.hero-heading-main span {
-  color: #fbbf24;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-lead-editorial {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  color: #cbd5e1;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
-  max-width: 680px;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.75rem;
-}
-
-.hero-proof-bar {
+.btn-editorial-light {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  padding: 0.85rem 1.75rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.hero-stars-gold {
-  color: #fbbf24;
-  font-size: 1.15rem;
-  letter-spacing: 2px;
-}
-
-.hero-proof-text {
-  font-size: 0.875rem;
-  color: #cbd5e1;
-}
-
-.hero-proof-text strong {
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   2. OS 5 PILARES DA TR TURISMO (HISTÓRIA VISUAL BASEADA NO INSTAGRAM)
-   Adeus cartões de IA! Narrativa fotográfica autêntica numerada de 1 a 5
-   ========================================================================== */
-.section-story-pillars {
-  padding: 6.5rem 0;
-  background: var(--bg-sand);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.pillars-header-editorial {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 4rem auto;
-}
-
-.editorial-tag {
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  gap: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: var(--color-primary);
-  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.85rem 1.65rem;
+  border-radius: 2px;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-smooth);
 }
 
-.editorial-title {
+.btn-editorial-light:hover {
+  background: #ffffff;
+  color: #0b0f17;
+}
+
+.editorial-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-gold);
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.editorial-text-link:hover {
+  color: var(--accent-gold-hover);
+  border-bottom-color: var(--accent-gold-hover);
+}
+
+/* Prova Social Discreta no Hero */
+.hero-discreet-proof {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--text-light-dim);
+  letter-spacing: 0.02em;
+}
+
+.stars-gold {
+  color: var(--accent-gold);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+
+/* Indicador Sutil de Rolagem */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 2rem;
+  right: clamp(1.25rem, 4vw, 3rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--text-light-dim);
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.hero-scroll-cue:hover {
+  opacity: 1;
+}
+
+.scroll-cue-line {
+  width: 1px;
+  height: 35px;
+  background: linear-gradient(180deg, var(--accent-gold), transparent);
+  animation: scrollCuePulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollCuePulse {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  50.1% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* --------------------------------------------------------------------------
+   5. Seção Manifesto Editorial (Respiro Generoso)
+   -------------------------------------------------------------------------- */
+.section-manifesto {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light-subtle);
+}
+
+.manifesto-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+}
+
+.manifesto-eyebrow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.manifesto-city {
+  font-size: 0.8125rem;
+  color: var(--text-light-dim);
+  letter-spacing: 0.05em;
+}
+
+.manifesto-quote {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--color-primary-dark);
-  margin-top: 0.4rem;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 3.5rem;
+  max-width: 920px;
 }
 
-.editorial-subtitle {
-  color: #64748b;
+.manifesto-details-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.manifesto-narrative p {
   font-size: 1.05rem;
-  margin-top: 0.75rem;
+  line-height: 1.75;
+  color: var(--text-light-mid);
+  margin-bottom: 1.5rem;
+}
+
+.manifesto-narrative p:last-child {
+  margin-bottom: 0;
+}
+
+.manifesto-pillars-snapshot {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 2.5rem;
+  border-left: 1px solid var(--border-light-subtle);
+}
+
+.snapshot-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.snapshot-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  line-height: 1;
+}
+
+.snapshot-text {
+  font-size: 0.875rem;
+  color: var(--text-light-dim);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   6. Próximas Viagens — Experiências Visuais Autorais (Sem Cards Repetidos)
+   -------------------------------------------------------------------------- */
+.section-destinations-editorial {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-surface-dark);
+}
+
+.destinations-editorial-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-light-subtle);
+}
+
+.destinations-header-note {
+  max-width: 380px;
+  font-size: 0.95rem;
+  color: var(--text-light-dim);
   line-height: 1.6;
 }
 
-/* Mosaico Narrativo Assimétrico dos 5 Pilares */
-.pillars-story-spread {
+/* Filtros Editoriais de Categoria */
+.destinations-category-filters {
   display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-/* Item de Pilar com Composição Foto + Conteúdo Horizontal */
-.pillar-story-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
   align-items: center;
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-}
-
-.pillar-story-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-elevated);
-}
-
-/* Inversão alternada para ritmo editorial dinâmico */
-.pillar-story-item.reverse {
-  grid-template-columns: 1fr 1fr;
-  direction: rtl;
-}
-
-.pillar-story-item.reverse > * {
-  direction: ltr;
-}
-
-.pillar-photo-box {
-  position: relative;
-  height: 380px;
-  overflow: hidden;
-  background: var(--color-primary-dark);
-}
-
-.pillar-photo-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.pillar-story-item:hover .pillar-photo-box img {
-  transform: scale(1.04);
-}
-
-.pillar-location-badge {
-  position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
-  background: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(6px);
-  color: #ffffff;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.pillar-content-box {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* O número gigante com degradê azul característico da campanha */
-.pillar-huge-number {
-  font-family: var(--font-display);
-  font-size: 4rem;
-  font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(135deg, #0066cc 0%, #00c8ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.pillar-headline {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--color-primary-dark);
-  line-height: 1.2;
-  margin-bottom: 0.85rem;
-}
-
-.pillar-paragraph {
-  font-size: 1.05rem;
-  color: #475569;
-  line-height: 1.65;
-  margin-bottom: 1.5rem;
-}
-
-.pillar-action-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--color-primary);
-  transition: gap 0.2s ease;
-}
-
-.pillar-action-link:hover {
   gap: 0.85rem;
-  color: var(--color-accent);
-}
-
-/* ==========================================================================
-   3. DESTINOS & PRÓXIMAS VIAGENS (VITRINE DE REVISTA COM FOTOS REAIS)
-   ========================================================================== */
-.section-destinations-real {
-  padding: 6.5rem 0;
-  background: var(--bg-page);
-}
-
-.destinations-top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 2rem;
   flex-wrap: wrap;
   margin-bottom: 3.5rem;
 }
 
-.destinations-filters-editorial {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.filter-pill-real {
-  background: #ffffff;
-  color: #475569;
-  border: 1px solid var(--border-subtle);
-  padding: 0.55rem 1.25rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
+.filter-pill-editorial {
+  background: transparent;
+  border: 1px solid var(--border-light-subtle);
+  color: var(--text-light-mid);
+  font-size: 0.8125rem;
   font-weight: 600;
-  transition: all var(--transition-smooth);
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-.filter-pill-real:hover, .filter-pill-real.active {
-  background: var(--color-primary-dark);
+.filter-pill-editorial:hover {
+  border-color: var(--border-light-visible);
   color: #ffffff;
-  border-color: var(--color-primary-dark);
 }
 
-/* Grid Editorial de Destinos com 1 Principal Grande + Lista Lateral */
-.destinations-editorial-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2.5rem;
+.filter-pill-editorial.active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #0b0f17;
+  font-weight: 700;
 }
 
-.destination-hero-card {
+/* Layout 01: Matéria de Capa em Grande Escala (Chile 2027) */
+.destination-cover-story {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: 2px;
   overflow: hidden;
-  min-height: 540px;
-  display: flex;
-  flex-direction: column;
-  background: var(--color-primary-dark);
-  box-shadow: var(--shadow-card);
+  margin-bottom: 5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light-subtle);
 }
 
-.destination-hero-bg {
-  position: absolute;
-  inset: 0;
+.cover-story-media {
+  position: relative;
+  height: clamp(380px, 50vw, 560px);
+  overflow: hidden;
+}
+
+.cover-story-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.destination-hero-card:hover .destination-hero-bg {
+.destination-cover-story:hover .cover-story-media img {
   transform: scale(1.03);
 }
 
-.destination-hero-gradient {
+.cover-story-overlay {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 25, 47, 0.2) 0%,
-    rgba(10, 25, 47, 0.75) 55%,
-    rgba(5, 15, 30, 0.98) 100%
-  );
-  z-index: 1;
-}
-
-.destination-hero-content {
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  padding: 2.75rem;
-  color: #ffffff;
-}
-
-.destination-hero-tag {
-  display: inline-block;
-  background: var(--color-accent);
-  color: #050d18;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  margin-bottom: 0.85rem;
-}
-
-.destination-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 0.85rem;
-}
-
-.destination-hero-desc {
-  font-size: 1rem;
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin-bottom: 1.75rem;
-  max-width: 540px;
-}
-
-.destination-hero-inclusions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  font-size: 0.85rem;
-  color: #cbd5e1;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  margin-bottom: 1.75rem;
-}
-
-.destination-hero-inclusions span {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #e2e8f0;
-}
-
-/* Coluna Lateral de Destinos Secundários */
-.destinations-side-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.destination-side-card {
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 190px 1fr;
-  box-shadow: var(--shadow-subtle);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-}
-
-.destination-side-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-  border-color: rgba(0, 102, 204, 0.4);
-}
-
-.side-card-image {
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  min-height: 160px;
-  object-fit: cover;
+  background: linear-gradient(180deg, rgba(11, 15, 23, 0.2) 0%, rgba(11, 15, 23, 0.85) 100%);
 }
 
-.side-card-body {
-  padding: 1.35rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.side-card-tag {
+.cover-story-badge {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 0.25rem;
-  display: block;
+  letter-spacing: 0.18em;
+  background: rgba(11, 15, 23, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--accent-gold-border);
+  color: var(--accent-gold);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
 }
 
-.side-card-title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--color-primary-dark);
-  line-height: 1.25;
-  margin-bottom: 0.35rem;
+.cover-story-content {
+  padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
 }
 
-.side-card-desc {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-.side-card-footer {
+.cover-story-meta {
   display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8125rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+
+.meta-dot {
+  opacity: 0.5;
+}
+
+.cover-story-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.cover-story-headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-gold);
+}
+
+.cover-story-lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-light-mid);
+  max-width: 860px;
+  margin-bottom: 2.5rem;
+}
+
+.cover-story-footer {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-light-subtle);
+}
+
+.cover-story-specs {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.spec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.spec-col strong {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-light-dim);
+}
+
+.spec-col span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Layout 02 & 03: Composição Assimétrica em Spread de Revista */
+.destinations-asymmetric-spread {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  margin-bottom: 5rem;
+}
+
+.destination-spread-item {
+  display: grid;
+  gap: 3.5rem;
   align-items: center;
 }
 
-.side-card-price {
-  font-size: 0.9rem;
+/* Spread Vertical (Balneário) */
+.spread-vertical-split {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+/* Spread Horizontal (Caldas Novas) */
+.spread-horizontal-flow {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.spread-photo-frame {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.spread-photo-frame.portrait-ratio {
+  aspect-ratio: 4 / 5;
+}
+
+.spread-photo-frame.landscape-ratio {
+  aspect-ratio: 16 / 10;
+}
+
+.spread-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.destination-spread-item:hover .spread-photo-frame img {
+  transform: scale(1.03);
+}
+
+.spread-location-tag {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  background: rgba(11, 15, 23, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 0.4rem 0.85rem;
+  border-radius: 2px;
+  color: #ffffff;
+  border: 1px solid var(--border-light-subtle);
 }
 
-/* ==========================================================================
-   4. SOBRE A TR TURISMO (COMPOSIÇÃO COM CRIATIVO OFICIAL DE RESERVAS)
-   ========================================================================== */
-.section-about-official {
-  padding: 6.5rem 0;
-  background: #ffffff;
-  border-top: 1px solid var(--border-subtle);
+.spread-content-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.about-editorial-spread {
+.destination-number-serif {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent-gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.spread-item-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.spread-item-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-light-mid);
+  margin-bottom: 1.5rem;
+}
+
+.spread-item-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+  padding-left: 0;
+}
+
+.spread-item-bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-light-dim);
+}
+
+.spread-item-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-gold);
+}
+
+/* Layout 04: Banner Panorâmico de Tela Cheia (Cataratas) */
+.destination-panoramic-break {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  height: clamp(340px, 45vw, 480px);
+  display: flex;
+  align-items: flex-end;
+  border: 1px solid var(--border-light-subtle);
+}
+
+.panoramic-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.panoramic-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.panoramic-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 15, 23, 0.2) 0%,
+    rgba(11, 15, 23, 0.7) 60%,
+    rgba(11, 15, 23, 0.96) 100%
+  );
+}
+
+.panoramic-floating-caption {
+  position: relative;
+  z-index: 2;
+  padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
+  max-width: 780px;
+}
+
+.panoramic-meta {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-gold);
+  margin-bottom: 0.65rem;
+}
+
+.panoramic-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.panoramic-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-light-mid);
+  margin-bottom: 1.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Os 5 Pilares como Ensaio Narrativo Numerado (01 a 05)
+   -------------------------------------------------------------------------- */
+.section-story-chapters {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-light-subtle);
+}
+
+.chapters-header {
+  max-width: 680px;
+  margin-bottom: 4.5rem;
+}
+
+.chapters-intro {
+  font-size: 1.1rem;
+  color: var(--text-light-dim);
+  line-height: 1.65;
+  margin-top: 1rem;
+}
+
+.chapters-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.chapter-item {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+  padding-bottom: 4.5rem;
+  border-bottom: 1px solid var(--border-light-subtle);
+}
+
+.chapter-item.reverse {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.chapter-item.reverse .chapter-content-col {
+  order: 2;
+}
+
+.chapter-item.reverse .chapter-visual-col {
+  order: 1;
+}
+
+.chapter-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.chapter-numeral {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent-gold);
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.chapter-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-light-mid);
+  margin-bottom: 1.75rem;
+}
+
+.chapter-footnote {
+  font-size: 0.8125rem;
+  color: var(--text-light-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.chapter-photo-frame {
+  position: relative;
+  height: 340px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.chapter-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.chapter-item:hover .chapter-photo-frame img {
+  transform: scale(1.03);
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(11, 15, 23, 0.8);
+  backdrop-filter: blur(6px);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   8. A Agência em Ibirité (Ensaio Institucional)
+   -------------------------------------------------------------------------- */
+.section-agency-essay {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-surface-dark);
+}
+
+.agency-essay-grid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 4.5rem;
   align-items: center;
 }
 
-.about-visual-poster {
+.agency-poster-wrapper {
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: 2px;
   overflow: hidden;
-  box-shadow: var(--shadow-elevated);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-light-subtle);
 }
 
-.about-visual-poster img {
+.agency-poster-img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  display: block;
 }
 
-.about-story-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.35rem;
+.agency-badge-overlay {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background: rgba(11, 15, 23, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 1.5rem;
+  border-radius: 2px;
+  border: 1px solid var(--border-light-subtle);
 }
 
-.about-lead-p {
+.agency-badge-overlay strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  margin-bottom: 0.25rem;
+}
+
+.agency-badge-overlay span {
+  font-size: 0.85rem;
+  color: var(--text-light-mid);
+}
+
+.agency-lead-paragraph {
   font-size: 1.15rem;
-  color: #334155;
-  line-height: 1.6;
-  font-weight: 500;
-}
-
-.about-body-p {
-  font-size: 0.975rem;
-  color: #475569;
   line-height: 1.7;
+  color: #ffffff;
+  margin: 1.5rem 0 1.25rem 0;
 }
 
-.about-highlights-list {
+.agency-body-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-light-mid);
+  margin-bottom: 2.5rem;
+}
+
+.agency-specs-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--border-light-subtle);
+  border-bottom: 1px solid var(--border-light-subtle);
+  margin-bottom: 2.5rem;
+}
+
+.agency-spec-box {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  margin-top: 0.75rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
+  gap: 0.25rem;
 }
 
-.about-highlight-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  font-size: 0.925rem;
-  color: #334155;
+.spec-lead-val {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
 }
 
-.about-highlight-row svg {
-  color: var(--color-green);
-  flex-shrink: 0;
-  margin-top: 0.2rem;
+.spec-sub-val {
+  font-size: 0.785rem;
+  color: var(--text-light-dim);
+  line-height: 1.4;
 }
 
-/* ==========================================================================
-   5. AVALIAÇÕES DO GOOGLE (PROVA SOCIAL TIPOGRÁFICA LIMPA)
-   ========================================================================== */
-.section-reviews-editorial {
-  padding: 6.5rem 0;
-  background: var(--bg-sand);
-  border-top: 1px solid var(--border-subtle);
+/* --------------------------------------------------------------------------
+   9. Palavras de Quem Já Foi (Depoimentos Editoriais com Aspas)
+   -------------------------------------------------------------------------- */
+.section-reviews-curated {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-primary);
 }
 
-.reviews-header-center {
+.reviews-curated-header {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 3.5rem auto;
+  margin: 0 auto 4rem auto;
 }
 
-.google-badge-hero {
-  display: inline-flex;
+.reviews-curated-meta {
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
-  background: #ffffff;
-  padding: 0.6rem 1.35rem;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-subtle);
-  border: 1px solid var(--border-subtle);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.google-badge-hero svg {
-  width: 22px;
-  height: 22px;
+.reviews-score-text {
+  font-size: 0.875rem;
+  color: var(--text-light-mid);
 }
 
-.google-badge-hero strong {
-  font-size: 1.15rem;
-  color: var(--color-primary-dark);
+.reviews-score-text strong {
+  color: var(--accent-gold);
 }
 
-.google-badge-hero span {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+.reviews-curated-sub {
+  font-size: 1.05rem;
+  color: var(--text-light-dim);
+  margin-top: 1rem;
 }
 
-.reviews-editorial-grid {
+.reviews-editorial-stream {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
 }
 
 .review-card-editorial {
-  background: #ffffff;
-  border-radius: var(--radius-md);
-  padding: 2.25rem 2rem;
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-subtle);
+  position: relative;
+  background: var(--bg-surface-dark);
+  border: 1px solid var(--border-light-subtle);
+  padding: 2.5rem 2rem;
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.review-card-editorial:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-light-visible);
 }
 
 .review-quote-editorial {
-  font-size: 1.05rem;
-  color: #334155;
-  line-height: 1.65;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-style: italic;
-  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  color: #ffffff;
+  margin-bottom: 2rem;
 }
 
 .review-footer-editorial {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid var(--border-light-subtle);
   padding-top: 1.25rem;
-  border-top: 1px solid var(--border-subtle);
 }
 
 .review-author-info strong {
   display: block;
-  font-size: 0.95rem;
-  color: var(--color-primary-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .review-author-info span {
   font-size: 0.785rem;
-  color: var(--text-muted);
+  color: var(--text-light-dim);
 }
 
-/* ==========================================================================
-   6. CONEXÃO COM O INSTAGRAM OFICIAL (@TRTURISMOVIAGENS)
-   ========================================================================== */
-.section-instagram-banner {
-  padding: 5.5rem 0;
-  background: #ffffff;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.instagram-banner-box {
-  background: linear-gradient(135deg, #0a192f 0%, #112a4d 100%);
-  border-radius: var(--radius-lg);
-  padding: 3.5rem;
-  color: #ffffff;
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.reviews-external-link {
   text-align: center;
-  gap: 2rem;
 }
 
-.instagram-handle-badge {
+/* --------------------------------------------------------------------------
+   10. Diário Visual & Instagram (@trturismoviagens)
+   -------------------------------------------------------------------------- */
+.section-visual-journal {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-surface-dark);
+  border-top: 1px solid var(--border-light-subtle);
+}
+
+.journal-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.journal-handle-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding: 0.45rem 1.25rem;
-  border-radius: var(--radius-full);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--accent-gold-border);
 }
 
-.instagram-handle-badge svg {
-  color: #e1306c;
+.journal-handle-link:hover {
+  color: var(--accent-gold-hover);
+  border-bottom-color: var(--accent-gold-hover);
 }
 
-.instagram-title-text {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 2.6rem);
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.2;
-  max-width: 680px;
-}
-
-.instagram-sub-text {
-  color: #cbd5e1;
-  font-size: 1.05rem;
-  max-width: 580px;
-  line-height: 1.6;
-}
-
-.instagram-photos-preview {
+.journal-mosaic-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: 240px 240px;
   gap: 1.25rem;
-  width: 100%;
-  margin: 1rem 0;
 }
 
-.instagram-photo-thumb {
+.journal-mosaic-item {
   position: relative;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   overflow: hidden;
-  height: 200px;
-  background: var(--color-primary-dark);
+  display: block;
 }
 
-.instagram-photo-thumb img {
+.journal-mosaic-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.7s ease;
 }
 
-.instagram-photo-thumb:hover img {
-  transform: scale(1.06);
+.journal-mosaic-item:hover img {
+  transform: scale(1.05);
 }
 
-.instagram-overlay-action {
+.journal-mosaic-item.item-large {
+  grid-row: 1 / 3;
+}
+
+.journal-mosaic-item.item-tall {
+  grid-row: 1 / 3;
+}
+
+.journal-item-hover {
   position: absolute;
   inset: 0;
-  background: rgba(10, 25, 47, 0.45);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: rgba(11, 15, 23, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-size: 0.85rem;
-  font-weight: 700;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  padding: 1rem;
+  text-align: center;
 }
 
-.instagram-photo-thumb:hover .instagram-overlay-action {
+.journal-mosaic-item:hover .journal-item-hover {
   opacity: 1;
 }
 
-/* ==========================================================================
-   7. FORMULÁRIO DE COTAÇÃO INTEGRADO (COMPOSIÇÃO FOTOGRÁFICA LADO A LADO)
-   ========================================================================== */
-.section-quote-editorial {
-  padding: 6.5rem 0;
-  background: var(--bg-page);
-  border-top: 1px solid var(--border-subtle);
-}
-
-.quote-split-card {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--border-subtle);
-}
-
-.quote-visual-side {
-  position: relative;
-  background: var(--color-primary-dark);
-  min-height: 480px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem;
+.journal-item-hover span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: #ffffff;
 }
 
-.quote-visual-side img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* --------------------------------------------------------------------------
+   11. Cotação Direta & Atendimento
+   -------------------------------------------------------------------------- */
+.section-inquiry-editorial {
+  padding: var(--space-section) 0;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-light-subtle);
 }
 
-.quote-visual-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 25, 47, 0.2) 0%, rgba(10, 25, 47, 0.85) 60%, rgba(5, 15, 30, 0.98) 100%);
-  z-index: 1;
-}
-
-.quote-visual-content {
-  position: relative;
-  z-index: 2;
-}
-
-.quote-visual-content h3 {
-  font-family: var(--font-display);
-  font-size: 1.85rem;
-  font-weight: 800;
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-}
-
-.quote-visual-content p {
-  color: #cbd5e1;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.quote-direct-phones-box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 0.85rem;
-}
-
-.quote-direct-phones-box strong {
-  color: #fbbf24;
-  display: block;
-  margin-bottom: 0.35rem;
-}
-
-.quote-form-side {
-  padding: 3.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.quote-form-grid {
+.inquiry-split-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-top: 1.5rem;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4.5rem;
+  align-items: start;
+  margin-bottom: 4.5rem;
 }
 
-.form-group-full {
-  grid-column: 1 / -1;
-}
-
-.quote-label {
-  display: block;
-  font-size: 0.825rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #475569;
-  margin-bottom: 0.4rem;
-}
-
-.quote-input, .quote-select, .quote-textarea {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  background: var(--bg-page);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  font-family: inherit;
-  font-size: 0.925rem;
-  color: var(--text-main);
-  transition: all var(--transition-smooth);
-}
-
-.quote-input:focus, .quote-select:focus, .quote-textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
-}
-
-.quote-textarea {
-  min-height: 85px;
-  resize: vertical;
-}
-
-.quote-submit-row {
-  margin-top: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.quote-notice-text {
-  font-size: 0.785rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   8. CONTATO & LOCALIZAÇÃO EM IBIRITÉ
-   ========================================================================== */
-.section-contact-editorial {
-  padding: 6.5rem 0;
-  background: #ffffff;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.contact-layout-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-
-.contact-info-col h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
-  font-weight: 800;
-  color: var(--color-primary-dark);
-  line-height: 1.2;
-  margin-top: 0.35rem;
-  margin-bottom: 1rem;
-}
-
-.contact-info-col p {
-  color: #475569;
+.inquiry-lead-text {
   font-size: 1.05rem;
-  line-height: 1.65;
-  margin-bottom: 2.25rem;
+  line-height: 1.7;
+  color: var(--text-light-mid);
+  margin: 1.25rem 0 2.5rem 0;
 }
 
-.contact-items-stack {
+.inquiry-contact-list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.contact-item-row {
+.inquiry-contact-row {
   display: flex;
-  align-items: flex-start;
-  gap: 1.15rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-light-subtle);
 }
 
-.contact-icon-circle {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(0, 102, 204, 0.08);
-  color: var(--color-primary);
+.inquiry-contact-row:last-child {
+  border-bottom: none;
+}
+
+.inquiry-contact-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.inquiry-contact-val {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.inquiry-contact-cep {
+  font-size: 0.785rem;
+  color: var(--text-light-dim);
+  margin-top: 0.15rem;
+}
+
+/* Formulário Editorial */
+.inquiry-form-card {
+  background: var(--bg-surface-dark);
+  padding: 3rem clamp(1.5rem, 4vw, 3rem);
+  border-radius: 2px;
+  border: 1px solid var(--border-light-subtle);
+}
+
+.form-kicker {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.form-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.form-sub {
+  font-size: 0.9rem;
+  color: var(--text-light-dim);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.inquiry-form {
   display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-light-mid);
+}
+
+.form-input, .form-textarea {
+  background: rgba(11, 15, 23, 0.6);
+  border: 1px solid var(--border-light-visible);
+  color: #ffffff;
+  padding: 0.85rem 1rem;
+  border-radius: 2px;
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background: rgba(11, 15, 23, 0.9);
+}
+
+.form-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.btn-editorial-submit {
+  width: 100%;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent-gold);
+  color: #0b0f17;
+  border: 1px solid var(--accent-gold);
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all var(--transition-smooth);
 }
 
-.contact-item-row strong {
-  display: block;
-  font-size: 0.95rem;
-  color: var(--color-primary-dark);
-  margin-bottom: 0.2rem;
+.btn-editorial-submit:hover {
+  background: var(--accent-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
 }
 
-.contact-item-row a, .contact-item-row span {
-  font-size: 0.925rem;
-  color: #475569;
-}
-
-.contact-map-frame {
-  border-radius: var(--radius-md);
+/* Mapa de Localização */
+.inquiry-map-embed {
+  height: 380px;
+  border-radius: 2px;
   overflow: hidden;
-  height: 420px;
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-light-subtle);
 }
 
-.contact-map-frame iframe {
+.inquiry-map-embed iframe {
   width: 100%;
   height: 100%;
-  border: 0;
+  border: none;
+  filter: grayscale(85%) contrast(110%) invert(90%);
 }
 
-/* ==========================================================================
-   RODAPÉ EDITORIAL
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   12. Rodapé Editorial / Colophon
+   -------------------------------------------------------------------------- */
 .footer-editorial {
-  background: var(--color-primary-dark);
-  color: #ffffff;
+  background-color: #06090e;
+  border-top: 1px solid var(--border-light-subtle);
   padding: 5rem 0 2.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.footer-top-grid {
+.footer-main-row {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr;
   gap: 4rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--border-light-subtle);
 }
 
-.footer-about-col p {
-  color: #94a3b8;
-  font-size: 0.925rem;
-  line-height: 1.65;
-  margin: 1.25rem 0;
-  max-width: 380px;
-}
-
-.footer-nav-col h4 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
+.footer-brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
   margin-bottom: 1.25rem;
 }
 
-.footer-nav-links {
+.footer-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-brand-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.footer-brand-title em {
+  font-style: normal;
+  color: var(--accent-gold);
+}
+
+.footer-brand-tagline {
+  font-size: 0.95rem;
+  color: var(--text-light-mid);
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+  max-width: 380px;
+}
+
+.footer-legal-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.8125rem;
+  color: var(--text-light-dim);
+}
+
+.footer-nav-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-gold);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.footer-links-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.85rem;
+  padding: 0;
 }
 
-.footer-nav-links a {
-  color: #94a3b8;
+.footer-links-list a {
   font-size: 0.9rem;
-  transition: color var(--transition-smooth);
+  color: var(--text-light-mid);
+  transition: color var(--transition-fast);
 }
 
-.footer-nav-links a:hover {
-  color: var(--color-accent);
+.footer-links-list a:hover {
+  color: #ffffff;
 }
 
-.footer-bottom-bar {
+.admin-discrete-link {
+  color: var(--text-light-dim) !important;
+  font-size: 0.8rem !important;
+  opacity: 0.6;
+}
+
+.admin-discrete-link:hover {
+  opacity: 1;
+  color: var(--accent-gold) !important;
+}
+
+.footer-colophon-bottom {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  justify-content: space-between;
+  gap: 1.5rem;
   font-size: 0.8125rem;
-  color: #64748b;
+  color: var(--text-light-dim);
 }
 
-/* ==========================================================================
-   WHATSAPP FLUTUANTE DISCRETO
-   ========================================================================== */
-.floating-whatsapp-refined {
+/* --------------------------------------------------------------------------
+   13. Botão Flutuante de WhatsApp (Fino, Discreto, Sofisticado)
+   -------------------------------------------------------------------------- */
+.floating-contact-pill {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 999;
 }
 
-.btn-floating-wa {
-  display: flex;
+.wa-pill-link {
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background: var(--color-whatsapp);
+  gap: 0.65rem;
+  background: rgba(11, 15, 23, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius-full);
-  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-  font-size: 0.875rem;
-  font-weight: 700;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   transition: all var(--transition-smooth);
 }
 
-.btn-floating-wa:hover {
-  background: #1ebc59;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.5);
+.wa-pill-link svg {
+  color: var(--color-wa);
+  flex-shrink: 0;
+}
+
+.wa-pill-link:hover {
+  background: var(--color-wa);
+  color: #ffffff;
+  border-color: var(--color-wa);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+}
+
+.wa-pill-link:hover svg {
   color: #ffffff;
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE (MOBILE & TABLET)
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   14. Responsividade (Mobile & Tablet)
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .pillar-story-item, .pillar-story-item.reverse {
+  .manifesto-layout {
     grid-template-columns: 1fr;
-    direction: ltr !important;
+    gap: 2rem;
   }
-  .destinations-editorial-grid {
+  .manifesto-details-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .manifesto-pillars-snapshot {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--border-light-subtle);
+    padding-top: 2rem;
+  }
+  .spread-vertical-split, .spread-horizontal-flow {
     grid-template-columns: 1fr;
   }
-  .about-editorial-spread {
+  .spread-horizontal-flow .spread-content-panel {
+    order: 2;
+  }
+  .spread-horizontal-flow .spread-photo-frame {
+    order: 1;
+  }
+  .chapter-item, .chapter-item.reverse {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .chapter-item.reverse .chapter-content-col {
+    order: 1;
+  }
+  .chapter-item.reverse .chapter-visual-col {
+    order: 2;
+  }
+  .agency-essay-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .reviews-editorial-stream {
+    grid-template-columns: 1fr;
+  }
+  .journal-mosaic-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .journal-mosaic-item.item-large,
+  .journal-mosaic-item.item-tall {
+    grid-row: auto;
+    height: 220px;
+  }
+  .inquiry-split-layout {
+    grid-template-columns: 1fr;
+  }
+  .footer-main-row {
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
-  }
-  .quote-split-card {
-    grid-template-columns: 1fr;
-  }
-  .quote-visual-side {
-    min-height: 280px;
-  }
-  .contact-layout-split {
-    grid-template-columns: 1fr;
-  }
-  .instagram-photos-preview {
-    grid-template-columns: 1fr 1fr;
-  }
-  .footer-top-grid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .topbar {
+  .header-actions .header-contact-link {
     display: none;
   }
   .mobile-toggle {
-    display: block;
+    display: flex;
   }
-  .nav-menu {
+  .nav-desktop {
     position: fixed;
-    top: 80px;
+    top: 75px;
     left: -100%;
     width: 85%;
     max-width: 320px;
-    height: calc(100vh - 80px);
-    background: var(--color-primary-dark);
-    flex-direction: column;
-    align-items: flex-start;
+    height: calc(100vh - 75px);
+    background: var(--bg-surface-dark);
     padding: 2.5rem 2rem;
-    gap: 1.5rem;
     transition: left var(--transition-smooth);
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 20px 0 40px rgba(0, 0, 0, 0.6);
+    border-right: 1px solid var(--border-light-subtle);
   }
-  .nav-menu.open {
+  .nav-desktop.open {
     left: 0;
   }
-  .hero-editorial-real {
-    padding: 4rem 0 3.5rem 0;
-  }
-  .hero-actions {
+  .nav-links {
     flex-direction: column;
-    width: 100%;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
-  .hero-actions .btn {
-    width: 100%;
+  .hero-cinematic {
+    padding: 7rem 0 4rem 0;
+    min-height: 88vh;
   }
-  .hero-proof-bar {
-    border-radius: var(--radius-md);
-    padding: 0.75rem 1.25rem;
+  .cover-story-media {
+    height: 280px;
+  }
+  .cover-story-footer {
     flex-direction: column;
-    gap: 0.35rem;
+    align-items: flex-start;
   }
-  .pillar-photo-box {
-    height: 240px;
+  .cover-story-action {
+    width: 100%;
   }
-  .pillar-content-box {
-    padding: 2rem 1.5rem;
+  .cover-story-action .btn-editorial-gold {
+    width: 100%;
+    justify-content: center;
   }
-  .pillar-huge-number {
-    font-size: 3rem;
-  }
-  .destination-side-card {
+  .agency-specs-row {
     grid-template-columns: 1fr;
   }
-  .side-card-image {
-    height: 180px;
-  }
-  .instagram-banner-box {
-    padding: 2rem 1.25rem;
-  }
-  .quote-form-side {
-    padding: 2rem 1.5rem;
-  }
-  .quote-form-grid {
+  .form-fields-grid {
     grid-template-columns: 1fr;
   }
-  .footer-top-grid {
+  .footer-main-row {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
   }
-  .btn-floating-wa span {
-    display: none;
-  }
-  .btn-floating-wa {
-    padding: 0.85rem;
-    border-radius: 50%;
+  .footer-colophon-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }

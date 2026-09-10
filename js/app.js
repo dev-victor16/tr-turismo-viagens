@@ -90,7 +90,11 @@ function renderEditorialAbout(about) {
 }
 
 /**
- * Renderiza destinos no formato revista com fotos reais (1 destaque principal grande + lista lateral)
+ * Renderiza destinos no formato revista editorial autoral com fotos reais
+ * Sem repetição monótona de cards:
+ * 1. Matéria de Capa monumental (Chile 2027 / Destaque)
+ * 2. Spread Assimétrico de Revista (Balneário, Caldas Novas, etc.)
+ * 3. Banner Panorâmico de Tela Cheia (Cataratas do Iguaçu)
  */
 function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
   const container = document.getElementById('destinations-magazine-container');
@@ -102,76 +106,56 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #fff; border-radius: 12px; border: 1px dashed #cbd5e1;">
-        <p style="color: #64748b; font-size: 1rem; margin-bottom: 1rem;">Nenhum roteiro encontrado para este filtro.</p>
-        <button class="btn btn-primary btn-sm" onclick="resetDestinationFilters()">Ver todos os roteiros</button>
+      <div style="text-align: center; padding: 4rem 2rem; background: var(--bg-primary); border: 1px dashed var(--border-light-subtle); border-radius: 2px;">
+        <p style="color: var(--text-light-mid); font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1.5rem;">
+          Nenhum roteiro encontrado nesta categoria no momento.
+        </p>
+        <button class="btn-editorial-gold" onclick="resetDestinationFilters()">
+          VER TODA A COLEÇÃO DE ROTEIROS
+        </button>
       </div>
     `;
     return;
   }
 
-  // O primeiro é o destaque grande da revista
-  const featured = filtered[0];
-  const secondaries = filtered.slice(1);
+  let html = '';
 
-  let html = `
-    <!-- Destino Principal em Destaque Monumental -->
-    <div class="destination-hero-card">
-      <img src="${featured.image}" alt="${escapeHTML(featured.name)}" class="destination-hero-bg" loading="lazy" onerror="this.src='images/foto-chile-andes.jpg'">
-      <div class="destination-hero-gradient"></div>
-      <div class="destination-hero-content">
-        ${featured.tag ? `<span class="destination-hero-tag">${escapeHTML(featured.tag)}</span>` : ''}
-        <h3 class="destination-hero-title">${escapeHTML(featured.name)}</h3>
-        <p class="destination-hero-desc">${escapeHTML(featured.description)}</p>
-
-        <div class="destination-hero-inclusions">
-          ${(featured.inclusions || []).map(inc => `
-            <span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              ${escapeHTML(inc)}
-            </span>
-          `).join('')}
-        </div>
-
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
-          <div style="font-size: 0.9rem; color: #cbd5e1;">
-            <strong style="color: #ffffff; font-size: 1.15rem; display: block;">${escapeHTML(featured.priceDisplay || 'Sob Consulta')}</strong>
-            <span>${escapeHTML(featured.departure || 'Saída facilitada de Ibirité e BH')}</span>
-          </div>
-          <button class="btn btn-primary" onclick="selectDestinationForQuote('${escapeHTML(featured.name)}')">
-            Quero Reservar
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Coluna de Destinos Secundários
-  if (secondaries.length > 0) {
-    html += `
-      <div class="destinations-side-stack">
-        ${secondaries.map(item => `
-          <div class="destination-side-card">
-            <img src="${item.image}" alt="${escapeHTML(item.name)}" class="side-card-image" loading="lazy" onerror="this.src='images/foto-praia-tropical.jpg'">
-            <div class="side-card-body">
-              <div>
-                <span class="side-card-tag">${escapeHTML(item.category)}</span>
-                <h4 class="side-card-title">${escapeHTML(item.name)}</h4>
-                <p class="side-card-desc">${escapeHTML(item.description)}</p>
-              </div>
-              <div class="side-card-footer">
-                <span class="side-card-price">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
-                <button class="pillar-action-link" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
-                  Pedir Cotação →
-                </button>
-              </div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
+  // Se filtrado e houver apenas 1 item
+  if (filtered.length === 1) {
+    html = renderCoverStoryItem(filtered[0]);
   } else {
-    html = `<div style="grid-column: 1 / -1;">` + html + `</div>`;
+    // 1. Destaque / Matéria de Capa (Chile 2027 ou 1º item)
+    const featuredItem = filtered.find(d => d.featured) || filtered[0];
+    const otherItems = filtered.filter(d => d.id !== featuredItem.id);
+
+    html += renderCoverStoryItem(featuredItem);
+
+    // 2. Se houver outros itens, distribuímos nos layouts autorais
+    if (otherItems.length > 0) {
+      // Destacamos se tiver Cataratas como banner panorâmico
+      const panoramicItem = otherItems.find(d => d.category === 'Natureza' || d.id === 'dest-cataratas');
+      const spreadItems = otherItems.filter(d => d !== panoramicItem);
+
+      if (spreadItems.length > 0) {
+        html += `<div class="destinations-asymmetric-spread">`;
+        spreadItems.forEach((item, idx) => {
+          const number = idx + 2;
+          if (idx % 2 === 0) {
+            // Spread Vertical (Foto portrait à esquerda + conteúdo)
+            html += renderSpreadVertical(item, number);
+          } else {
+            // Spread Horizontal (Conteúdo à esquerda + foto landscape à direita)
+            html += renderSpreadHorizontal(item, number);
+          }
+        });
+        html += `</div>`;
+      }
+
+      // 3. Banner Panorâmico no encerramento da coleção
+      if (panoramicItem) {
+        html += renderPanoramicBreak(panoramicItem);
+      }
+    }
   }
 
   container.innerHTML = html;
@@ -179,10 +163,152 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
 }
 
 /**
+ * Matéria de Capa Monumental (Chile 2027)
+ */
+function renderCoverStoryItem(item) {
+  return `
+    <article class="destination-cover-story" data-reveal="fade-up">
+      <div class="cover-story-media">
+        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy" onerror="this.src='images/foto-chile-andes.jpg'">
+        <div class="cover-story-overlay"></div>
+        <span class="cover-story-badge">${escapeHTML(item.tag || item.category)}</span>
+      </div>
+      <div class="cover-story-content">
+        <div class="cover-story-meta">
+          <span>${escapeHTML(item.category)}</span>
+          <span class="meta-dot">•</span>
+          <span>${escapeHTML(item.duration || 'Temporada Especial')}</span>
+        </div>
+        <h3 class="cover-story-headline">${escapeHTML(item.name)}</h3>
+        <p class="cover-story-lead">${escapeHTML(item.description)}</p>
+
+        <div class="cover-story-footer">
+          <div class="cover-story-specs">
+            <div class="spec-col">
+              <strong>Embarque</strong>
+              <span>${escapeHTML(item.departure || 'Ibirité e Grande BH')}</span>
+            </div>
+            <div class="spec-col">
+              <strong>Inclusões</strong>
+              <span>${escapeHTML((item.inclusions || []).slice(0, 3).join(' • '))}</span>
+            </div>
+            <div class="spec-col">
+              <strong>Tarifa</strong>
+              <span style="color: var(--accent-gold);">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
+            </div>
+          </div>
+          <div class="cover-story-action">
+            <button class="btn-editorial-gold" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
+              CONSULTAR DETALHES DO ROTEIRO
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/**
+ * Spread Vertical (Foto portrait à esquerda + conteúdo à direita)
+ */
+function renderSpreadVertical(item, number) {
+  return `
+    <article class="destination-spread-item spread-vertical-split" data-reveal="fade-up">
+      <div class="spread-photo-frame portrait-ratio">
+        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy" onerror="this.src='images/foto-balneario-camboriu.jpg'">
+        <span class="spread-location-tag">${escapeHTML(item.tag || item.category)}</span>
+      </div>
+      <div class="spread-content-panel">
+        <span class="destination-number-serif">${String(number).padStart(2, '0')}</span>
+        <h3 class="spread-item-title">${escapeHTML(item.name)}</h3>
+        <p class="spread-item-desc">${escapeHTML(item.description)}</p>
+        <ul class="spread-item-bullets">
+          ${(item.inclusions || []).map(inc => `<li>${escapeHTML(inc)}</li>`).join('')}
+          <li>${escapeHTML(item.departure || 'Embarque em Ibirité e pontos estratégicos')}</li>
+        </ul>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div>
+            <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light-dim);">Tarifa</span>
+            <span style="font-size: 1.25rem; font-weight: 700; color: var(--accent-gold); font-family: var(--font-display);">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
+          </div>
+          <button class="btn-editorial-gold" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
+            CONSULTAR VAGAS
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/**
+ * Spread Horizontal (Conteúdo à esquerda + foto landscape à direita)
+ */
+function renderSpreadHorizontal(item, number) {
+  return `
+    <article class="destination-spread-item spread-horizontal-flow" data-reveal="fade-up">
+      <div class="spread-content-panel">
+        <span class="destination-number-serif">${String(number).padStart(2, '0')}</span>
+        <h3 class="spread-item-title">${escapeHTML(item.name)}</h3>
+        <p class="spread-item-desc">${escapeHTML(item.description)}</p>
+        <ul class="spread-item-bullets">
+          ${(item.inclusions || []).map(inc => `<li>${escapeHTML(inc)}</li>`).join('')}
+          <li>${escapeHTML(item.departure || 'Saídas confortáveis da Grande BH')}</li>
+        </ul>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div>
+            <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light-dim);">Tarifa</span>
+            <span style="font-size: 1.25rem; font-weight: 700; color: var(--accent-gold); font-family: var(--font-display);">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
+          </div>
+          <button class="btn-editorial-gold" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
+            CONSULTAR VAGAS
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="spread-photo-frame landscape-ratio">
+        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy" onerror="this.src='images/foto-caldas-novas-parque.jpg'">
+        <span class="spread-location-tag">${escapeHTML(item.tag || item.category)}</span>
+      </div>
+    </article>
+  `;
+}
+
+/**
+ * Banner Panorâmico de Tela Cheia (Cataratas do Iguaçu)
+ */
+function renderPanoramicBreak(item) {
+  return `
+    <article class="destination-panoramic-break" data-reveal="fade-up">
+      <div class="panoramic-media">
+        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy" onerror="this.src='images/foto-cataratas-iguacu.jpg'">
+      </div>
+      <div class="panoramic-overlay"></div>
+      <div class="panoramic-floating-caption">
+        <span class="panoramic-meta">${escapeHTML(item.tag || item.category)} • ${escapeHTML(item.duration || 'Roteiro Especial')}</span>
+        <h3 class="panoramic-title">${escapeHTML(item.name)}</h3>
+        <p class="panoramic-text">${escapeHTML(item.description)}</p>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div>
+            <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light-dim);">Tarifa</span>
+            <span style="font-size: 1.25rem; font-weight: 700; color: var(--accent-gold); font-family: var(--font-display);">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
+          </div>
+          <button class="btn-editorial-primary" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
+            RESERVAR NESTE ROTEIRO
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+/**
  * Filtros de Destinos
  */
 function setupDestinationFilters(destinations) {
-  const pills = document.querySelectorAll('.filter-pill-real, .filter-pill');
+  const pills = document.querySelectorAll('.filter-pill-editorial, .filter-pill-real, .filter-pill');
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       pills.forEach(p => p.classList.remove('active'));
@@ -194,7 +320,7 @@ function setupDestinationFilters(destinations) {
 }
 
 window.resetDestinationFilters = function() {
-  const allBtn = document.querySelector('.filter-pill-real[data-filter="Todos"], .filter-pill[data-filter="Todos"]');
+  const allBtn = document.querySelector('.filter-pill-editorial[data-filter="Todos"], .filter-pill-real[data-filter="Todos"], .filter-pill[data-filter="Todos"]');
   if (allBtn) allBtn.click();
 };
 
@@ -214,7 +340,7 @@ window.selectDestinationForQuote = function(destName) {
 };
 
 /**
- * Avaliações Reais do Google
+ * Avaliações Reais do Google no formato editorial
  */
 function renderEditorialReviews(company, testimonials) {
   const scoreEl = document.getElementById('google-reviews-score');
@@ -223,26 +349,20 @@ function renderEditorialReviews(company, testimonials) {
     scoreEl.setAttribute('data-counter', company.googleRating.toString());
   }
 
-  const countEl = document.getElementById('google-reviews-count');
-  if (countEl && company.googleReviewCount) {
-    countEl.textContent = `• Mais de ${company.googleReviewCount} avaliações reais`;
-    countEl.setAttribute('data-counter', company.googleReviewCount.toString());
-  }
-
   const container = document.getElementById('editorial-reviews-container');
   if (!container || !testimonials) return;
 
   container.innerHTML = testimonials.map(item => `
-    <div class="review-card-editorial">
+    <article class="review-card-editorial" data-reveal="fade-up">
       <p class="review-quote-editorial">“${escapeHTML(item.content)}”</p>
       <div class="review-footer-editorial">
         <div class="review-author-info">
           <strong>${escapeHTML(item.author)}</strong>
           <span>${escapeHTML(item.location || 'Ibirité - MG')}</span>
         </div>
-        <div class="hero-stars-gold">★★★★★</div>
+        <div class="stars-gold" aria-label="5 estrelas">★★★★★</div>
       </div>
-    </div>
+    </article>
   `).join('');
 
   if (window.refreshScrollObserver) window.refreshScrollObserver();
@@ -335,7 +455,7 @@ Meu WhatsApp: ${phone}`;
 function setupNavigationDrawer() {
   const header = document.querySelector('.main-header');
   const toggle = document.getElementById('mobile-menu-toggle');
-  const menu = document.getElementById('main-nav-menu');
+  const navDesktop = document.querySelector('.nav-desktop');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
@@ -345,20 +465,24 @@ function setupNavigationDrawer() {
     }
   });
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('open');
+  if (toggle && navDesktop) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navDesktop.classList.toggle('open');
+      toggle.classList.toggle('active');
     });
 
-    menu.querySelectorAll('.nav-link').forEach(link => {
+    navDesktop.querySelectorAll('.nav-item, .nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        menu.classList.remove('open');
+        navDesktop.classList.remove('open');
+        toggle.classList.remove('active');
       });
     });
 
     document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('open');
+      if (!navDesktop.contains(e.target) && !toggle.contains(e.target)) {
+        navDesktop.classList.remove('open');
+        toggle.classList.remove('active');
       }
     });
   }
