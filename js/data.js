@@ -1,7 +1,7 @@
 /**
- * TR TURISMO VIAGENS - Data Store & State Management
+ * TR TURISMO VIAGENS - DATA STORE & STATE MANAGEMENT
  * Dados verificados da empresa em Ibirité - MG
- * Suporte completo a sincronização com localStorage e persistência no Painel Admin
+ * Textos humanizados, autênticos e comerciais sem clichês de IA
  */
 
 const TR_DEFAULT_DATA = {
@@ -26,41 +26,41 @@ const TR_DEFAULT_DATA = {
     googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Rua+Bar%C3%A9+92+Industrial+Ibirite+MG"
   },
   hero: {
-    badge: "Agência Oficial em Ibirité • CNPJ 62.424.112/0001-27",
-    title: "Sua próxima viagem inesquecível começa aqui.",
-    subtitle: "Excursões rodoviárias, pacotes nacionais e atendimento humanizado para você e sua família viajarem com máximo conforto, segurança e tranquilidade saindo de Ibirité e região.",
-    ctaPrimaryText: "QUERO VIAJAR",
+    badge: "Agência em Ibirité • CNPJ 62.424.112/0001-27",
+    title: "Bora viajar? A estrada é com a gente.",
+    subtitle: "Excursões rodoviárias e viagens organizadas saindo de Ibirité e região. Você só se preocupa em fazer as malas — do transporte ao hotel, o roteiro é com a TR Turismo.",
+    ctaPrimaryText: "VER PRÓXIMAS VIAGENS",
     ctaPrimaryLink: "#destinos",
     ctaSecondaryText: "FALAR NO WHATSAPP",
-    ctaSecondaryLink: "https://wa.me/5531995724285?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20TR%20Turismo%20e%20gostaria%20de%20conhecer%20os%20pr%C3%B3ximos%20destinos.",
-    backgroundImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+    ctaSecondaryLink: "https://wa.me/5531995724285?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20TR%20Turismo%20e%20gostaria%20de%20saber%20das%20pr%C3%B3ximas%20viagens.",
+    backgroundImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=85"
   },
   about: {
     headline: "Quem é a TR Turismo Viagens",
-    tagline: "Compromisso com o seu sonho de viajar com segurança e conforto",
-    paragraph1: "A **TR TURISMO VIAGENS** é uma agência sediada em Ibirité, Minas Gerais (Rua Baré, 92 – Industrial), fundada com o propósito de transformar viagens em memórias inesquecíveis para famílias, casais e grupos de amigos.",
-    paragraph2: "Com profissionais e guias especializados registrados e credenciados, atuamos com foco em **excursões rodoviárias, pacotes completos de lazer, hospedagens selecionadas e fretamento turístico**. Nosso diferencial está na proximidade do atendimento e no cuidado rigoroso com cada detalhe do roteiro.",
-    paragraph3: "Aqui você não é apenas mais um passageiro. Desde o primeiro contato via WhatsApp até o retorno do seu destino, nossa equipe garante suporte dedicado, pontualidade nos embarques e transporte confortável de alto padrão.",
+    tagline: "Uma agência real, sediada em Ibirité, para você viajar sem complicação.",
+    paragraph1: "A gente sabe que planejar viagem para a família ou para um grupo dá trabalho: encontrar hospedagem boa, acertar horários de trânsito e organizar quem vai e quem fica. É aí que a TR Turismo entra.",
+    paragraph2: "Nossa sede fica na Rua Baré, 92, no Industrial de Ibirité. Atuamos com CNPJ ativo (62.424.112/0001-27) e profissionais registrados no Cadastur como guia de turismo e excursão. Aqui você fala com gente de verdade, tira dúvidas direto no WhatsApp e embarca com quem conhece o roteiro.",
+    paragraph3: "Seja para um fim de semana em Cabo Frio ou Guarapari, um banho de piscina em Caldas Novas ou o fretamento de transporte para um passeio exclusivo do seu grupo, nosso foco é pontualidade no embarque e cuidado na estrada.",
     features: [
       {
-        icon: "shield-check",
-        title: "Empresa 100% Legalizada",
-        desc: "CNPJ 62.424.112/0001-27 ativo e conformidade com as normas do setor turístico."
-      },
-      {
-        icon: "bus",
-        title: "Ônibus Confortáveis & Seguros",
-        desc: "Frotas executivas modernas com ar-condicionado, poltronas reclináveis e motoristas experientes."
+        icon: "map-pin",
+        title: "Embarque Fácil em Ibirité e BH",
+        desc: "Pontos de encontro organizados na nossa região para você não perder tempo no dia da viagem."
       },
       {
         icon: "users",
-        title: "Guias Especializados",
-        desc: "Acompanhamento profissional dedicado durante toda a viagem para a tranquilidade do seu grupo."
+        title: "Acompanhamento no Grupo",
+        desc: "Guias presentes durante todo o passeio para dar apoio com horários, hotel e dicas locais."
       },
       {
-        icon: "heart-handshake",
-        title: "Atendimento Humanizado",
-        desc: "Suporte acolhedor antes, durante e após a sua viagem diretamente com nossa equipe em Ibirité."
+        icon: "hotel",
+        title: "Hospedagens Bem Cuidadas",
+        desc: "Hotéis e pousadas parceiras com café da manhã e boa estrutura para você e sua família descansarem."
+      },
+      {
+        icon: "shield",
+        title: "Agência 100% Regularizada",
+        desc: "Empresa registrada, sede física no Industrial de Ibirité e atendimento direto pelo canal oficial."
       }
     ]
   },
@@ -69,49 +69,33 @@ const TR_DEFAULT_DATA = {
       id: "srv-1",
       icon: "bus-trip",
       title: "Excursões Rodoviárias",
-      desc: "Viagens organizadas para praias e cidades turísticas com embarque facilitado em Ibirité e região metropolitana.",
-      highlight: "O queridinho das famílias",
-      inclusions: ["Transporte executivo", "Guia acompanhante", "Hospedagem com café", "Seguro viagem opcional"]
+      desc: "Nossas tradicionais viagens em grupo para praias e cidades turísticas, com transporte confortável e hotel garantido.",
+      highlight: "O favorito dos viajantes de Ibirité",
+      inclusions: ["Transporte executivo com ar", "Hospedagem com café", "Guia acompanhante no grupo"]
     },
     {
       id: "srv-2",
       icon: "luggage",
-      title: "Pacotes de Viagem Completos",
-      desc: "Roteiros nacionais personalizados com passagens, transfer, passeios e hospedagens selecionadas sob medida para você.",
-      highlight: "Tudo incluso e sem preocupações",
-      inclusions: ["Roteiro detalhado", "Aéreo ou rodoviário", "Hotéis bem avaliados", "Assessoria completa"]
+      title: "Pacotes de Viagem Sob Medida",
+      desc: "Roteiros completos nacionais para você e sua família viajarem no próprio ritmo, com tudo reservado com antecedência.",
+      highlight: "Viagem do seu jeito",
+      inclusions: ["Passagens aéreas ou rodoviárias", "Hotéis selecionados", "Suporte antes e durante o passeio"]
     },
     {
       id: "srv-3",
-      icon: "hotel",
-      title: "Reservas de Hotéis & Resorts",
-      desc: "Acesso a tarifas especiais e parcerias com as melhores redes hoteleiras, pousadas charmosas e resorts all-inclusive.",
-      highlight: "Melhor custo-benefício",
-      inclusions: ["Reserva confirmada", "Opções all inclusive", "Localizações privilegiadas", "Suporte pré-checkin"]
+      icon: "van",
+      title: "Fretamento de Vans e Ônibus",
+      desc: "Locação de veículos com motoristas experientes para viagens de igrejas, encontros de família, eventos ou confraternizações.",
+      highlight: "Exclusivo para o seu grupo",
+      inclusions: ["Veículos revisados e confortáveis", "Motoristas qualificados", "Itinerário flexível"]
     },
     {
       id: "srv-4",
-      icon: "plane",
-      title: "Passagens Aéreas & Rodoviárias",
-      desc: "Cotação e emissão ágil das melhores conexões para você viajar com conveniência e economia para qualquer lugar do país.",
-      highlight: "Melhores conexões",
-      inclusions: ["Pesquisa multitarifa", "Emissão segura", "Auxílio com bagagens", "Marcação de assentos"]
-    },
-    {
-      id: "srv-5",
-      icon: "van",
-      title: "Fretamento Turístico",
-      desc: "Locação de veículos executivos (vans, micro-ônibus e ônibus) com motoristas qualificados para eventos, confraternizações e grupos.",
-      highlight: "Exclusividade para seu grupo",
-      inclusions: ["Veículos higienizados", "Motoristas credenciados", "Pontualidade garantida", "Itinerário flexível"]
-    },
-    {
-      id: "srv-6",
-      icon: "map-pinned",
-      title: "Roteiros Sob Medida",
-      desc: "Planejamento exclusivo para viagens românticas, celebrações em família ou turismo religioso, atendendo às suas preferências.",
-      highlight: "Viagem do seu jeito",
-      inclusions: ["Consultoria individual", "Dicas de passeios", "Flexibilidade de datas", "Suporte no WhatsApp"]
+      icon: "hotel",
+      title: "Reservas de Hotéis & Pousadas",
+      desc: "Pesquisa e emissão de hospedagens com tarifas negociadas para você não cair em furadas pela internet.",
+      highlight: "Segurança na hospedagem",
+      inclusions: ["Reserva confirmada", "Opções com café ou pensão", "Apoio no check-in"]
     }
   ],
   destinations: [
@@ -119,103 +103,51 @@ const TR_DEFAULT_DATA = {
       id: "dest-1",
       name: "Cabo Frio & Arraial do Cabo",
       category: "Praias",
-      tag: "Mais Procurado",
-      image: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=800&q=80",
-      description: "O Caribe Brasileiro com praias de águas cristalinas, areia branca e passeios de barco inesquecíveis.",
+      tag: "O Queridinho dos Mineiros",
+      image: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=1000&q=85",
+      description: "Praias de água transparente na Região dos Lagos. Roteiro clássico com tempo livre para passeios de barco e descanso.",
       duration: "Excursão de Final de Semana ou Feriado",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Transporte Executivo com ar", "Hospedagem com Café", "Guia TR Turismo", "Passeios sugeridos"],
+      departure: "Embarques em Ibirité e BH",
+      inclusions: ["Ônibus executivo com ar-condicionado", "Pousada com café da manhã farto", "Guia da TR Turismo"],
       priceDisplay: "Sob Consulta",
       featured: true
     },
     {
       id: "dest-2",
-      name: "Porto Seguro & Arraial d'Ajuda",
+      name: "Guarapari & Praias Capixabas",
       category: "Praias",
-      tag: "Bahia Fascinante",
-      image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=800&q=80",
-      description: "Muita história, cultura, praias paradisíacas e o calor acolhedor do litoral sul baiano para recarregar as energias.",
-      duration: "Pacote 5 a 7 Dias",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Passagens inclusas", "Hotel com lazer", "Café da manhã farto", "Acompanhamento dedicado"],
+      tag: "Tradição das Férias",
+      image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80",
+      description: "Praia do Morro, culinária à beira-mar e dias de muito sol para recarregar as energias com a família.",
+      duration: "Excursão 4 a 5 Dias",
+      departure: "Embarques em Ibirité e BH",
+      inclusions: ["Transporte rodoviário confortável", "Hospedagem próxima à praia", "Acompanhamento no grupo"],
       priceDisplay: "Sob Consulta",
-      featured: true
+      featured: false
     },
     {
       id: "dest-3",
-      name: "Guarapari & Praias Capixabas",
-      category: "Praias",
-      tag: "Clássico Mineiro",
-      image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80",
-      description: "O destino preferido dos mineiros com a famosa Praia do Morro, culinária capixaba e diversão para todas as idades.",
+      name: "Caldas Novas & Rio Quente",
+      category: "Família",
+      tag: "Águas Quentes & Parques",
+      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+      description: "Piscinas quentinhas dia e noite, toboáguas e muito lazer para crianças e adultos descansarem juntos.",
       duration: "Excursão 4 Dias",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Ônibus Leito Turismo", "Pousada próxima à praia", "Café da manhã", "Equipe experiente"],
+      departure: "Embarques em Ibirité e BH",
+      inclusions: ["Transporte com ar", "Hotel com parque aquático", "Guia dedicado"],
       priceDisplay: "Sob Consulta",
-      featured: true
+      featured: false
     },
     {
       id: "dest-4",
-      name: "Caldas Novas & Rio Quente",
-      category: "Viagens em Família",
-      tag: "Águas Termais",
-      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
-      description: "O maior parque hidrotermal do mundo! Piscinas aquecidas, parques aquáticos e muito descanso para a família.",
-      duration: "Excursão Rodoviária 4 Dias",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Transporte Confortável", "Hotel com parque aquático", "Meia pensão", "Guia credenciado"],
-      priceDisplay: "Sob Consulta",
-      featured: true
-    },
-    {
-      id: "dest-5",
-      name: "Ubatuba & Litoral Norte SP",
+      name: "Porto Seguro & Arraial d'Ajuda",
       category: "Praias",
-      tag: "Natureza Exuberante",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-      description: "Mais de 100 praias preservadas entre a Mata Atlântica e o mar, cachoeiras e ilhas paradisíacas.",
-      duration: "Excursão Feriado Prolongado",
+      tag: "Litoral Sul Baiano",
+      image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=800&q=80",
+      description: "Barracas de praia estruturadas, centro histórico e a hospitalidade baiana com conforto planejado do início ao fim.",
+      duration: "Pacote 5 a 7 Dias",
       departure: "Saída de Ibirité / BH",
-      inclusions: ["Ônibus executivo", "Hotel com piscina", "Café da manhã", "Roteiro de praias"],
-      priceDisplay: "Sob Consulta",
-      featured: false
-    },
-    {
-      id: "dest-6",
-      name: "Aparecida do Norte & Circuito da Fé",
-      category: "Excursões Rodoviárias",
-      tag: "Turismo Religioso",
-      image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&w=800&q=80",
-      description: "Viagem de fé, devoção e acolhimento ao maior santuário mariano do mundo com total conforto e tranquilidade.",
-      duration: "Bate-Volta ou Fim de Semana",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Ônibus Leito/Semi-leito", "Parada para almoço", "Guia acompanhante", "Tempo livre no Santuário"],
-      priceDisplay: "Sob Consulta",
-      featured: false
-    },
-    {
-      id: "dest-7",
-      name: "Gramado & Canela (Serra Gaúcha)",
-      category: "Viagens Nacionais",
-      tag: "Charme & Gastronomia",
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
-      description: "A magia europeia no Brasil com chocolates artesanais, parques temáticos e cenários deslumbrantes.",
-      duration: "Pacote Aéreo 5 a 6 Dias",
-      departure: "Embarque Confins / BH",
-      inclusions: ["Aéreo ida e volta", "Hotel selecionado", "Transfer privativo", "Assessoria de passeios"],
-      priceDisplay: "Sob Consulta",
-      featured: false
-    },
-    {
-      id: "dest-8",
-      name: "Foz do Iguaçu & Tríplice Fronteira",
-      category: "Viagens em Grupo",
-      tag: "Maravilha da Natureza",
-      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-      description: "Conheça uma das 7 Maravilhas Naturais do Mundo, o Parque das Aves e faça compras na fronteira com conforto.",
-      duration: "Pacote 5 Dias",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Passagens e transfer", "Hotel com piscina", "Ingressos assessorados", "Suporte contínuo"],
+      inclusions: ["Transporte e transfers", "Hotel com piscina e café", "Suporte no WhatsApp"],
       priceDisplay: "Sob Consulta",
       featured: false
     }
@@ -223,7 +155,7 @@ const TR_DEFAULT_DATA = {
   testimonials: [
     {
       id: "test-1",
-      author: "Maria de Lourdes S.",
+      author: "Maria de Lourdes",
       location: "Ibirité - MG",
       rating: 5,
       date: "Avaliação no Google",
@@ -232,11 +164,11 @@ const TR_DEFAULT_DATA = {
     },
     {
       id: "test-2",
-      author: "Carla Mendes R.",
+      author: "Carla Mendes",
       location: "Ibirité - MG",
       rating: 5,
       date: "Avaliação no Google",
-      content: "Guia simpática e atenciosa, ônibus muito confortável e acomodação de primeira qualidade. Agência incomparável em Ibirité!",
+      content: "Guia simpática e atenciosa, ônibus confortável e acomodação muito boa. Agência incomparável em Ibirité!",
       verified: true
     },
     {
@@ -247,15 +179,6 @@ const TR_DEFAULT_DATA = {
       date: "Avaliação no Google",
       content: "Passeio super organizado, com pontualidade e segurança do início ao fim. Foi uma experiência incrível para toda a minha família!",
       verified: true
-    },
-    {
-      id: "test-4",
-      author: "Fernanda Alves",
-      location: "Ibirité - MG",
-      rating: 5,
-      date: "Avaliação no Google",
-      content: "Atendimento nota 10! A equipe cuida de cada detalhe com muito carinho para que a gente só se preocupe em curtir o passeio. Já estamos programando a próxima!",
-      verified: true
     }
   ],
   leads: []
@@ -263,7 +186,7 @@ const TR_DEFAULT_DATA = {
 
 // Gerenciador de Estado / LocalStorage
 const StorageManager = {
-  STORAGE_KEY: "TR_TURISMO_DATA_V1",
+  STORAGE_KEY: "TR_TURISMO_DATA_V2",
   ADMIN_AUTH_KEY: "TR_TURISMO_ADMIN_AUTH",
 
   getData() {
@@ -271,7 +194,6 @@ const StorageManager = {
       const saved = localStorage.getItem(this.STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Merge seguro com dados padrão para caso de campos novos
         return {
           ...TR_DEFAULT_DATA,
           ...parsed,
@@ -323,7 +245,6 @@ const StorageManager = {
   },
 
   login(password) {
-    // Senha padrão administrativa personalizável
     if (password === "tr2026" || password === "ibirite2026") {
       sessionStorage.setItem(this.ADMIN_AUTH_KEY, "true");
       return true;
@@ -336,6 +257,5 @@ const StorageManager = {
   }
 };
 
-// Exportar para escopo global do navegador
 window.TR_DATA = StorageManager.getData();
 window.StorageManager = StorageManager;

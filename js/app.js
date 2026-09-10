@@ -1,66 +1,52 @@
 /**
- * TR TURISMO VIAGENS - FRONTEND APPLICATION JAVASCRIPT
- * Ibirité, Minas Gerais
- * Interações, renderização dinâmica de dados, formulário inteligente e integração WhatsApp
+ * TR TURISMO VIAGENS - FRONTEND JAVASCRIPT
+ * Lógica do site com layout editorial assimétrico, filtros dinâmicos e integração WhatsApp
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Carregar dados atualizados do StorageManager
   const data = window.StorageManager ? window.StorageManager.getData() : window.TR_DEFAULT_DATA;
 
-  // 1. Inicializar Interface e Dados Dinâmicos
-  renderCompanyInfo(data.company);
-  renderHero(data.hero);
-  renderServices(data.services);
-  renderDestinations(data.destinations);
-  renderSocialProof(data.company, data.testimonials);
-  renderContactInfo(data.company);
+  // 1. Renderização de dados
+  renderCompanyDetails(data.company);
+  renderHeroContent(data.hero);
+  renderEditorialAbout(data.about);
+  renderEditorialDestinations(data.destinations);
+  renderEditorialReviews(data.company, data.testimonials);
+  renderContactSection(data.company);
 
-  // 2. Eventos da Barra de Navegação e Menu Mobile
-  setupNavigation();
-
-  // 3. Filtros de Destinos
+  // 2. Interações
+  setupNavigationDrawer();
   setupDestinationFilters(data.destinations);
+  setupQuoteWhatsAppForm(data.company);
 
-  // 4. Formulário de Orçamento e Redirecionamento WhatsApp
-  setupQuoteForm(data.company);
-
-  // 5. Botão Flutuante e Popup do WhatsApp
-  setupWhatsAppWidget(data.company);
-
-  // 6. Atualizar ano no footer
-  const currentYearEl = document.getElementById('current-year');
-  if (currentYearEl) {
-    currentYearEl.textContent = new Date().getFullYear();
-  }
+  // 3. Atualizar ano corrente
+  const yearEl = document.getElementById('current-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
 /**
- * Renderiza informações globais da empresa
+ * Renderiza informações da empresa
  */
-function renderCompanyInfo(company) {
+function renderCompanyDetails(company) {
   if (!company) return;
 
-  // Telefones e WhatsApp nos links rápidos
   document.querySelectorAll('.company-phone-text').forEach(el => el.textContent = company.phone);
   document.querySelectorAll('.company-phone-link').forEach(el => el.href = `tel:${company.phone.replace(/\D/g, '')}`);
-  
-  const whatsappUrl = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent("Olá! Vim pelo site da TR Turismo e gostaria de solicitar informações sobre viagens e excursões.")}`;
-  document.querySelectorAll('.company-whatsapp-link').forEach(el => el.href = whatsappUrl);
 
-  // Endereço
+  const waUrl = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent("Olá! Vim pelo site da TR Turismo e gostaria de informações sobre viagens e excursões.")}`;
+  document.querySelectorAll('.company-whatsapp-link').forEach(el => el.href = waUrl);
+
   document.querySelectorAll('.company-address-text').forEach(el => {
     el.textContent = `${company.address} – ${company.neighborhood}, ${company.city} - ${company.state}`;
   });
 
-  // CNPJ
   document.querySelectorAll('.company-cnpj-text').forEach(el => el.textContent = company.cnpj);
 }
 
 /**
- * Renderiza a seção Hero
+ * Renderiza o Hero Editorial
  */
-function renderHero(hero) {
+function renderHeroContent(hero) {
   if (!hero) return;
 
   const heroSection = document.getElementById('hero-section');
@@ -77,172 +63,166 @@ function renderHero(hero) {
   const subtitleEl = document.getElementById('hero-subtitle-text');
   if (subtitleEl && hero.subtitle) subtitleEl.textContent = hero.subtitle;
 
-  const ctaPrimary = document.getElementById('hero-cta-primary');
-  if (ctaPrimary && hero.ctaPrimaryText) {
-    ctaPrimary.textContent = hero.ctaPrimaryText;
-    ctaPrimary.href = hero.ctaPrimaryLink || '#destinos';
+  const ctaBtn = document.getElementById('hero-cta-primary');
+  if (ctaBtn && hero.ctaPrimaryText) {
+    ctaBtn.textContent = hero.ctaPrimaryText;
+    ctaBtn.href = hero.ctaPrimaryLink || '#destinos';
   }
 }
 
 /**
- * Renderiza os Serviços Oferecidos
+ * Renderiza a seção Sobre
  */
-function renderServices(services) {
-  const container = document.getElementById('services-grid-container');
-  if (!container || !services) return;
+function renderEditorialAbout(about) {
+  if (!about) return;
 
-  const iconSvgs = {
-    'bus-trip': `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6v6M16 6v6M2 12h20M6 18h12M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6z"/><circle cx="7" cy="18" r="1"/><circle cx="17" cy="18" r="1"/></svg>`,
-    'luggage': `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="13" x="4" y="7" rx="2"/><path d="M8 7V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/></svg>`,
-    'hotel': `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 22v-6.57a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2V22M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18M2 22h20"/><path d="M10 6h4M10 10h4"/></svg>`,
-    'plane': `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>`,
-    'van': `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-1.1 0-2 .9-2 2v7h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>`,
-    'map-pinned': `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0z"/><circle cx="12" cy="8" r="2"/><path d="M8.7 14.5 3 16v5l6-2 6 2 6-2v-5l-3.3 1.1"/></svg>`
-  };
+  const headlineEl = document.getElementById('about-headline');
+  if (headlineEl && about.headline) headlineEl.textContent = about.headline;
 
-  container.innerHTML = services.map(service => `
-    <div class="service-card">
-      <div class="service-icon-box">
-        ${iconSvgs[service.icon] || iconSvgs['bus-trip']}
-      </div>
-      <h3 class="service-title">${escapeHTML(service.title)}</h3>
-      <p class="service-desc">${escapeHTML(service.desc)}</p>
-      <ul class="service-inclusions">
-        ${(service.inclusions || []).map(inc => `
-          <li>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-            ${escapeHTML(inc)}
-          </li>
-        `).join('')}
-      </ul>
-      <a href="#orcamento" class="btn btn-outline-white btn-sm" onclick="selectServiceForQuote('${escapeHTML(service.title)}')">
-        Consultar Serviço
-      </a>
-    </div>
-  `).join('');
+  const taglineEl = document.getElementById('about-tagline');
+  if (taglineEl && about.tagline) taglineEl.textContent = about.tagline;
+
+  const p1El = document.getElementById('about-p1');
+  if (p1El && about.paragraph1) p1El.textContent = about.paragraph1;
+
+  const p2El = document.getElementById('about-p2');
+  if (p2El && about.paragraph2) p2El.textContent = about.paragraph2;
+
+  const p3El = document.getElementById('about-p3');
+  if (p3El && about.paragraph3) p3El.textContent = about.paragraph3;
 }
 
 /**
- * Renderiza o Catálogo de Destinos
+ * Renderiza destinos no formato revista (1 grande em destaque + lista lateral)
  */
-function renderDestinations(destinations, activeCategory = 'Todos') {
-  const container = document.getElementById('destinations-grid-container');
+function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
+  const container = document.getElementById('destinations-magazine-container');
   if (!container || !destinations) return;
 
-  const filtered = activeCategory === 'Todos' 
-    ? destinations 
-    : destinations.filter(d => d.category === activeCategory);
+  const filtered = activeCategory === 'Todos'
+    ? destinations
+    : destinations.filter(d => d.category.toLowerCase().includes(activeCategory.toLowerCase()));
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #fff; border-radius: 12px; border: 1px dashed #cbd5e1;">
-        <p style="color: #64748b; font-size: 1.1rem; margin-bottom: 1rem;">Nenhum destino encontrado para a categoria <strong>${escapeHTML(activeCategory)}</strong> no momento.</p>
-        <button class="btn btn-primary" onclick="resetDestinationFilter()">Ver todos os destinos</button>
+      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #fff; border-radius: 8px; border: 1px dashed #cbd5e1;">
+        <p style="color: #64748b; font-size: 1rem; margin-bottom: 1rem;">Nenhum roteiro cadastrado nesta categoria no momento.</p>
+        <button class="btn btn-primary btn-sm" onclick="resetDestinationFilters()">Ver todos os roteiros</button>
       </div>
     `;
     return;
   }
 
-  container.innerHTML = filtered.map(dest => `
-    <div class="destination-card" data-category="${escapeHTML(dest.category)}">
-      <div class="card-image-wrap">
-        <img src="${dest.image}" alt="${escapeHTML(dest.name)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'">
-        ${dest.tag ? `<span class="card-tag">${escapeHTML(dest.tag)}</span>` : ''}
-        <span class="card-category">${escapeHTML(dest.category)}</span>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">${escapeHTML(dest.name)}</h3>
-        <p class="card-desc">${escapeHTML(dest.description)}</p>
-        
-        <ul class="card-inclusions">
-          ${(dest.inclusions || []).slice(0, 3).map(inc => `
-            <li>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-              ${escapeHTML(inc)}
-            </li>
-          `).join('')}
-        </ul>
+  // O primeiro é o destaque grande
+  const featured = filtered[0];
+  const secondaries = filtered.slice(1);
 
-        <div class="card-footer">
-          <div class="card-price-block">
-            <span class="card-price-label">Valores</span>
-            <span class="card-price-value">${escapeHTML(dest.priceDisplay || 'Sob Consulta')}</span>
+  let html = `
+    <!-- Destino Principal -->
+    <div class="destination-featured-card">
+      <img src="${featured.image}" alt="${escapeHTML(featured.name)}" class="featured-card-bg" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80'">
+      <div class="featured-card-gradient"></div>
+      <div class="featured-card-content">
+        ${featured.tag ? `<span class="featured-card-tag">${escapeHTML(featured.tag)}</span>` : ''}
+        <h3 class="featured-card-title">${escapeHTML(featured.name)}</h3>
+        <p class="featured-card-desc">${escapeHTML(featured.description)}</p>
+
+        <div class="featured-card-inclusions">
+          ${(featured.inclusions || []).map(inc => `
+            <span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              ${escapeHTML(inc)}
+            </span>
+          `).join('')}
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+          <div style="font-size: 0.9rem; color: #cbd5e1;">
+            <strong style="color: #ffffff; font-size: 1.1rem; display: block;">${escapeHTML(featured.priceDisplay || 'Sob Consulta')}</strong>
+            <span>${escapeHTML(featured.departure || 'Embarque em Ibirité e BH')}</span>
           </div>
-          <button class="btn btn-primary btn-sm" onclick="selectDestinationForQuote('${escapeHTML(dest.name)}')">
-            Solicitar Orçamento
+          <button class="btn btn-primary" onclick="selectDestinationForQuote('${escapeHTML(featured.name)}')">
+            Quero Reservar
           </button>
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+
+  // Coluna de Destinos Secundários
+  if (secondaries.length > 0) {
+    html += `
+      <div class="secondary-destinations-stack">
+        ${secondaries.map(item => `
+          <div class="destination-sub-card">
+            <img src="${item.image}" alt="${escapeHTML(item.name)}" class="sub-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80'">
+            <div class="sub-card-body">
+              <div>
+                <span class="sub-card-tag">${escapeHTML(item.category)}</span>
+                <h4 class="sub-card-title">${escapeHTML(item.name)}</h4>
+                <p class="sub-card-desc">${escapeHTML(item.description)}</p>
+              </div>
+              <div class="sub-card-footer">
+                <span class="sub-card-price">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
+                <button class="btn-link-action" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
+                  Pedir Cotação →
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else {
+    // Se só houver 1 destino, expandir largura
+    html = `<div style="grid-column: 1 / -1;">` + html + `</div>`;
+  }
+
+  container.innerHTML = html;
 }
 
 /**
- * Configura os Filtros de Categoria de Destinos
+ * Filtros de Destinos
  */
 function setupDestinationFilters(destinations) {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const category = btn.getAttribute('data-category');
-      renderDestinations(destinations, category);
+  const pills = document.querySelectorAll('.filter-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const cat = pill.getAttribute('data-filter');
+      renderEditorialDestinations(destinations, cat);
     });
   });
 }
 
-function resetDestinationFilter() {
-  const allBtn = document.querySelector('.filter-btn[data-category="Todos"]');
+window.resetDestinationFilters = function() {
+  const allBtn = document.querySelector('.filter-pill[data-filter="Todos"]');
   if (allBtn) allBtn.click();
-}
+};
 
 /**
- * Preenche o destino selecionado e rola suavemente até o formulário de cotação
+ * Preenche o destino e rola suavemente até o formulário
  */
-window.selectDestinationForQuote = function(destinationName) {
-  const quoteSection = document.getElementById('orcamento');
-  const destinationInput = document.getElementById('quote-destination');
-  
-  if (destinationInput) {
-    destinationInput.value = destinationName;
-    destinationInput.classList.add('highlight-field');
-    setTimeout(() => destinationInput.classList.remove('highlight-field'), 1500);
+window.selectDestinationForQuote = function(destName) {
+  const formSection = document.getElementById('orcamento');
+  const destInput = document.getElementById('quote-destination');
+  if (destInput) {
+    destInput.value = destName;
+    destInput.focus();
   }
-
-  if (quoteSection) {
-    quoteSection.scrollIntoView({ behavior: 'smooth' });
+  if (formSection) {
+    formSection.scrollIntoView({ behavior: 'smooth' });
   }
 };
 
 /**
- * Preenche o serviço selecionado no campo de observações do formulário
+ * Avaliações Reais do Google
  */
-window.selectServiceForQuote = function(serviceTitle) {
-  const quoteSection = document.getElementById('orcamento');
-  const notesInput = document.getElementById('quote-notes');
-  const travelType = document.getElementById('quote-type');
-
-  if (travelType) {
-    travelType.value = serviceTitle.includes('Excursão') ? 'Excursão em Grupo' : 'Pacote Completo';
-  }
-
-  if (notesInput) {
-    notesInput.value = `Interesse no serviço: ${serviceTitle}. Gostaria de mais detalhes sobre valores e disponibilidade.`;
-  }
-
-  if (quoteSection) {
-    quoteSection.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-/**
- * Prova Social (Nota Google 4.9 e Depoimentos Verificados)
- */
-function renderSocialProof(company, testimonials) {
-  const ratingEl = document.getElementById('google-rating-score');
-  if (ratingEl && company.googleRating) {
-    ratingEl.textContent = company.googleRating.toFixed(1);
+function renderEditorialReviews(company, testimonials) {
+  const scoreEl = document.getElementById('google-reviews-score');
+  if (scoreEl && company.googleRating) {
+    scoreEl.textContent = company.googleRating.toFixed(1);
   }
 
   const countEl = document.getElementById('google-reviews-count');
@@ -250,31 +230,30 @@ function renderSocialProof(company, testimonials) {
     countEl.textContent = `Mais de ${company.googleReviewCount} avaliações reais`;
   }
 
-  const container = document.getElementById('testimonials-grid-container');
+  const container = document.getElementById('editorial-reviews-container');
   if (!container || !testimonials) return;
 
-  container.innerHTML = testimonials.map(test => `
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote">“${escapeHTML(test.content)}”</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">${test.author.charAt(0)}</div>
-        <div class="author-meta">
-          <strong>${escapeHTML(test.author)}</strong>
-          <span>${escapeHTML(test.location || 'Ibirité - MG')} • ${escapeHTML(test.date || 'Google')}</span>
+  container.innerHTML = testimonials.map(item => `
+    <div class="review-card-clean">
+      <p class="review-quote-text">“${escapeHTML(item.content)}”</p>
+      <div class="review-author-line">
+        <div class="author-details">
+          <strong>${escapeHTML(item.author)}</strong>
+          <span>${escapeHTML(item.location || 'Ibirité - MG')}</span>
         </div>
+        <div class="author-stars">★★★★★</div>
       </div>
     </div>
   `).join('');
 }
 
 /**
- * Renderiza informações de Contato & Mapa
+ * Contato & Mapa
  */
-function renderContactInfo(company) {
+function renderContactSection(company) {
   if (!company) return;
 
-  const hoursEl = document.getElementById('contact-working-hours');
+  const hoursEl = document.getElementById('contact-hours');
   if (hoursEl) hoursEl.textContent = company.workingHours;
 
   const mapIframe = document.getElementById('google-maps-iframe');
@@ -284,9 +263,9 @@ function renderContactInfo(company) {
 }
 
 /**
- * Configuração do Formulário de Cotação e Redirecionamento WhatsApp
+ * Formulário de Cotação e Envio Formatado para o WhatsApp
  */
-function setupQuoteForm(company) {
+function setupQuoteWhatsAppForm(company) {
   const form = document.getElementById('quote-form');
   if (!form) return;
 
@@ -302,7 +281,7 @@ function setupQuoteForm(company) {
     const notes = document.getElementById('quote-notes').value.trim();
 
     if (!name || !phone || !destination) {
-      alert("Por favor, preencha pelo menos seu Nome, WhatsApp e Destino de interesse.");
+      alert("Por favor, preencha pelo menos o seu Nome, WhatsApp e Destino de interesse.");
       return;
     }
 
@@ -319,7 +298,7 @@ function setupQuoteForm(company) {
       });
     }
 
-    // Montar mensagem limpa e estruturada exatamente conforme orientado
+    // Mensagem amigável e direta para o WhatsApp oficial
     const message = 
 `Olá! Vim pelo site da TR Turismo e gostaria de solicitar um orçamento.
 
@@ -332,11 +311,9 @@ Observações: ${notes || 'Sem observações'}
 Meu nome: ${name}
 Meu WhatsApp: ${phone}`;
 
-    // Construir URL do WhatsApp oficial (31) 99572-4285
     const waNumber = company.whatsapp || '5531995724285';
     const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
 
-    // Feedback visual
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = `<span>Abrindo WhatsApp...</span>`;
@@ -347,98 +324,45 @@ Meu WhatsApp: ${phone}`;
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
       form.reset();
-    }, 600);
+    }, 500);
   });
 }
 
 /**
- * Configuração do Botão e Widget Flutuante do WhatsApp
+ * Navegação e Menu Mobile
  */
-function setupWhatsAppWidget(company) {
-  const triggerBtn = document.getElementById('whatsapp-floating-trigger');
-  const popup = document.getElementById('whatsapp-chat-popup');
-  const closeBtn = document.getElementById('whatsapp-popup-close');
-
-  if (!triggerBtn || !popup) return;
-
-  triggerBtn.addEventListener('click', () => {
-    popup.classList.toggle('active');
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      popup.classList.remove('active');
-    });
-  }
-
-  // Fechar ao clicar fora
-  document.addEventListener('click', (e) => {
-    if (!popup.contains(e.target) && !triggerBtn.contains(e.target)) {
-      popup.classList.remove('active');
-    }
-  });
-
-  // Ação rápida: Falar com atendente
-  const directChatBtn = document.getElementById('quick-action-direct');
-  if (directChatBtn) {
-    directChatBtn.addEventListener('click', () => {
-      const msg = "Olá! Vim pelo site da TR Turismo e gostaria de falar com um atendente.";
-      window.open(`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
-      popup.classList.remove('active');
-    });
-  }
-
-  // Ação rápida: Roteiros do mês
-  const monthlyTripsBtn = document.getElementById('quick-action-trips');
-  if (monthlyTripsBtn) {
-    monthlyTripsBtn.addEventListener('click', () => {
-      const msg = "Olá! Gostaria de saber quais são as próximas excursões e roteiros programados da TR Turismo saindo de Ibirité.";
-      window.open(`https://wa.me/${company.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
-      popup.classList.remove('active');
-    });
-  }
-}
-
-/**
- * Configuração da Navegação e Menu Mobile
- */
-function setupNavigation() {
+function setupNavigationDrawer() {
   const header = document.querySelector('.main-header');
-  const mobileToggle = document.getElementById('mobile-menu-toggle');
-  const navMenu = document.getElementById('main-nav-menu');
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('main-nav-menu');
 
-  // Efeito sticky e sombra ao rolar
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
   });
 
-  // Toggle mobile drawer
-  if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
     });
 
-    // Fechar ao clicar em um link
-    navMenu.querySelectorAll('.nav-link').forEach(link => {
+    menu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
+        menu.classList.remove('open');
       });
     });
 
-    // Fechar ao clicar fora
     document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
-        navMenu.classList.remove('open');
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('open');
       }
     });
   }
 }
 
-// Utilitário de escape de texto contra XSS
 function escapeHTML(str) {
   if (!str) return '';
   return String(str)
