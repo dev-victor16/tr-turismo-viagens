@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo | TR Turismo Viagens</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f59e0b'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <!-- Modal de Login para Acesso Seguro -->
+  <div class="admin-login-overlay" id="admin-login-overlay">
+    <div class="admin-login-card">
+      <div class="brand-icon" style="margin: 0 auto; width: 50px; height: 50px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h2>Painel TR Turismo</h2>
+      <p>Área restrita de gerenciamento do site oficial de Ibirité.</p>
+
+      <form id="admin-login-form">
+        <div class="admin-form-group">
+          <label for="admin-password-input">Senha de Acesso</label>
+          <input type="password" id="admin-password-input" class="admin-input" placeholder="Digite a senha administrativa" required autofocus>
+          <small style="color: #64748b; font-size: 0.75rem; margin-top: 0.25rem;">Dica de acesso: <strong>tr2026</strong></small>
+        </div>
+        <p id="admin-login-error" style="color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; min-height: 20px;"></p>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar no Painel</button>
+      </form>
+
+      <div style="margin-top: 1.5rem; border-top: 1px solid #e2e8f0; padding-top: 1rem;">
+        <a href="index.html" style="font-size: 0.85rem; color: #64748b; text-decoration: none;">← Voltar para o Site</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout Principal do Dashboard -->
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <div class="brand-icon" style="width: 32px; height: 32px; font-size: 1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <strong style="font-size: 0.95rem; display: block; line-height: 1.2;">TR TURISMO</strong>
+            <small style="font-size: 0.7rem; color: #94a3b8;">Gestão Comercial</small>
+          </div>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <button class="admin-nav-item active" data-tab="empresa">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Dados da Empresa</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="banner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          <span>Banner & Hero</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="destinos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <span>Destinos & Pacotes</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="servicos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span>Serviços Oferecidos</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="depoimentos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Depoimentos & Google</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="sobre">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span>Textos Institucionais</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="leads">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Orçamentos Recebidos</span>
+          <span class="admin-badge-count" id="admin-leads-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="admin-nav-item" data-tab="backup">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Backup & Restauração</span>
+        </button>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <a href="index.html" target="_blank" class="btn btn-outline-white btn-sm" style="width: 100%;">
+          Ver Site Ao Vivo ↗
+        </a>
+        <button id="admin-logout-btn" class="btn btn-sm" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); width: 100%;">
+          Sair do Painel
+        </button>
+      </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h1 id="admin-current-tab-title">Dados da Empresa</h1>
+          <span>Gerencie as informações comerciais da TR Turismo Viagens</span>
+        </div>
+        <div class="admin-topbar-actions">
+          <a href="index.html" target="_blank" class="btn btn-outline-primary btn-sm">
+            Visualizar Site
+          </a>
+        </div>
+      </header>
+
+      <div class="admin-content-area">
+        
+        <!-- ABA 1: DADOS DA EMPRESA -->
+        <div class="admin-tab-pane active" id="tab-empresa">
+          <form id="admin-company-form">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <h3>Informações Cadastrais & Contato</h3>
+                <button type="submit" class="btn btn-primary btn-sm">Salvar Alterações</button>
+              </div>
+
+              <div class="admin-grid-2">
+                <div class="admin-form-group">
+                  <label for="adm-company-name">Nome Fantasia Comercial</label>
+                  <input type="text" id="adm-company-name" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-legal-name">Razão Social Oficial</label>
+                  <input type="text" id="adm-legal-name" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-cnpj">CNPJ Oficial</label>
+                  <input type="text" id="adm-cnpj" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-phone">Telefone de Contato (Exibição)</label>
+                  <input type="text" id="adm-phone" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-whatsapp">Número do WhatsApp (Apenas Números com DDD)</label>
+                  <input type="text" id="adm-whatsapp" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-email">E-mail Comercial</label>
+                  <input type="email" id="adm-email" class="admin-input">
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-address">Endereço (Rua e Número)</label>
+                  <input type="text" id="adm-address" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-neighborhood">Bairro</label>
+                  <input type="text" id="adm-neighborhood" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-city">Cidade</label>
+                  <input type="text" id="adm-city" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-state">Estado (UF)</label>
+                  <input type="text" id="adm-state" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-zip">CEP</label>
+                  <input type="text" id="adm-zip" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-hours">Horário de Funcionamento</label>
+                  <input type="text" id="adm-hours" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-facebook">Link do Facebook</label>
+                  <input type="url" id="adm-facebook" class="admin-input">
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-instagram">Link do Instagram</label>
+                  <input type="url" id="adm-instagram" class="admin-input">
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-google-rating">Nota no Google (Estrelas)</label>
+                  <input type="number" step="0.1" id="adm-google-rating" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-google-reviews">Total de Avaliações no Google</label>
+                  <input type="number" id="adm-google-reviews" class="admin-input" required>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem; text-align: right;">
+                <button type="submit" class="btn btn-primary">Salvar Todas as Informações</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- ABA 2: BANNER & HERO -->
+        <div class="admin-tab-pane" id="tab-banner">
+          <form id="admin-hero-form">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <h3>Conteúdo do Banner Principal (Hero)</h3>
+                <button type="submit" class="btn btn-primary btn-sm">Salvar Banner</button>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-hero-badge">Badge Superior de Destaque</label>
+                <input type="text" id="adm-hero-badge" class="admin-input" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-hero-title">Título Principal do Hero</label>
+                <input type="text" id="adm-hero-title" class="admin-input" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-hero-subtitle">Subtítulo / Descrição Comercial</label>
+                <textarea id="adm-hero-subtitle" class="admin-textarea" required></textarea>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-hero-bg">URL da Imagem de Fundo (Alta Resolução)</label>
+                <input type="url" id="adm-hero-bg" class="admin-input" required>
+              </div>
+
+              <div class="admin-grid-2">
+                <div class="admin-form-group">
+                  <label for="adm-hero-cta1-text">Texto do Botão Primário</label>
+                  <input type="text" id="adm-hero-cta1-text" class="admin-input" required>
+                </div>
+
+                <div class="admin-form-group">
+                  <label for="adm-hero-cta1-link">Link do Botão Primário</label>
+                  <input type="text" id="adm-hero-cta1-link" class="admin-input" required>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem; text-align: right;">
+                <button type="submit" class="btn btn-primary">Salvar Banner & Hero</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- ABA 3: DESTINOS & PACOTES -->
+        <div class="admin-tab-pane" id="tab-destinos">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h3>Destinos & Excursões Cadastrados</h3>
+                <small style="color: #64748b;">Adicione, altere ou remova roteiros que aparecem no site</small>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" id="admin-add-destination-btn">
+                + Adicionar Novo Destino
+              </button>
+            </div>
+
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Destino</th>
+                    <th>Categoria</th>
+                    <th>Preço Exibido</th>
+                    <th>Inclusões</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="destinations-table-body">
+                  <!-- Inserido dinamicamente via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA 4: SERVIÇOS OFERECIDOS -->
+        <div class="admin-tab-pane" id="tab-servicos">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>Serviços Oferecidos pela Agência</h3>
+              <small style="color: #64748b;">Personalize os títulos e descrições dos serviços confirmados</small>
+            </div>
+            <div id="services-admin-container">
+              <!-- Inserido dinamicamente via admin.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA 5: DEPOIMENTOS -->
+        <div class="admin-tab-pane" id="tab-depoimentos">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h3>Depoimentos de Clientes (Google Reviews)</h3>
+                <small style="color: #64748b;">Gerencie avaliações reais de clientes que viajaram com a TR Turismo</small>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" id="admin-add-testimonial-btn">
+                + Adicionar Depoimento
+              </button>
+            </div>
+
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Localidade</th>
+                    <th>Comentário</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="testimonials-table-body">
+                  <!-- Inserido dinamicamente via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA 6: TEXTOS INSTITUCIONAIS -->
+        <div class="admin-tab-pane" id="tab-sobre">
+          <form id="admin-about-form">
+            <div class="admin-card">
+              <div class="admin-card-header">
+                <h3>Seção Sobre a TR Turismo Viagens</h3>
+                <button type="submit" class="btn btn-primary btn-sm">Salvar Textos</button>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-about-headline">Título da Seção</label>
+                <input type="text" id="adm-about-headline" class="admin-input" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-about-tagline">Chamada em Destaque</label>
+                <input type="text" id="adm-about-tagline" class="admin-input" required>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-about-p1">Parágrafo 1 (História e Origem em Ibirité)</label>
+                <textarea id="adm-about-p1" class="admin-textarea" required></textarea>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-about-p2">Parágrafo 2 (Diferenciais e Guias Especializados)</label>
+                <textarea id="adm-about-p2" class="admin-textarea" required></textarea>
+              </div>
+
+              <div class="admin-form-group">
+                <label for="adm-about-p3">Parágrafo 3 (Compromisso com o Passageiro)</label>
+                <textarea id="adm-about-p3" class="admin-textarea" required></textarea>
+              </div>
+
+              <div style="margin-top: 1.5rem; text-align: right;">
+                <button type="submit" class="btn btn-primary">Salvar Conteúdo Institucional</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- ABA 7: ORÇAMENTOS RECEBIDOS (LEADS) -->
+        <div class="admin-tab-pane" id="tab-leads">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div>
+                <h3>Histórico de Cotações Recebidas no Site</h3>
+                <small style="color: #64748b;">Cada solicitação preenchida no formulário fica registrada aqui</small>
+              </div>
+              <button type="button" class="btn btn-outline-primary btn-sm" id="admin-clear-leads-btn">
+                Limpar Histórico
+              </button>
+            </div>
+
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Nome</th>
+                    <th>WhatsApp</th>
+                    <th>Destino</th>
+                    <th>Detalhes</th>
+                    <th>Ação Rápida</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-table-body">
+                  <!-- Inserido dinamicamente via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA 8: BACKUP E RESTAURAÇÃO -->
+        <div class="admin-tab-pane" id="tab-backup">
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>Backup & Segurança dos Dados</h3>
+            </div>
+
+            <p style="color: #475569; font-size: 0.95rem; margin-bottom: 1.5rem;">
+              Todas as alterações feitas no painel ficam salvas automaticamente no armazenamento seguro do seu navegador. Você pode baixar uma cópia completa de segurança em arquivo JSON ou restaurá-la a qualquer momento.
+            </p>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              <button type="button" class="btn btn-primary" id="admin-export-json-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Exportar Backup em JSON
+              </button>
+
+              <label class="btn btn-outline-primary" style="margin: 0; cursor: pointer;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Importar Backup JSON
+                <input type="file" id="admin-import-json-input" accept=".json" style="display: none;">
+              </label>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
+
+            <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1.25rem;">
+              <strong style="color: #991b1b; display: block; margin-bottom: 0.5rem;">Restaurar Dados Originais de Ibirité</strong>
+              <p style="color: #7f1d1d; font-size: 0.875rem; margin-bottom: 1rem;">
+                Caso deseje reverter todas as configurações personalizadas para os dados oficiais originais verificados da TR Turismo Viagens, clique no botão abaixo.
+              </p>
+              <button type="button" class="btn btn-sm" id="admin-reset-default-btn" style="background: #ef4444; color: #fff;">
+                Restaurar Padrão de Fábrica
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Edição de Destino -->
+  <div class="admin-modal-overlay" id="destination-modal">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 id="dest-modal-title" style="margin: 0; font-family: 'Outfit', sans-serif;">Adicionar Novo Destino</h3>
+        <button type="button" class="popup-close" id="destination-modal-close" style="color: #0f172a; font-size: 1.5rem;">✕</button>
+      </div>
+      <form id="destination-edit-form">
+        <div class="admin-modal-body">
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label for="dest-form-name">Nome do Destino / Roteiro *</label>
+              <input type="text" id="dest-form-name" class="admin-input" placeholder="Ex: Cabo Frio & Arraial do Cabo" required>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="dest-form-category">Categoria *</label>
+              <select id="dest-form-category" class="admin-select" required>
+                <option value="Praias">Praias</option>
+                <option value="Excursões Rodoviárias">Excursões Rodoviárias</option>
+                <option value="Viagens em Família">Viagens em Família</option>
+                <option value="Viagens Nacionais">Viagens Nacionais</option>
+                <option value="Viagens em Grupo">Viagens em Grupo</option>
+                <option value="Viagens Internacionais">Viagens Internacionais</option>
+              </select>
+            </div>
+
+            <div class="admin-form-group">
+              <label for="dest-form-tag">Tag de Destaque</label>
+              <input type="text" id="dest-form-tag" class="admin-input" placeholder="Ex: Mais Procurado, Feriado...">
+            </div>
+
+            <div class="admin-form-group">
+              <label for="dest-form-price">Preço / Exibição de Valor</label>
+              <input type="text" id="dest-form-price" class="admin-input" placeholder="Ex: Sob Consulta ou A partir de R$ 450">
+            </div>
+
+            <div class="admin-form-group full-width">
+              <label for="dest-form-image">URL da Imagem de Capa *</label>
+              <input type="url" id="dest-form-image" class="admin-input" placeholder="https://..." required>
+            </div>
+
+            <div class="admin-form-group full-width">
+              <label for="dest-form-description">Descrição Curta e Atraente *</label>
+              <textarea id="dest-form-description" class="admin-textarea" placeholder="Descreva os encantos do destino..." required></textarea>
+            </div>
+
+            <div class="admin-form-group full-width">
+              <label for="dest-form-inclusions">Itens Inclusos (1 por linha)</label>
+              <textarea id="dest-form-inclusions" class="admin-textarea" placeholder="Transporte Executivo com ar&#10;Hospedagem com Café da Manhã&#10;Guia acompanhante"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-outline-primary btn-sm" id="destination-modal-cancel">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-sm">Salvar Destino</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Depoimento -->
+  <div class="admin-modal-overlay" id="testimonial-modal">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 id="test-modal-title" style="margin: 0; font-family: 'Outfit', sans-serif;">Depoimento de Cliente</h3>
+        <button type="button" class="popup-close" id="testimonial-modal-close" style="color: #0f172a; font-size: 1.5rem;">✕</button>
+      </div>
+      <form id="testimonial-edit-form">
+        <div class="admin-modal-body">
+          <div class="admin-form-group">
+            <label for="test-form-author">Nome do Cliente *</label>
+            <input type="text" id="test-form-author" class="admin-input" placeholder="Ex: Mariana Silva" required>
+          </div>
+          <div class="admin-form-group">
+            <label for="test-form-location">Localidade / Referência</label>
+            <input type="text" id="test-form-location" class="admin-input" placeholder="Ex: Ibirité - MG" value="Ibirité - MG">
+          </div>
+          <div class="admin-form-group">
+            <label for="test-form-content">Depoimento do Cliente *</label>
+            <textarea id="test-form-content" class="admin-textarea" placeholder="Relato real da viagem..." required></textarea>
+          </div>
+        </div>
+        <div class="admin-modal-footer">
+          <button type="button" class="btn btn-outline-primary btn-sm" id="testimonial-modal-cancel">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-sm">Salvar Depoimento</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificação Toast -->
+  <div class="toast-msg" id="admin-toast">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--accent-gold);"><polyline points="20 6 9 17 4 12"/></svg>
+    <span class="toast-text">Alterações salvas!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
