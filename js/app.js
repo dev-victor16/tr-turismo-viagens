@@ -49,11 +49,6 @@ function renderCompanyDetails(company) {
 function renderHeroContent(hero) {
   if (!hero) return;
 
-  const bgImg = document.getElementById('hero-bg-img');
-  if (bgImg && hero.backgroundImage) {
-    bgImg.src = hero.backgroundImage;
-  }
-
   const badgeEl = document.getElementById('hero-badge-text');
   if (badgeEl && hero.badge) badgeEl.textContent = hero.badge;
 
@@ -69,6 +64,11 @@ function renderHeroContent(hero) {
   if (ctaBtn && hero.ctaPrimaryText) {
     ctaBtn.innerHTML = `${hero.ctaPrimaryText} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>`;
     ctaBtn.href = hero.ctaPrimaryLink || '#destinos';
+  }
+
+  const heroPhotoImg = document.querySelector('.hero-photo-main-frame img');
+  if (heroPhotoImg && hero.backgroundImage) {
+    heroPhotoImg.src = hero.backgroundImage;
   }
 }
 

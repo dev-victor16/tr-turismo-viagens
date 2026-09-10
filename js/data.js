@@ -36,7 +36,7 @@ const TR_DEFAULT_DATA = {
     ctaPrimaryLink: "#destinos",
     ctaSecondaryText: "RESERVAR NO WHATSAPP",
     ctaSecondaryLink: "https://wa.me/5531995724285?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20TR%20Turismo%20e%20gostaria%20de%20fazer%20uma%20reserva.",
-    backgroundImage: "images/tr-hero-bg-momentos.jpg"
+    backgroundImage: "images/foto-praia-tropical.jpg"
   },
   about: {
     headline: "Quem é a TR Turismo Viagens",
@@ -244,7 +244,7 @@ const TR_DEFAULT_DATA = {
 
 // Gerenciador de Estado / LocalStorage
 const StorageManager = {
-  STORAGE_KEY: "TR_TURISMO_DATA_V5",
+  STORAGE_KEY: "TR_TURISMO_DATA_V6",
   ADMIN_AUTH_KEY: "TR_TURISMO_ADMIN_AUTH",
 
   getData() {

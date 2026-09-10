@@ -202,10 +202,11 @@ button {
 }
 
 .brand-logo-img {
-  height: 56px;
+  height: 52px;
   width: auto;
-  max-width: 180px;
   object-fit: contain;
+  border-radius: var(--radius-sm);
+  background: transparent;
   transition: transform var(--transition-smooth);
 }
 
@@ -372,79 +373,34 @@ button {
 }
 
 /* ==========================================================================
-   1. HERO COM FOTOGRAFIA REAL NO FUNDO & ADAPTADA PARA CELULAR
+   1. HERO EDITORIAL COM FOTOGRAFIA REAL PROTAGONISTA
+   Composição de revista: texto imponente + vitrine fotográfica real
    ========================================================================== */
 .hero-editorial-real {
+  background: linear-gradient(135deg, #0a192f 0%, #0d2342 65%, #102a50 100%);
+  color: #ffffff;
+  padding: 5.5rem 0 5rem 0;
   position: relative;
   overflow: hidden;
-  padding: 5.5rem 0 4.5rem 0;
-  color: #ffffff;
-  background-color: var(--color-primary-dark);
-}
-
-/* Camada de Fundo Responsiva da Fotografia Real (4:3) */
-.hero-bg-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.hero-bg-img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 55%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  opacity: 0.58;
-  filter: contrast(1.06) saturate(1.12);
-  transition: opacity var(--transition-smooth);
-}
-
-.hero-bg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(10, 25, 47, 0.98) 0%,
-    rgba(10, 25, 47, 0.92) 42%,
-    rgba(10, 25, 47, 0.55) 70%,
-    rgba(10, 25, 47, 0.22) 100%
-  );
 }
 
 .hero-editorial-real::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 85% 30%, rgba(0, 102, 204, 0.15) 0%, transparent 60%);
+  top: -150px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 102, 204, 0.25) 0%, transparent 70%);
   pointer-events: none;
-  z-index: 2;
 }
 
-.hero-content-relative {
-  position: relative;
-  z-index: 3;
+.hero-magazine-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
 }
-
-.hero-copy-col {
-  max-width: 640px;
-  display: flex;
-  flex-direction: column;
-}
-
 
 .hero-copy-col {
   display: flex;
@@ -516,108 +472,43 @@ button {
   color: #ffffff;
 }
 
-/* Coluna de Vitrine e Destaque no Hero */
+/* Coluna de Vitrine Fotográfica Real */
 .hero-visual-col {
   position: relative;
-  display: flex;
-  justify-content: flex-end;
 }
 
-.hero-spotlight-card {
-  background: rgba(10, 25, 47, 0.76);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-lg);
-  padding: 2.25rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-  max-width: 440px;
+.hero-photo-main-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  height: 480px;
+}
+
+.hero-photo-main-frame img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.hero-photo-main-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Selo Flutuante de Viagem Internacional Chile 2027 */
+.hero-badge-floating {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: rgba(10, 25, 47, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
-}
-
-.hero-spotlight-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(245, 158, 11, 0.4);
-}
-
-.hero-spotlight-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.15);
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  margin-bottom: 1.15rem;
-}
-
-.hero-spotlight-title {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-}
-
-.hero-spotlight-desc {
-  font-size: 0.925rem;
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.hero-spotlight-destinations {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.hero-spotlight-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.875rem;
-  color: #e2e8f0;
-}
-
-.hero-spotlight-row span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.hero-spotlight-row strong {
-  color: #fbbf24;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.hero-spotlight-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--color-accent);
-  transition: gap 0.2s ease;
-}
-
-.hero-spotlight-link:hover {
-  gap: 0.85rem;
-  color: #fbbf24;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  max-width: 280px;
 }
 
 .hero-badge-floating-tag {
@@ -1600,22 +1491,9 @@ button {
    RESPONSIVIDADE (MOBILE & TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
-  .hero-bg-img {
-    width: 100%;
-    height: 100%;
-    object-position: center top;
-    opacity: 0.40;
-  }
-  .hero-bg-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(10, 25, 47, 0.94) 0%,
-      rgba(10, 25, 47, 0.82) 45%,
-      rgba(10, 25, 47, 0.60) 100%
-    );
-  }
-  .hero-copy-compact {
-    max-width: 100%;
+  .hero-magazine-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
   .hero-photo-main-frame {
     height: 380px;
@@ -1677,50 +1555,17 @@ button {
   .hero-editorial-real {
     padding: 3.5rem 0 3rem 0;
   }
-  .hero-bg-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 10%;
-    opacity: 0.35;
-    filter: contrast(1.05) saturate(1.1);
-  }
-  .hero-bg-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(10, 25, 47, 0.88) 0%,
-      rgba(10, 25, 47, 0.78) 40%,
-      rgba(10, 25, 47, 0.85) 75%,
-      rgba(10, 25, 47, 0.95) 100%
-    );
-  }
-  .hero-copy-col {
+  .hero-badge-floating {
+    position: static;
+    margin-top: 1rem;
     max-width: 100%;
-  }
-  .hero-heading-main {
-    font-size: 2.1rem;
-    margin-bottom: 1rem;
-    line-height: 1.15;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-  }
-  .hero-lead-editorial {
-    font-size: 1rem;
-    margin-bottom: 1.75rem;
-    line-height: 1.6;
-    color: #e2e8f0;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   }
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.75rem;
-    margin-bottom: 1.75rem;
   }
   .hero-actions .btn {
     width: 100%;
-  }
-  .hero-proof-bar {
-    padding-top: 1.25rem;
   }
   .pillar-photo-box {
     height: 240px;
@@ -1756,20 +1601,5 @@ button {
   .btn-floating-wa {
     padding: 0.85rem;
     border-radius: 50%;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-heading-main {
-    font-size: 1.85rem;
-  }
-  .hero-bg-img {
-    object-position: center 10%;
-    opacity: 0.28;
-  }
-  .hero-proof-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
   }
 }
