@@ -49,9 +49,9 @@ function renderCompanyDetails(company) {
 function renderHeroContent(hero) {
   if (!hero) return;
 
-  const heroSection = document.getElementById('home');
-  if (heroSection && hero.backgroundImage) {
-    heroSection.style.backgroundImage = `linear-gradient(90deg, rgba(10, 25, 47, 0.96) 0%, rgba(10, 25, 47, 0.88) 42%, rgba(10, 25, 47, 0.58) 72%, rgba(10, 25, 47, 0.36) 100%), url('${hero.backgroundImage}')`;
+  const bgImg = document.getElementById('hero-bg-img');
+  if (bgImg && hero.backgroundImage) {
+    bgImg.src = hero.backgroundImage;
   }
 
   const badgeEl = document.getElementById('hero-badge-text');

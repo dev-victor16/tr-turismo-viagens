@@ -380,18 +380,46 @@ button {
   padding: 6.5rem 0 5.5rem 0;
   color: #ffffff;
   background-color: var(--color-primary-dark);
-  background-image: 
-    linear-gradient(
-      90deg,
-      rgba(10, 25, 47, 0.96) 0%,
-      rgba(10, 25, 47, 0.88) 42%,
-      rgba(10, 25, 47, 0.58) 72%,
-      rgba(10, 25, 47, 0.36) 100%
-    ),
-    url('../images/tr-hero-bg-momentos.jpg');
-  background-size: cover;
-  background-position: right center;
-  background-repeat: no-repeat;
+}
+
+/* Camada Responsiva da Fotografia Real no Fundo */
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 58%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.50;
+  filter: contrast(1.06) saturate(1.12);
+  transition: opacity var(--transition-smooth);
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 25, 47, 0.98) 0%,
+    rgba(10, 25, 47, 0.92) 40%,
+    rgba(10, 25, 47, 0.60) 70%,
+    rgba(10, 25, 47, 0.32) 100%
+  );
 }
 
 .hero-editorial-real::before {
@@ -403,6 +431,12 @@ button {
   bottom: 0;
   background: radial-gradient(circle at 85% 30%, rgba(0, 102, 204, 0.15) 0%, transparent 60%);
   pointer-events: none;
+  z-index: 2;
+}
+
+.hero-content-relative {
+  position: relative;
+  z-index: 3;
 }
 
 .hero-magazine-grid {
@@ -1573,6 +1607,26 @@ button {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+  .hero-visual-col {
+    justify-content: flex-start;
+  }
+  .hero-spotlight-card {
+    max-width: 100%;
+  }
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-position: center top;
+    opacity: 0.38;
+  }
+  .hero-bg-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 25, 47, 0.96) 0%,
+      rgba(10, 25, 47, 0.86) 45%,
+      rgba(10, 25, 47, 0.60) 100%
+    );
+  }
   .hero-photo-main-frame {
     height: 380px;
   }
@@ -1633,6 +1687,29 @@ button {
   .hero-editorial-real {
     padding: 3.5rem 0 3rem 0;
   }
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    opacity: 0.30;
+  }
+  .hero-bg-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 25, 47, 0.97) 0%,
+      rgba(10, 25, 47, 0.88) 35%,
+      rgba(10, 25, 47, 0.72) 70%,
+      rgba(10, 25, 47, 0.85) 100%
+    );
+  }
+  .hero-heading-main {
+    font-size: 2.2rem;
+  }
+  .hero-lead-editorial {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
   .hero-badge-floating {
     position: static;
     margin-top: 1rem;
@@ -1641,9 +1718,16 @@ button {
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
   }
   .hero-actions .btn {
     width: 100%;
+  }
+  .hero-spotlight-card {
+    padding: 1.6rem 1.25rem;
+  }
+  .hero-spotlight-title {
+    font-size: 1.25rem;
   }
   .pillar-photo-box {
     height: 240px;
@@ -1679,5 +1763,20 @@ button {
   .btn-floating-wa {
     padding: 0.85rem;
     border-radius: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-heading-main {
+    font-size: 1.85rem;
+  }
+  .hero-bg-img {
+    object-position: center 10%;
+    opacity: 0.28;
+  }
+  .hero-proof-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 }
