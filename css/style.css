@@ -1,7 +1,6 @@
 /* ==========================================================================
-   TR TURISMO VIAGENS — DESIGN SYSTEM EDITORIAL & CINEMATOGRÁFICO
-   Inspirado em publicações editoriais de viagem de luxo (Condé Nast, Kinfolk)
-   Tipografia: Playfair Display + Plus Jakarta Sans
+   TR TURISMO VIAGENS — DESIGN SYSTEM MODERNO & CINEMATOGRÁFICO
+   Tipografia: Outfit (Display Moderno) + Plus Jakarta Sans (Texto Limpo)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -9,7 +8,7 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Famílias Tipográficas */
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Paleta Mineral e Sofisticada */
@@ -121,10 +120,10 @@ button, input, textarea, select {
 
 .editorial-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
 }
 
 /* --------------------------------------------------------------------------
@@ -384,10 +383,10 @@ button, input, textarea, select {
 
 .hero-cinematic-title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.8vw, 4.6rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: #ffffff;
   margin-bottom: 1.5rem;
 }
@@ -579,10 +578,11 @@ button, input, textarea, select {
 
 .manifesto-quote {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  font-weight: 400;
-  font-style: italic;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  font-style: normal;
   line-height: 1.35;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 3.5rem;
   max-width: 920px;
@@ -766,9 +766,10 @@ button, input, textarea, select {
 
 .cover-story-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 1.25rem;
 }
@@ -898,18 +899,20 @@ button, input, textarea, select {
 .destination-number-serif {
   font-family: var(--font-display);
   font-size: 2.8rem;
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 800;
+  font-style: normal;
   color: var(--accent-gold);
   line-height: 1;
+  letter-spacing: -0.03em;
   margin-bottom: 0.5rem;
 }
 
 .spread-item-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.8vw, 2.25rem);
+  font-size: clamp(1.6rem, 2.6vw, 2.15rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 1.25rem;
 }
@@ -1003,9 +1006,10 @@ button, input, textarea, select {
 
 .panoramic-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 1rem;
 }
@@ -1073,8 +1077,9 @@ button, input, textarea, select {
 .chapter-numeral {
   font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: -0.04em;
   color: var(--accent-gold);
   line-height: 1;
   margin-bottom: 1rem;
@@ -1299,11 +1304,12 @@ button, input, textarea, select {
 }
 
 .review-quote-editorial {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-style: italic;
-  line-height: 1.6;
-  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-light-high);
   margin-bottom: 2rem;
 }
 
