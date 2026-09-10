@@ -1,58 +1,61 @@
 /* ==========================================================================
-   TR TURISMO VIAGENS - DESIGN SYSTEM EDITORIAL & IDENTIDADE DE MARCA
-   Alinhamento com o Instagram oficial: @trturismoviagens
-   Sede: Ibirité - Minas Gerais
+   TR TURISMO VIAGENS - DESIGN SYSTEM EDITORIAL BASEADO EM FOTOS REAIS
+   Identidade visual inspirada na marca oficial e no Instagram @trturismoviagens
+   Sede: Rua Baré, 92 – Industrial de Ibirité - MG
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Cores Oficiais da TR Turismo Viagens */
-  --color-primary: #0a1727;          /* Azul Noite Mineral */
-  --color-primary-dark: #050d18;     /* Fundo Noturno */
-  --color-primary-light: #15253b;    /* Superfície Noturna */
-  --color-accent: #d97706;           /* Âmbar / Terracota Quente do Sol */
-  --color-accent-hover: #b45309;     /* Âmbar Intenso */
-  --color-accent-soft: #fef3c7;      /* Toque Solar Suave */
-  --color-green-wa: #25d366;         /* WhatsApp Oficial */
-  --color-green-wa-dark: #128c7e;
-  --color-instagram-pink: #e1306c;   /* Rosa/Degradê Oficial Instagram */
+  /* ==========================================================================
+     PALETA DE CORES OFICIAL DA TR TURISMO (EXTRAÍDA DA MARCA E FOTOGRAFIAS)
+     ========================================================================== */
+  --color-primary: #0066cc;          /* Azul Royal TR (Mar e Céu das Artes) */
+  --color-primary-dark: #0a192f;     /* Azul Noturno Profundo / Marinho */
+  --color-primary-light: #0284c7;    /* Azul Turquesa / Ciano */
+  --color-accent: #f59e0b;           /* Dourado Solar (Sol da Logo Oficial) */
+  --color-accent-hover: #d97706;     /* Âmbar Intenso */
+  --color-green: #10b981;            /* Verde Tropical (Coqueiros e WhatsApp) */
+  --color-green-dark: #059669;
+  --color-whatsapp: #25d366;
+  --color-instagram: #e1306c;
 
-  /* Superfícies & Tons Naturais */
-  --bg-page: #fbfaf8;                /* Areia / Off-white Editorial */
-  --bg-surface: #ffffff;
-  --bg-subtle: #f4f3f0;
-  --bg-dark: #0a1727;
-  
-  /* Textos & Legibilidade */
-  --text-main: #1e293b;
-  --text-muted: #64748b;
+  /* Superfícies Acolhedoras (Tom de Areia do Instagram da TR Turismo) */
+  --bg-page: #f8f6f0;                /* Fundo Areia Suave / Kraft Oficial */
+  --bg-surface: #ffffff;             /* Branco Limpo */
+  --bg-sand: #f3efe6;                /* Areia Texturizada Suave */
+  --bg-dark: #0a192f;                /* Fundo Noturno */
+  --bg-dark-surface: #112240;
+
+  /* Textos & Tipografia */
+  --text-main: #1e293b;              /* Grafite Escuro */
+  --text-muted: #64748b;             /* Cinza Médio Neutro */
   --text-light: #94a3b8;
   --text-white: #ffffff;
-  
-  /* Linhas & Bordas Sutis */
-  --border-subtle: #e9e7e1;
-  --border-light: rgba(255, 255, 255, 0.12);
-  --border-accent: rgba(217, 119, 6, 0.3);
 
-  /* Tipografia */
+  /* Bordas e Divisórias Naturais */
+  --border-subtle: #e7e4dc;
+  --border-light: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(245, 158, 11, 0.3);
+
+  /* Fontes */
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Raios e Sombras Orgânicas */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  /* Raios e Sombras Fotográficas */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
 
-  --shadow-subtle: 0 4px 20px -2px rgba(10, 23, 39, 0.05);
-  --shadow-card: 0 10px 30px -4px rgba(10, 23, 39, 0.08);
-  --shadow-elevated: 0 20px 40px -10px rgba(10, 23, 39, 0.16);
+  --shadow-subtle: 0 4px 20px -2px rgba(10, 25, 47, 0.05);
+  --shadow-card: 0 12px 32px -4px rgba(10, 25, 47, 0.08);
+  --shadow-elevated: 0 24px 48px -12px rgba(10, 25, 47, 0.16);
 
   --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Reset Global Limpo */
+/* Reset e Base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -102,14 +105,14 @@ button {
 }
 
 /* ==========================================================================
-   TOPBAR INFORMATIVA SUTIL
+   TOPBAR INFORMATIVA (DOIS NÚMEROS CONFIRMADOS & ENDEREÇO EM IBIRITÉ)
    ========================================================================== */
 .topbar {
   background: var(--color-primary-dark);
   color: #94a3b8;
   font-size: 0.8125rem;
-  padding: 0.45rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .topbar-content {
@@ -117,12 +120,14 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .topbar-left {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .topbar-item {
@@ -164,13 +169,13 @@ button {
 }
 
 /* ==========================================================================
-   HEADER PRINCIPAL & MENU
+   HEADER PRINCIPAL & LOGOTIPO OFICIAL
    ========================================================================== */
 .main-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(10, 23, 39, 0.96);
+  background: rgba(10, 25, 47, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -178,70 +183,68 @@ button {
 }
 
 .main-header.scrolled {
-  background: rgba(5, 13, 24, 0.98);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  background: rgba(5, 15, 30, 0.98);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 76px;
+  height: 80px;
 }
 
-/* Marca TR TURISMO */
-.brand-logo {
+/* Logotipo Oficial da TR Turismo Viagens */
+.brand-logo-container {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 
-.brand-symbol {
-  width: 38px;
-  height: 38px;
+.brand-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--color-accent), #92400e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-weight: 800;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: -0.03em;
+  background: transparent;
+  transition: transform var(--transition-smooth);
 }
 
-.brand-text {
+.brand-logo-container:hover .brand-logo-img {
+  transform: scale(1.03);
+}
+
+.brand-text-header {
   display: flex;
   flex-direction: column;
 }
 
-.brand-name {
+.brand-title-header {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #ffffff;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
-.brand-name span {
+.brand-title-header span {
   color: var(--color-accent);
 }
 
-.brand-tag {
-  font-size: 0.6875rem;
+.brand-tag-header {
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #94a3b8;
   font-weight: 600;
 }
 
-/* Links do Menu */
+/* Links de Navegação */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.85rem;
+  gap: 1.75rem;
   list-style: none;
 }
 
@@ -249,8 +252,12 @@ button {
   color: #cbd5e1;
   font-size: 0.925rem;
   font-weight: 500;
-  padding: 0.4rem 0;
   position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #ffffff;
 }
 
 .nav-link::after {
@@ -264,10 +271,6 @@ button {
   transition: width var(--transition-smooth);
 }
 
-.nav-link:hover {
-  color: #ffffff;
-}
-
 .nav-link:hover::after {
   width: 100%;
 }
@@ -277,293 +280,255 @@ button {
   background: transparent;
   color: #ffffff;
   padding: 0.5rem;
-  font-size: 1.5rem;
 }
 
 /* ==========================================================================
-   BOTÕES ELEGANTES E NATURAIS
+   BOTÕES EDITORIAIS DE ALTA CONVERSÃO
    ========================================================================== */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.6rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.65rem;
   border-radius: var(--radius-sm);
   transition: all var(--transition-smooth);
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.02em;
 }
 
 .btn-primary {
   background: var(--color-accent);
   color: #050d18;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
 }
 
 .btn-primary:hover {
-  background: #f59e0b;
+  background: var(--color-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
-}
-
-.btn-outline-white {
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.btn-outline-white:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #ffffff;
-  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45);
+  color: #050d18;
 }
 
 .btn-whatsapp-solid {
-  background: #22c55e;
+  background: var(--color-whatsapp);
   color: #ffffff;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
 .btn-whatsapp-solid:hover {
-  background: #16a34a;
+  background: #1ebc59;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.35);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+  color: #ffffff;
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--color-primary-dark);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-outline-dark:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: #ffffff;
 }
 
 .btn-instagram-brand {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
   color: #ffffff;
-  box-shadow: 0 8px 25px rgba(225, 48, 108, 0.35);
+  box-shadow: 0 6px 20px rgba(220, 39, 67, 0.35);
 }
 
 .btn-instagram-brand:hover {
   opacity: 0.95;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(225, 48, 108, 0.45);
-  color: #ffffff;
-}
-
-.btn-sm {
-  padding: 0.5rem 1.1rem;
-  font-size: 0.85rem;
+  box-shadow: 0 10px 28px rgba(220, 39, 67, 0.45);
 }
 
 .btn-lg {
-  padding: 0.95rem 2.2rem;
-  font-size: 1.05rem;
+  padding: 1.05rem 2.2rem;
+  font-size: 1rem;
+}
+
+.btn-sm {
+  padding: 0.55rem 1.15rem;
+  font-size: 0.85rem;
 }
 
 /* ==========================================================================
-   HERO EDITORIAL COM ASSINATURA DA TR TURISMO
+   1. HERO EDITORIAL COM FOTOGRAFIA REAL PROTAGONISTA
+   Composição de revista: texto imponente + vitrine fotográfica real
    ========================================================================== */
-.hero-editorial {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
-  background-color: var(--color-primary-dark);
-  background-size: cover;
-  background-position: center 30%;
+.hero-editorial-real {
+  background: linear-gradient(135deg, #0a192f 0%, #0d2342 65%, #102a50 100%);
   color: #ffffff;
-  padding: 6rem 0;
+  padding: 5.5rem 0 5rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-editorial::before {
+.hero-editorial-real::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(5, 13, 24, 0.92) 0%,
-    rgba(10, 23, 39, 0.8) 55%,
-    rgba(10, 23, 39, 0.45) 100%
-  );
-  z-index: 1;
+  top: -150px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 102, 204, 0.25) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.hero-container {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
+.hero-magazine-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.hero-eyebrow {
+.hero-copy-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-eyebrow-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-accent);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
-.hero-heading {
+.hero-heading-main {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.4rem);
-  font-weight: 800;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 900;
   line-height: 1.08;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
+  color: #ffffff;
 }
 
-.hero-heading span {
+.hero-heading-main span {
   color: #fbbf24;
 }
 
-.hero-lead {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+.hero-lead-editorial {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: #cbd5e1;
   line-height: 1.65;
   margin-bottom: 2.25rem;
-  max-width: 640px;
-  font-weight: 400;
+  max-width: 580px;
 }
 
-.hero-cta-group {
+.hero-actions {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 2.5rem;
 }
 
-/* Prova social discreta integrada no Hero */
-.hero-social-proof {
+.hero-proof-bar {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.hero-stars {
+.hero-stars-gold {
   color: #fbbf24;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   letter-spacing: 2px;
 }
 
 .hero-proof-text {
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: #cbd5e1;
 }
 
 .hero-proof-text strong {
   color: #ffffff;
 }
 
-/* ==========================================================================
-   SEÇÃO EDITORIAL: HISTÓRIA & QUEM É A TR TURISMO
-   ========================================================================== */
-.section-editorial-about {
-  padding: 6.5rem 0;
-  background: var(--bg-page);
-}
-
-.editorial-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4.5rem;
-  align-items: center;
-}
-
-.editorial-story {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.editorial-tag {
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  color: var(--color-accent);
-}
-
-.editorial-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--color-primary);
-}
-
-.editorial-lead-text {
-  font-size: 1.15rem;
-  color: #334155;
-  line-height: 1.6;
-  font-weight: 500;
-}
-
-.editorial-body-text {
-  font-size: 0.975rem;
-  color: #475569;
-  line-height: 1.7;
-}
-
-.editorial-checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  margin-top: 0.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.editorial-check-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  font-size: 0.925rem;
-  color: #334155;
-}
-
-.editorial-check-item svg {
-  color: var(--color-accent);
-  flex-shrink: 0;
-  margin-top: 0.2rem;
-}
-
-.editorial-visual {
+/* Coluna de Vitrine Fotográfica Real */
+.hero-visual-col {
   position: relative;
 }
 
-.editorial-image-frame {
+.hero-photo-main-frame {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-elevated);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  height: 480px;
 }
 
-.editorial-image-frame img {
+.hero-photo-main-frame img {
   width: 100%;
-  height: 520px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.editorial-caption-badge {
+.hero-photo-main-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Selo Flutuante de Viagem Internacional Chile 2027 */
+.hero-badge-floating {
   position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  right: 1.5rem;
-  background: rgba(10, 23, 39, 0.9);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
+  bottom: -20px;
+  left: -20px;
+  background: rgba(10, 25, 47, 0.95);
+  backdrop-filter: blur(10px);
   padding: 1.25rem 1.5rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  max-width: 280px;
 }
 
-.editorial-caption-badge strong {
+.hero-badge-floating-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
   display: block;
-  font-size: 0.95rem;
-  margin-bottom: 0.2rem;
-  color: #fbbf24;
+  margin-bottom: 0.25rem;
 }
 
-.editorial-caption-badge span {
+.hero-badge-floating strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: #ffffff;
+}
+
+.hero-badge-floating span {
   font-size: 0.8125rem;
   color: #cbd5e1;
   line-height: 1.4;
@@ -571,151 +536,227 @@ button {
 }
 
 /* ==========================================================================
-   NOVA SEÇÃO: "VIVEMOS ESSAS EXPERIÊNCIAS" (MOMENTOS REAIS DE VIAGEM)
+   2. OS 5 PILARES DA TR TURISMO (HISTÓRIA VISUAL BASEADA NO INSTAGRAM)
+   Adeus cartões de IA! Narrativa fotográfica autêntica numerada de 1 a 5
    ========================================================================== */
-.section-experiences {
+.section-story-pillars {
   padding: 6.5rem 0;
-  background: #ffffff;
+  background: var(--bg-sand);
   border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-.experiences-header {
+.pillars-header-editorial {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto 3.5rem auto;
+  max-width: 720px;
+  margin: 0 auto 4rem auto;
 }
 
-.experiences-mosaic {
+.editorial-tag {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: inline-block;
+}
+
+.editorial-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-primary-dark);
+  margin-top: 0.4rem;
+}
+
+.editorial-subtitle {
+  color: #64748b;
+  font-size: 1.05rem;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+/* Mosaico Narrativo Assimétrico dos 5 Pilares */
+.pillars-story-spread {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Item de Pilar com Composição Foto + Conteúdo Horizontal */
+.pillar-story-item {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-}
-
-.experience-card {
-  position: relative;
-  border-radius: var(--radius-md);
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-subtle);
-  background: var(--color-primary-dark);
-  height: 380px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-.experience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-card);
+.pillar-story-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
 }
 
-.experience-img {
+/* Inversão alternada para ritmo editorial dinâmico */
+.pillar-story-item.reverse {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+
+.pillar-story-item.reverse > * {
+  direction: ltr;
+}
+
+.pillar-photo-box {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  background: var(--color-primary-dark);
+}
+
+.pillar-photo-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
-.experience-card:hover .experience-img {
-  transform: scale(1.05);
+.pillar-story-item:hover .pillar-photo-box img {
+  transform: scale(1.04);
 }
 
-.experience-overlay {
+.pillar-location-badge {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(5, 13, 24, 0.92) 100%);
+  top: 1.25rem;
+  left: 1.25rem;
+  background: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.pillar-content-box {
+  padding: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  color: #ffffff;
+  justify-content: center;
 }
 
-.experience-location-tag {
-  font-size: 0.725rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.35rem;
-}
-
-.experience-title {
+/* O número gigante com degradê azul característico da campanha */
+.pillar-huge-number {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: #ffffff;
-  margin-bottom: 0.4rem;
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #0066cc 0%, #00c8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-.experience-desc {
-  font-size: 0.825rem;
-  color: #cbd5e1;
-  line-height: 1.45;
+.pillar-headline {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.pillar-paragraph {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.pillar-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  transition: gap 0.2s ease;
+}
+
+.pillar-action-link:hover {
+  gap: 0.85rem;
+  color: var(--color-accent);
 }
 
 /* ==========================================================================
-   DESTINOS & PRÓXIMAS VIAGENS (ASSIMÉTRICO TIPO REVISTA)
+   3. DESTINOS & PRÓXIMAS VIAGENS (VITRINE DE REVISTA COM FOTOS REAIS)
    ========================================================================== */
-.section-destinations {
+.section-destinations-real {
   padding: 6.5rem 0;
   background: var(--bg-page);
-  border-top: 1px solid var(--border-subtle);
 }
 
-.destinations-header {
+.destinations-top-bar {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  flex-wrap: wrap;
   gap: 2rem;
+  flex-wrap: wrap;
   margin-bottom: 3.5rem;
 }
 
-.destinations-header-info {
-  max-width: 620px;
-}
-
-.destinations-filters-clean {
+.destinations-filters-editorial {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.filter-pill {
-  background: var(--bg-subtle);
+.filter-pill-real {
+  background: #ffffff;
   color: #475569;
-  border: 1px solid transparent;
-  padding: 0.5rem 1.15rem;
+  border: 1px solid var(--border-subtle);
+  padding: 0.55rem 1.25rem;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
   font-weight: 600;
   transition: all var(--transition-smooth);
 }
 
-.filter-pill:hover, .filter-pill.active {
-  background: var(--color-primary);
+.filter-pill-real:hover, .filter-pill-real.active {
+  background: var(--color-primary-dark);
   color: #ffffff;
+  border-color: var(--color-primary-dark);
 }
 
-/* Layout Assimétrico de Revista */
-.magazine-destinations-layout {
+/* Grid Editorial de Destinos com 1 Principal Grande + Lista Lateral */
+.destinations-editorial-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 2.25rem;
+  gap: 2.5rem;
 }
 
-/* Card Principal em Destaque */
-.destination-featured-card {
+.destination-hero-card {
   position: relative;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  min-height: 540px;
   display: flex;
   flex-direction: column;
   background: var(--color-primary-dark);
-  min-height: 520px;
+  box-shadow: var(--shadow-card);
 }
 
-.featured-card-bg {
+.destination-hero-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -724,250 +765,235 @@ button {
   transition: transform 0.6s ease;
 }
 
-.destination-featured-card:hover .featured-card-bg {
-  transform: scale(1.04);
+.destination-hero-card:hover .destination-hero-bg {
+  transform: scale(1.03);
 }
 
-.featured-card-gradient {
+.destination-hero-gradient {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 23, 39, 0.15) 0%,
-    rgba(10, 23, 39, 0.85) 60%,
-    rgba(5, 13, 24, 0.98) 100%
+    rgba(10, 25, 47, 0.2) 0%,
+    rgba(10, 25, 47, 0.75) 55%,
+    rgba(5, 15, 30, 0.98) 100%
   );
   z-index: 1;
 }
 
-.featured-card-content {
+.destination-hero-content {
   position: relative;
   z-index: 2;
   margin-top: auto;
-  padding: 2.5rem;
+  padding: 2.75rem;
   color: #ffffff;
 }
 
-.featured-card-tag {
+.destination-hero-tag {
   display: inline-block;
   background: var(--color-accent);
   color: #050d18;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  padding: 0.3rem 0.8rem;
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
   margin-bottom: 0.85rem;
 }
 
-.featured-card-title {
+.destination-hero-title {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 2.5vw, 2.3rem);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
-.featured-card-desc {
-  font-size: 0.95rem;
+.destination-hero-desc {
+  font-size: 1rem;
   color: #cbd5e1;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   max-width: 540px;
 }
 
-.featured-card-inclusions {
+.destination-hero-inclusions {
   display: flex;
-  gap: 1.25rem;
   flex-wrap: wrap;
-  font-size: 0.8125rem;
-  color: #94a3b8;
-  margin-bottom: 1.75rem;
-  padding-top: 1rem;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  padding-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 1.75rem;
 }
 
-.featured-card-inclusions span {
+.destination-hero-inclusions span {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   color: #e2e8f0;
 }
 
 /* Coluna Lateral de Destinos Secundários */
-.secondary-destinations-stack {
+.destinations-side-stack {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.destination-sub-card {
+.destination-side-card {
   background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 190px 1fr;
+  box-shadow: var(--shadow-subtle);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-.destination-sub-card:hover {
+.destination-side-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card);
-  border-color: rgba(217, 119, 6, 0.4);
+  border-color: rgba(0, 102, 204, 0.4);
 }
 
-.sub-card-image {
+.side-card-image {
   width: 100%;
   height: 100%;
-  min-height: 150px;
+  min-height: 160px;
   object-fit: cover;
 }
 
-.sub-card-body {
-  padding: 1.25rem 1.5rem;
+.side-card-body {
+  padding: 1.35rem 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.sub-card-tag {
+.side-card-tag {
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+  display: block;
 }
 
-.sub-card-title {
+.side-card-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin: 0.25rem 0 0.4rem 0;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
 }
 
-.sub-card-desc {
+.side-card-desc {
   font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.45;
-  margin-bottom: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
-.sub-card-footer {
+.side-card-footer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
-.sub-card-price {
+.side-card-price {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--color-primary);
-}
-
-.btn-link-action {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.btn-link-action:hover {
-  color: var(--color-accent-hover);
-  text-decoration: underline;
+  color: var(--color-primary-dark);
 }
 
 /* ==========================================================================
-   SEÇÃO "O JEITO TR DE VIAJAR" (DIFERENCIAIS NATURAIS)
+   4. SOBRE A TR TURISMO (COMPOSIÇÃO COM CRIATIVO OFICIAL DE RESERVAS)
    ========================================================================== */
-.section-values {
-  padding: 6rem 0;
-  background: var(--color-primary);
-  color: #ffffff;
+.section-about-official {
+  padding: 6.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-subtle);
 }
 
-.values-grid {
+.about-editorial-spread {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4.5rem;
   align-items: center;
 }
 
-.values-text h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-}
-
-.values-text p {
-  color: #94a3b8;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-}
-
-.values-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.value-item {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-}
-
-.value-number {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--color-accent);
-  line-height: 1;
-}
-
-.value-info h4 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 0.25rem;
-}
-
-.value-info p {
-  font-size: 0.9rem;
-  color: #94a3b8;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.values-image-side {
-  border-radius: var(--radius-md);
+.about-visual-poster {
+  position: relative;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-elevated);
 }
 
-.values-image-side img {
+.about-visual-poster img {
   width: 100%;
-  height: 480px;
+  height: auto;
   object-fit: cover;
 }
 
-/* ==========================================================================
-   PROVA SOCIAL TIPOGRÁFICA & AVALIAÇÕES DO GOOGLE
-   ========================================================================== */
-.section-reviews {
-  padding: 6.5rem 0;
-  background: var(--bg-page);
+.about-story-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
 }
 
-.reviews-header {
+.about-lead-p {
+  font-size: 1.15rem;
+  color: #334155;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.about-body-p {
+  font-size: 0.975rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.about-highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-highlight-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.925rem;
+  color: #334155;
+}
+
+.about-highlight-row svg {
+  color: var(--color-green);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   5. AVALIAÇÕES DO GOOGLE (PROVA SOCIAL TIPOGRÁFICA LIMPA)
+   ========================================================================== */
+.section-reviews-editorial {
+  padding: 6.5rem 0;
+  background: var(--bg-sand);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.reviews-header-center {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 4rem auto;
+  margin: 0 auto 3.5rem auto;
 }
 
 .google-badge-hero {
@@ -975,7 +1001,7 @@ button {
   align-items: center;
   gap: 0.75rem;
   background: #ffffff;
-  padding: 0.6rem 1.25rem;
+  padding: 0.6rem 1.35rem;
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-subtle);
   border: 1px solid var(--border-subtle);
@@ -989,7 +1015,7 @@ button {
 
 .google-badge-hero strong {
   font-size: 1.15rem;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
 
 .google-badge-hero span {
@@ -997,13 +1023,13 @@ button {
   color: var(--text-muted);
 }
 
-.reviews-grid-editorial {
+.reviews-editorial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
 }
 
-.review-card-clean {
+.review-card-editorial {
   background: #ffffff;
   border-radius: var(--radius-md);
   padding: 2.25rem 2rem;
@@ -1014,7 +1040,7 @@ button {
   justify-content: space-between;
 }
 
-.review-quote-text {
+.review-quote-editorial {
   font-size: 1.05rem;
   color: #334155;
   line-height: 1.65;
@@ -1022,7 +1048,7 @@ button {
   margin-bottom: 1.75rem;
 }
 
-.review-author-line {
+.review-footer-editorial {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1030,33 +1056,28 @@ button {
   border-top: 1px solid var(--border-subtle);
 }
 
-.author-details strong {
+.review-author-info strong {
   display: block;
   font-size: 0.95rem;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
 
-.author-details span {
+.review-author-info span {
   font-size: 0.785rem;
   color: var(--text-muted);
 }
 
-.author-stars {
-  color: #fbbf24;
-  font-size: 0.9rem;
-}
-
 /* ==========================================================================
-   NOVA SEÇÃO: INSTAGRAM OFICIAL (@TRTURISMOVIAGENS)
+   6. CONEXÃO COM O INSTAGRAM OFICIAL (@TRTURISMOVIAGENS)
    ========================================================================== */
-.section-instagram-feed {
-  padding: 6rem 0;
+.section-instagram-banner {
+  padding: 5.5rem 0;
   background: #ffffff;
   border-top: 1px solid var(--border-subtle);
 }
 
 .instagram-banner-box {
-  background: linear-gradient(135deg, #0a1727 0%, #15253b 100%);
+  background: linear-gradient(135deg, #0a192f 0%, #112a4d 100%);
   border-radius: var(--radius-lg);
   padding: 3.5rem;
   color: #ffffff;
@@ -1074,9 +1095,9 @@ button {
   gap: 0.5rem;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  padding: 0.4rem 1.15rem;
+  padding: 0.45rem 1.25rem;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -1085,7 +1106,7 @@ button {
   color: #e1306c;
 }
 
-.instagram-title {
+.instagram-title-text {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3.5vw, 2.6rem);
   font-weight: 800;
@@ -1094,14 +1115,14 @@ button {
   max-width: 680px;
 }
 
-.instagram-subtitle {
+.instagram-sub-text {
   color: #cbd5e1;
   font-size: 1.05rem;
   max-width: 580px;
   line-height: 1.6;
 }
 
-.instagram-grid-curated {
+.instagram-photos-preview {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
@@ -1109,82 +1130,135 @@ button {
   margin: 1rem 0;
 }
 
-.instagram-post-preview {
+.instagram-photo-thumb {
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
   height: 200px;
+  background: var(--color-primary-dark);
 }
 
-.instagram-post-preview img {
+.instagram-photo-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.instagram-post-preview:hover img {
-  transform: scale(1.08);
+.instagram-photo-thumb:hover img {
+  transform: scale(1.06);
 }
 
-.instagram-post-overlay {
+.instagram-overlay-action {
   position: absolute;
   inset: 0;
-  background: rgba(10, 23, 39, 0.45);
+  background: rgba(10, 25, 47, 0.45);
   opacity: 0;
   transition: opacity 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-.instagram-post-preview:hover .instagram-post-overlay {
+.instagram-photo-thumb:hover .instagram-overlay-action {
   opacity: 1;
 }
 
 /* ==========================================================================
-   ORÇAMENTO LIMPO & CONVERSÃO DIRETA ("QUAL SEU PRÓXIMO DESTINO?")
+   7. FORMULÁRIO DE COTAÇÃO INTEGRADO (COMPOSIÇÃO FOTOGRÁFICA LADO A LADO)
    ========================================================================== */
-.section-quote-clean {
+.section-quote-editorial {
   padding: 6.5rem 0;
-  background: linear-gradient(135deg, #0a1727 0%, #050d18 100%);
-  color: #ffffff;
+  background: var(--bg-page);
+  border-top: 1px solid var(--border-subtle);
 }
 
-.quote-container-compact {
-  max-width: 820px;
-  margin: 0 auto;
-  background: rgba(21, 37, 59, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.quote-split-card {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  background: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 3.5rem;
-  box-shadow: var(--shadow-elevated);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-subtle);
 }
 
-.quote-header-text {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.quote-header-text h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.85rem, 3vw, 2.4rem);
-  font-weight: 800;
+.quote-visual-side {
+  position: relative;
+  background: var(--color-primary-dark);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem;
   color: #ffffff;
+}
+
+.quote-visual-side img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quote-visual-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 25, 47, 0.2) 0%, rgba(10, 25, 47, 0.85) 60%, rgba(5, 15, 30, 0.98) 100%);
+  z-index: 1;
+}
+
+.quote-visual-content {
+  position: relative;
+  z-index: 2;
+}
+
+.quote-visual-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.25;
   margin-bottom: 0.75rem;
 }
 
-.quote-header-text p {
-  color: #94a3b8;
-  font-size: 0.975rem;
+.quote-visual-content p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
   line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.quote-direct-phones-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+}
+
+.quote-direct-phones-box strong {
+  color: #fbbf24;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.quote-form-side {
+  padding: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .quote-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .form-group-full {
@@ -1193,59 +1267,52 @@ button {
 
 .quote-label {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #cbd5e1;
-  margin-bottom: 0.35rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+  margin-bottom: 0.4rem;
 }
 
 .quote-input, .quote-select, .quote-textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.8rem 1rem;
+  background: var(--bg-page);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 0.85rem 1rem;
-  color: #ffffff;
-  font-size: 0.95rem;
-  transition: border-color var(--transition-smooth);
+  font-family: inherit;
+  font-size: 0.925rem;
+  color: var(--text-main);
+  transition: all var(--transition-smooth);
 }
 
 .quote-input:focus, .quote-select:focus, .quote-textarea:focus {
   outline: none;
-  border-color: var(--color-accent);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.quote-input::placeholder, .quote-textarea::placeholder {
-  color: #64748b;
-}
-
-.quote-select option {
-  background: #0a1727;
-  color: #ffffff;
+  border-color: var(--color-primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
 }
 
 .quote-textarea {
-  min-height: 90px;
+  min-height: 85px;
   resize: vertical;
 }
 
-.quote-submit-bar {
-  margin-top: 1.5rem;
+.quote-submit-row {
+  margin-top: 1.75rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 0.75rem;
 }
 
-.quote-disclaimer {
-  font-size: 0.8rem;
-  color: #94a3b8;
-  text-align: center;
+.quote-notice-text {
+  font-size: 0.785rem;
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
-   CONTATO & SEDE EM IBIRITÉ
+   8. CONTATO & LOCALIZAÇÃO EM IBIRITÉ
    ========================================================================== */
 .section-contact-editorial {
   padding: 6.5rem 0;
@@ -1253,46 +1320,47 @@ button {
   border-top: 1px solid var(--border-subtle);
 }
 
-.contact-layout {
+.contact-layout-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
 }
 
-.contact-info-block h2 {
+.contact-info-col h2 {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
   font-weight: 800;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin-top: 0.35rem;
   margin-bottom: 1rem;
 }
 
-.contact-info-block p {
+.contact-info-col p {
   color: #475569;
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.65;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
-.contact-detail-items {
+.contact-items-stack {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-.contact-detail-line {
+.contact-item-row {
   display: flex;
-  gap: 1rem;
   align-items: flex-start;
+  gap: 1.15rem;
 }
 
-.contact-icon-box {
-  width: 42px;
-  height: 42px;
+.contact-icon-circle {
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-sm);
-  background: var(--bg-subtle);
+  background: rgba(0, 102, 204, 0.08);
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -1300,14 +1368,14 @@ button {
   flex-shrink: 0;
 }
 
-.contact-detail-line strong {
+.contact-item-row strong {
   display: block;
   font-size: 0.95rem;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   margin-bottom: 0.2rem;
 }
 
-.contact-detail-line span, .contact-detail-line a {
+.contact-item-row a, .contact-item-row span {
   font-size: 0.925rem;
   color: #475569;
 }
@@ -1315,47 +1383,47 @@ button {
 .contact-map-frame {
   border-radius: var(--radius-md);
   overflow: hidden;
+  height: 420px;
   box-shadow: var(--shadow-card);
-  min-height: 380px;
   border: 1px solid var(--border-subtle);
 }
 
 .contact-map-frame iframe {
   width: 100%;
   height: 100%;
-  min-height: 380px;
   border: 0;
 }
 
 /* ==========================================================================
-   RODAPÉ SÓBRIO & PROFISSIONAL
+   RODAPÉ EDITORIAL
    ========================================================================== */
 .footer-editorial {
   background: var(--color-primary-dark);
-  color: #94a3b8;
-  padding: 4.5rem 0 2rem 0;
+  color: #ffffff;
+  padding: 5rem 0 2.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 3.5rem;
 }
 
 .footer-about-col p {
+  color: #94a3b8;
   font-size: 0.925rem;
   line-height: 1.65;
-  margin: 1rem 0;
-  max-width: 440px;
+  margin: 1.25rem 0;
+  max-width: 380px;
 }
 
 .footer-nav-col h4 {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  color: #ffffff;
   font-weight: 700;
+  color: #ffffff;
   margin-bottom: 1.25rem;
 }
 
@@ -1363,12 +1431,13 @@ button {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .footer-nav-links a {
   color: #94a3b8;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  transition: color var(--transition-smooth);
 }
 
 .footer-nav-links a:hover {
@@ -1382,12 +1451,13 @@ button {
   flex-wrap: wrap;
   gap: 1rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8125rem;
+  color: #64748b;
 }
 
 /* ==========================================================================
-   WHATSAPP FLUTUANTE REFINADO & DISCRETO
+   WHATSAPP FLUTUANTE DISCRETO
    ========================================================================== */
 .floating-whatsapp-refined {
   position: fixed;
@@ -1400,45 +1470,56 @@ button {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  background: #22c55e;
+  background: var(--color-whatsapp);
   color: #ffffff;
   padding: 0.75rem 1.25rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
   font-size: 0.875rem;
   font-weight: 700;
   transition: all var(--transition-smooth);
 }
 
 .btn-floating-wa:hover {
-  background: #16a34a;
+  background: #1ebc59;
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 14px 30px rgba(34, 197, 94, 0.5);
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.5);
   color: #ffffff;
 }
 
 /* ==========================================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE (MOBILE & TABLET)
    ========================================================================== */
 @media (max-width: 1024px) {
-  .editorial-grid {
+  .hero-magazine-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  .experiences-mosaic {
+  .hero-photo-main-frame {
+    height: 380px;
+  }
+  .pillar-story-item, .pillar-story-item.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr !important;
+  }
+  .destinations-editorial-grid {
+    grid-template-columns: 1fr;
+  }
+  .about-editorial-spread {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .quote-split-card {
+    grid-template-columns: 1fr;
+  }
+  .quote-visual-side {
+    min-height: 280px;
+  }
+  .contact-layout-split {
+    grid-template-columns: 1fr;
+  }
+  .instagram-photos-preview {
     grid-template-columns: 1fr 1fr;
-  }
-  .instagram-grid-curated {
-    grid-template-columns: 1fr 1fr;
-  }
-  .magazine-destinations-layout {
-    grid-template-columns: 1fr;
-  }
-  .values-grid {
-    grid-template-columns: 1fr;
-  }
-  .contact-layout {
-    grid-template-columns: 1fr;
   }
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
@@ -1454,11 +1535,11 @@ button {
   }
   .nav-menu {
     position: fixed;
-    top: 76px;
+    top: 80px;
     left: -100%;
     width: 85%;
     max-width: 320px;
-    height: calc(100vh - 76px);
+    height: calc(100vh - 80px);
     background: var(--color-primary-dark);
     flex-direction: column;
     align-items: flex-start;
@@ -1471,37 +1552,44 @@ button {
   .nav-menu.open {
     left: 0;
   }
-  .hero-editorial {
-    min-height: auto;
-    padding: 4.5rem 0 3.5rem 0;
+  .hero-editorial-real {
+    padding: 3.5rem 0 3rem 0;
   }
-  .hero-cta-group {
+  .hero-badge-floating {
+    position: static;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+  .hero-actions {
     flex-direction: column;
     align-items: stretch;
   }
-  .hero-cta-group .btn {
+  .hero-actions .btn {
     width: 100%;
   }
-  .experiences-mosaic {
+  .pillar-photo-box {
+    height: 240px;
+  }
+  .pillar-content-box {
+    padding: 2rem 1.5rem;
+  }
+  .pillar-huge-number {
+    font-size: 3rem;
+  }
+  .destination-side-card {
     grid-template-columns: 1fr;
+  }
+  .side-card-image {
+    height: 180px;
   }
   .instagram-banner-box {
     padding: 2rem 1.25rem;
   }
-  .instagram-grid-curated {
-    grid-template-columns: 1fr 1fr;
-  }
-  .quote-container-compact {
+  .quote-form-side {
     padding: 2rem 1.5rem;
   }
   .quote-form-grid {
     grid-template-columns: 1fr;
-  }
-  .destination-sub-card {
-    grid-template-columns: 1fr;
-  }
-  .sub-card-image {
-    height: 180px;
   }
   .footer-top-grid {
     grid-template-columns: 1fr;

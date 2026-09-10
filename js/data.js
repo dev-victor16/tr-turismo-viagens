@@ -1,7 +1,7 @@
 /**
  * TR TURISMO VIAGENS - DATA STORE & STATE MANAGEMENT
  * Dados verificados da empresa em Ibirité - MG
- * Identidade conectada ao Instagram oficial @trturismoviagens
+ * Identidade conectada às Fotografias Reais e ao Instagram @trturismoviagens
  */
 
 const TR_DEFAULT_DATA = {
@@ -10,7 +10,9 @@ const TR_DEFAULT_DATA = {
     legalName: "TR TURSIMO VIAGENS LTDA",
     cnpj: "62.424.112/0001-27",
     phone: "(31) 99572-4285",
+    phone2: "(31) 99746-8553",
     whatsapp: "5531995724285",
+    whatsapp2: "5531997468553",
     email: "contato@trturismoviagens.com.br",
     address: "Rua Baré, 92",
     neighborhood: "Industrial de Ibirité",
@@ -22,48 +24,91 @@ const TR_DEFAULT_DATA = {
     facebook: "https://www.facebook.com/people/Simone-tr-turismo-viagens/100057476839352/",
     googleRating: 4.9,
     googleReviewCount: 112,
+    logo: "images/tr-logo-oficial.png",
     googleMapsEmbed: "https://maps.google.com/maps?q=Rua%20Bar%C3%A9,%2092%20-%20Industrial%20de%20Ibirit%C3%A9,%20Ibirit%C3%A9%20-%20MG&t=&z=15&ie=UTF8&iwloc=&output=embed",
     googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Rua+Bar%C3%A9+92+Industrial+Ibirite+MG"
   },
   hero: {
     badge: "Agência Oficial em Ibirité • CNPJ 62.424.112/0001-27",
-    title: "VIAJE COM A TR TURISMO",
-    subtitle: "Excursões rodoviárias e viagens completas saindo de Ibirité e região. A gente cuida do ônibus, da hospedagem e de cada detalhe do roteiro para você só aproveitar.",
-    ctaPrimaryText: "VER PRÓXIMAS VIAGENS",
+    title: "A ESTRADA É NOSSA PAIXÃO. O DESTINO É SEU.",
+    subtitle: "Roteiros planejados com carinho, segurança e experiências que ficam para sempre na memória. Do embarque em Ibirité aos destinos mais sonhados do Brasil e do mundo.",
+    ctaPrimaryText: "CONHECER VIAGENS",
     ctaPrimaryLink: "#destinos",
-    ctaSecondaryText: "FALAR NO WHATSAPP",
-    ctaSecondaryLink: "https://wa.me/5531995724285?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20TR%20Turismo%20e%20gostaria%20de%20saber%20das%20pr%C3%B3ximas%20viagens.",
-    backgroundImage: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=85"
+    ctaSecondaryText: "RESERVAR NO WHATSAPP",
+    ctaSecondaryLink: "https://wa.me/5531995724285?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20TR%20Turismo%20e%20gostaria%20de%20fazer%20uma%20reserva.",
+    backgroundImage: "images/foto-praia-tropical.jpg"
   },
   about: {
     headline: "Quem é a TR Turismo Viagens",
-    tagline: "Uma agência real, sediada em Ibirité, para você viajar sem complicação.",
-    paragraph1: "A gente sabe que planejar viagem para a família ou para um grupo dá trabalho: encontrar hospedagem boa, acertar horários de trânsito e organizar quem vai e quem fica. É aí que a TR Turismo entra.",
-    paragraph2: "Nossa sede fica na Rua Baré, 92, no Industrial de Ibirité. Atuamos com CNPJ ativo (62.424.112/0001-27) e profissionais registrados no Cadastur como guia de turismo e excursão. Aqui você fala com gente de verdade, tira dúvidas direto no WhatsApp e embarca com quem conhece o roteiro.",
-    paragraph3: "Seja para um fim de semana em Cabo Frio ou Guarapari, um banho de piscina em Caldas Novas ou o fretamento de transporte para um passeio exclusivo do seu grupo, nosso foco é pontualidade no embarque e cuidado na estrada.",
+    tagline: "Uma agência real, de Ibirité, feita de pessoas apaixonadas por viajar.",
+    paragraph1: "A gente sabe que planejar viagem dá trabalho: encontrar hotel bom, organizar transporte, acertar horários e garantir a segurança de quem vai. É exatamente para isso que a TR Turismo existe.",
+    paragraph2: "Nossa sede fica na Rua Baré, 92, no Industrial de Ibirité/MG. Trabalhamos com CNPJ regularizado (62.424.112/0001-27) e profissionais credenciados no Cadastur como guia de turismo e excursão. Aqui você conversa direto com a equipe no WhatsApp e viaja com quem conhece a estrada.",
+    paragraph3: "Seja para relaxar na praia, curtir os parques de Caldas Novas, se encantar com as Cataratas do Iguaçu ou embarcar para a neve na Cordilheira dos Andes no Chile, nosso compromisso é cuidar de tudo para você só aproveitar.",
     features: [
       {
         icon: "map-pin",
-        title: "Embarques em Ibirité e BH",
-        desc: "Pontos de encontro práticos e organizados na nossa região para você não perder tempo."
+        title: "Embarques Organizados em Ibirité e BH",
+        desc: "Pontos de encontro práticos e conhecidos na nossa cidade para você começar a viajar sem estresse."
       },
       {
         icon: "users",
-        title: "Acompanhamento no Grupo",
-        desc: "Guias presentes durante todo o passeio para dar apoio com horários, hotel e dicas locais."
+        title: "Acompanhamento Durante Todo o Roteiro",
+        desc: "Guias presentes no grupo cuidando de horários, hotéis e dando apoio em cada momento."
       },
       {
         icon: "hotel",
-        title: "Hospedagens Bem Cuidadas",
-        desc: "Hotéis e pousadas parceiras com café da manhã e boa estrutura para você e sua família descansarem."
+        title: "Hospedagens Cuidadosamente Selecionadas",
+        desc: "Pousadas e hotéis parceiros aprovados pelos nossos próprios passageiros com café da manhã."
       },
       {
         icon: "shield",
-        title: "Agência 100% Regularizada",
-        desc: "Empresa registrada, sede física no Industrial de Ibirité e atendimento direto pelo canal oficial."
+        title: "Segurança, Confiança e CNPJ Ativo",
+        desc: "Empresa registrada e atendimento com dois canais diretos de WhatsApp oficial."
       }
     ]
   },
+  pillars: [
+    {
+      number: "1",
+      title: "Roteiros planejados com cuidado",
+      subtitle: "Cada detalhe pensado para que sua viagem seja perfeita, sem estresse.",
+      image: "images/foto-chile-andes.jpg",
+      cardImage: "images/tr-card-1-roteiros-chile.jpg",
+      location: "Cordilheira dos Andes • Chile"
+    },
+    {
+      number: "2",
+      title: "Atendimento personalizado",
+      subtitle: "Equipe pronta para tirar dúvidas e ajudar em tudo que você precisar.",
+      image: "images/foto-balneario-camboriu.jpg",
+      cardImage: "images/tr-card-2-atendimento-balneario.jpg",
+      location: "Balneário Camboriú • SC"
+    },
+    {
+      number: "3",
+      title: "Facilidade no pagamento",
+      subtitle: "Parcelamento e condições especiais que cabem no seu bolso.",
+      image: "images/foto-caldas-novas-parque.jpg",
+      cardImage: "images/tr-card-3-pagamento-parque.jpg",
+      location: "Caldas Novas & Hot Park • GO"
+    },
+    {
+      number: "4",
+      title: "Segurança e confiança",
+      subtitle: "Viaje tranquilo(a) sabendo que cuidamos de cada detalhe para sua segurança do início ao fim.",
+      image: "images/foto-praia-tropical.jpg",
+      cardImage: "images/tr-card-4-seguranca-praia.jpg",
+      location: "Praias Paradisíacas • Litoral"
+    },
+    {
+      number: "5",
+      title: "Experiências inesquecíveis",
+      subtitle: "Não é só viajar, é viver momentos que ficam para sempre na memória.",
+      image: "images/foto-cataratas-iguacu.jpg",
+      cardImage: "images/tr-card-5-experiencias-cataratas.jpg",
+      location: "Cataratas do Iguaçu • PR"
+    }
+  ],
   services: [
     {
       id: "srv-1",
@@ -75,11 +120,11 @@ const TR_DEFAULT_DATA = {
     },
     {
       id: "srv-2",
-      icon: "luggage",
-      title: "Pacotes de Viagem Sob Medida",
-      desc: "Roteiros completos nacionais para você e sua família viajarem no próprio ritmo, com tudo reservado com antecedência.",
-      highlight: "Viagem do seu jeito",
-      inclusions: ["Passagens aéreas ou rodoviárias", "Hotéis selecionados", "Suporte antes e durante o passeio"]
+      icon: "plane",
+      title: "Roteiros Aéreos & Internacionais",
+      desc: "Grandes viagens nacionais e internacionais, como o Chile 2027, com passagens, hospedagem e passeios planejados.",
+      highlight: "Experiências pelo mundo",
+      inclusions: ["Passagens aéreas", "Hotéis selecionados", "Roteiro guiado"]
     },
     {
       id: "srv-3",
@@ -100,54 +145,67 @@ const TR_DEFAULT_DATA = {
   ],
   destinations: [
     {
-      id: "dest-1",
-      name: "Cabo Frio & Arraial do Cabo",
-      category: "Praias",
-      tag: "O Queridinho da TR Turismo",
-      image: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=1000&q=85",
-      description: "Praias de água transparente na Região dos Lagos. Roteiro clássico da agência com tempo livre para passeios de barco e descanso.",
-      duration: "Excursão de Final de Semana ou Feriado",
-      departure: "Embarques em Ibirité e BH",
-      inclusions: ["Ônibus executivo com ar-condicionado", "Pousada com café da manhã farto", "Guia da TR Turismo"],
+      id: "dest-chile",
+      name: "Chile 2027: Neve & Cordilheira dos Andes",
+      category: "Internacional",
+      tag: "Grande Viagem Internacional",
+      image: "images/foto-chile-andes.jpg",
+      description: "Santiago, Cordilheira dos Andes, neve e a famosa Laguna del Inca. Uma viagem dos sonhos com passagens aéreas e planejamento completo da TR Turismo.",
+      duration: "Roteiro Aéreo Especial 2027",
+      departure: "Saída facilitada de Ibirité / BH",
+      inclusions: ["Aéreo ida e volta", "Hospedagem selecionada", "Passeios na neve", "Suporte completo TR"],
       priceDisplay: "Sob Consulta",
       featured: true
     },
     {
-      id: "dest-2",
-      name: "Guarapari & Praias Capixabas",
+      id: "dest-praia",
+      name: "Praias Paradisíacas & Litoral Tropical",
       category: "Praias",
-      tag: "Tradição das Férias",
-      image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80",
-      description: "Praia do Morro, culinária à beira-mar e dias de muito sol para recarregar as energias com a família.",
+      tag: "O Queridinho dos Passageiros",
+      image: "images/foto-praia-tropical.jpg",
+      description: "Areia dourada, coqueirais e mar cristalino em roteiros tradicionais como Cabo Frio, Arraial do Cabo, Guarapari e Litoral Baiano.",
+      duration: "Excursão de Feriado ou Final de Semana",
+      departure: "Embarques em Ibirité e BH",
+      inclusions: ["Ônibus executivo com ar", "Pousada com café farto", "Guia acompanhante"],
+      priceDisplay: "Sob Consulta",
+      featured: false
+    },
+    {
+      id: "dest-caldas",
+      name: "Caldas Novas & Parques Termais",
+      category: "Família",
+      tag: "Águas Quentes & Tobogãs",
+      image: "images/foto-caldas-novas-parque.jpg",
+      description: "Piscinas aquecidas dia e noite, toboáguas e complexos aquáticos com diversão garantida para todas as idades.",
       duration: "Excursão 4 a 5 Dias",
       departure: "Embarques em Ibirité e BH",
-      inclusions: ["Transporte rodoviário confortável", "Hospedagem próxima à praia", "Acompanhamento no grupo"],
+      inclusions: ["Transporte rodoviário confortável", "Hotel com parque aquático", "Guia da agência"],
       priceDisplay: "Sob Consulta",
       featured: false
     },
     {
-      id: "dest-3",
-      name: "Caldas Novas & Rio Quente",
-      category: "Família",
-      tag: "Águas Quentes & Parques",
-      image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
-      description: "Piscinas quentinhas dia e noite, toboáguas e muito lazer para crianças e adultos descansarem juntos.",
-      duration: "Excursão 4 Dias",
-      departure: "Embarques em Ibirité e BH",
-      inclusions: ["Transporte com ar", "Hotel com parque aquático", "Guia dedicado"],
+      id: "dest-cataratas",
+      name: "Cataratas do Iguaçu & Maravilhas Naturais",
+      category: "Natureza",
+      tag: "Experiência Inesquecível",
+      image: "images/foto-cataratas-iguacu.jpg",
+      description: "A força espetacular das maiores quedas d'água do planeta, Parque das Aves e compras na Tríplice Fronteira com todo conforto.",
+      duration: "Roteiro 4 a 5 Dias",
+      departure: "Saídas de Ibirité e BH",
+      inclusions: ["Transporte com ar", "Hotel com piscina e café", "Acompanhamento nos passeios"],
       priceDisplay: "Sob Consulta",
       featured: false
     },
     {
-      id: "dest-4",
-      name: "Porto Seguro & Arraial d'Ajuda",
+      id: "dest-balneario",
+      name: "Balneário Camboriú & Litoral Sul",
       category: "Praias",
-      tag: "Litoral Sul Baiano",
-      image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=800&q=80",
-      description: "Barracas de praia estruturadas, centro histórico e a hospitalidade baiana com conforto planejado do início ao fim.",
-      duration: "Pacote 5 a 7 Dias",
-      departure: "Saída de Ibirité / BH",
-      inclusions: ["Transporte e transfers", "Hotel com piscina e café", "Suporte no WhatsApp"],
+      tag: "Encanto de Santa Catarina",
+      image: "images/foto-balneario-camboriu.jpg",
+      description: "Orla cosmopolita, teleférico do Parque Unipraias, gastronomia à beira-mar e praias vizinhas espetaculares.",
+      duration: "Excursão 5 a 6 Dias",
+      departure: "Embarque em Ibirité",
+      inclusions: ["Ônibus leito/executivo", "Hospedagem bem localizada", "Roteiro de passeios"],
       priceDisplay: "Sob Consulta",
       featured: false
     }
@@ -186,7 +244,7 @@ const TR_DEFAULT_DATA = {
 
 // Gerenciador de Estado / LocalStorage
 const StorageManager = {
-  STORAGE_KEY: "TR_TURISMO_DATA_V3",
+  STORAGE_KEY: "TR_TURISMO_DATA_V4",
   ADMIN_AUTH_KEY: "TR_TURISMO_ADMIN_AUTH",
 
   getData() {
@@ -199,7 +257,8 @@ const StorageManager = {
           ...parsed,
           company: { ...TR_DEFAULT_DATA.company, ...(parsed.company || {}) },
           hero: { ...TR_DEFAULT_DATA.hero, ...(parsed.hero || {}) },
-          about: { ...TR_DEFAULT_DATA.about, ...(parsed.about || {}) }
+          about: { ...TR_DEFAULT_DATA.about, ...(parsed.about || {}) },
+          pillars: parsed.pillars || TR_DEFAULT_DATA.pillars
         };
       }
     } catch (e) {

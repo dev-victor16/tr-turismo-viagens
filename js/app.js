@@ -1,6 +1,6 @@
 /**
  * TR TURISMO VIAGENS - FRONTEND JAVASCRIPT
- * Lógica do site com layout editorial assimétrico, filtros dinâmicos e integração WhatsApp
+ * Lógica do site com layout editorial de revista baseado nas fotografias reais
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,23 +49,20 @@ function renderCompanyDetails(company) {
 function renderHeroContent(hero) {
   if (!hero) return;
 
-  const heroSection = document.getElementById('hero-section');
-  if (heroSection && hero.backgroundImage) {
-    heroSection.style.backgroundImage = `url('${hero.backgroundImage}')`;
-  }
-
   const badgeEl = document.getElementById('hero-badge-text');
   if (badgeEl && hero.badge) badgeEl.textContent = hero.badge;
 
   const titleEl = document.getElementById('hero-title-text');
-  if (titleEl && hero.title) titleEl.textContent = hero.title;
+  if (titleEl && hero.title) {
+    titleEl.innerHTML = hero.title.replace('O DESTINO É SEU.', '<span>O DESTINO É SEU.</span>');
+  }
 
   const subtitleEl = document.getElementById('hero-subtitle-text');
   if (subtitleEl && hero.subtitle) subtitleEl.textContent = hero.subtitle;
 
   const ctaBtn = document.getElementById('hero-cta-primary');
   if (ctaBtn && hero.ctaPrimaryText) {
-    ctaBtn.textContent = hero.ctaPrimaryText;
+    ctaBtn.innerHTML = `${hero.ctaPrimaryText} <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>`;
     ctaBtn.href = hero.ctaPrimaryLink || '#destinos';
   }
 }
@@ -86,14 +83,14 @@ function renderEditorialAbout(about) {
   if (p1El && about.paragraph1) p1El.textContent = about.paragraph1;
 
   const p2El = document.getElementById('about-p2');
-  if (p2El && about.paragraph2) p2El.textContent = about.paragraph2;
+  if (p2El && about.paragraph2) p2El.innerHTML = about.paragraph2;
 
   const p3El = document.getElementById('about-p3');
   if (p3El && about.paragraph3) p3El.textContent = about.paragraph3;
 }
 
 /**
- * Renderiza destinos no formato revista (1 grande em destaque + lista lateral)
+ * Renderiza destinos no formato revista com fotos reais (1 destaque principal grande + lista lateral)
  */
 function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
   const container = document.getElementById('destinations-magazine-container');
@@ -105,29 +102,29 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #fff; border-radius: 8px; border: 1px dashed #cbd5e1;">
-        <p style="color: #64748b; font-size: 1rem; margin-bottom: 1rem;">Nenhum roteiro cadastrado nesta categoria no momento.</p>
+      <div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #fff; border-radius: 12px; border: 1px dashed #cbd5e1;">
+        <p style="color: #64748b; font-size: 1rem; margin-bottom: 1rem;">Nenhum roteiro encontrado para este filtro.</p>
         <button class="btn btn-primary btn-sm" onclick="resetDestinationFilters()">Ver todos os roteiros</button>
       </div>
     `;
     return;
   }
 
-  // O primeiro é o destaque grande
+  // O primeiro é o destaque grande da revista
   const featured = filtered[0];
   const secondaries = filtered.slice(1);
 
   let html = `
-    <!-- Destino Principal -->
-    <div class="destination-featured-card">
-      <img src="${featured.image}" alt="${escapeHTML(featured.name)}" class="featured-card-bg" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80'">
-      <div class="featured-card-gradient"></div>
-      <div class="featured-card-content">
-        ${featured.tag ? `<span class="featured-card-tag">${escapeHTML(featured.tag)}</span>` : ''}
-        <h3 class="featured-card-title">${escapeHTML(featured.name)}</h3>
-        <p class="featured-card-desc">${escapeHTML(featured.description)}</p>
+    <!-- Destino Principal em Destaque Monumental -->
+    <div class="destination-hero-card">
+      <img src="${featured.image}" alt="${escapeHTML(featured.name)}" class="destination-hero-bg" loading="lazy" onerror="this.src='images/foto-chile-andes.jpg'">
+      <div class="destination-hero-gradient"></div>
+      <div class="destination-hero-content">
+        ${featured.tag ? `<span class="destination-hero-tag">${escapeHTML(featured.tag)}</span>` : ''}
+        <h3 class="destination-hero-title">${escapeHTML(featured.name)}</h3>
+        <p class="destination-hero-desc">${escapeHTML(featured.description)}</p>
 
-        <div class="featured-card-inclusions">
+        <div class="destination-hero-inclusions">
           ${(featured.inclusions || []).map(inc => `
             <span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -138,8 +135,8 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
 
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
           <div style="font-size: 0.9rem; color: #cbd5e1;">
-            <strong style="color: #ffffff; font-size: 1.1rem; display: block;">${escapeHTML(featured.priceDisplay || 'Sob Consulta')}</strong>
-            <span>${escapeHTML(featured.departure || 'Embarque em Ibirité e BH')}</span>
+            <strong style="color: #ffffff; font-size: 1.15rem; display: block;">${escapeHTML(featured.priceDisplay || 'Sob Consulta')}</strong>
+            <span>${escapeHTML(featured.departure || 'Saída facilitada de Ibirité e BH')}</span>
           </div>
           <button class="btn btn-primary" onclick="selectDestinationForQuote('${escapeHTML(featured.name)}')">
             Quero Reservar
@@ -152,19 +149,19 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
   // Coluna de Destinos Secundários
   if (secondaries.length > 0) {
     html += `
-      <div class="secondary-destinations-stack">
+      <div class="destinations-side-stack">
         ${secondaries.map(item => `
-          <div class="destination-sub-card">
-            <img src="${item.image}" alt="${escapeHTML(item.name)}" class="sub-card-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80'">
-            <div class="sub-card-body">
+          <div class="destination-side-card">
+            <img src="${item.image}" alt="${escapeHTML(item.name)}" class="side-card-image" loading="lazy" onerror="this.src='images/foto-praia-tropical.jpg'">
+            <div class="side-card-body">
               <div>
-                <span class="sub-card-tag">${escapeHTML(item.category)}</span>
-                <h4 class="sub-card-title">${escapeHTML(item.name)}</h4>
-                <p class="sub-card-desc">${escapeHTML(item.description)}</p>
+                <span class="side-card-tag">${escapeHTML(item.category)}</span>
+                <h4 class="side-card-title">${escapeHTML(item.name)}</h4>
+                <p class="side-card-desc">${escapeHTML(item.description)}</p>
               </div>
-              <div class="sub-card-footer">
-                <span class="sub-card-price">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
-                <button class="btn-link-action" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
+              <div class="side-card-footer">
+                <span class="side-card-price">${escapeHTML(item.priceDisplay || 'Sob Consulta')}</span>
+                <button class="pillar-action-link" onclick="selectDestinationForQuote('${escapeHTML(item.name)}')">
                   Pedir Cotação →
                 </button>
               </div>
@@ -174,7 +171,6 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
       </div>
     `;
   } else {
-    // Se só houver 1 destino, expandir largura
     html = `<div style="grid-column: 1 / -1;">` + html + `</div>`;
   }
 
@@ -185,7 +181,7 @@ function renderEditorialDestinations(destinations, activeCategory = 'Todos') {
  * Filtros de Destinos
  */
 function setupDestinationFilters(destinations) {
-  const pills = document.querySelectorAll('.filter-pill');
+  const pills = document.querySelectorAll('.filter-pill-real, .filter-pill');
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       pills.forEach(p => p.classList.remove('active'));
@@ -197,7 +193,7 @@ function setupDestinationFilters(destinations) {
 }
 
 window.resetDestinationFilters = function() {
-  const allBtn = document.querySelector('.filter-pill[data-filter="Todos"]');
+  const allBtn = document.querySelector('.filter-pill-real[data-filter="Todos"], .filter-pill[data-filter="Todos"]');
   if (allBtn) allBtn.click();
 };
 
@@ -227,21 +223,21 @@ function renderEditorialReviews(company, testimonials) {
 
   const countEl = document.getElementById('google-reviews-count');
   if (countEl && company.googleReviewCount) {
-    countEl.textContent = `Mais de ${company.googleReviewCount} avaliações reais`;
+    countEl.textContent = `• Mais de ${company.googleReviewCount} avaliações reais`;
   }
 
   const container = document.getElementById('editorial-reviews-container');
   if (!container || !testimonials) return;
 
   container.innerHTML = testimonials.map(item => `
-    <div class="review-card-clean">
-      <p class="review-quote-text">“${escapeHTML(item.content)}”</p>
-      <div class="review-author-line">
-        <div class="author-details">
+    <div class="review-card-editorial">
+      <p class="review-quote-editorial">“${escapeHTML(item.content)}”</p>
+      <div class="review-footer-editorial">
+        <div class="review-author-info">
           <strong>${escapeHTML(item.author)}</strong>
           <span>${escapeHTML(item.location || 'Ibirité - MG')}</span>
         </div>
-        <div class="author-stars">★★★★★</div>
+        <div class="hero-stars-gold">★★★★★</div>
       </div>
     </div>
   `).join('');
@@ -298,15 +294,15 @@ function setupQuoteWhatsAppForm(company) {
       });
     }
 
-    // Mensagem amigável e direta para o WhatsApp oficial
+    // Mensagem formatada e direta para o WhatsApp oficial
     const message = 
 `Olá! Vim pelo site da TR Turismo e gostaria de solicitar um orçamento.
 
 Destino: ${destination}
-Período: ${dates || 'A definir'}
+Período desejado: ${dates || 'A definir'}
 Passageiros: ${passengers || '1'}
 Tipo de viagem: ${type}
-Observações: ${notes || 'Sem observações'}
+Observações: ${notes || 'Sem observações adicionais'}
 
 Meu nome: ${name}
 Meu WhatsApp: ${phone}`;
@@ -316,7 +312,7 @@ Meu WhatsApp: ${phone}`;
 
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<span>Abrindo WhatsApp...</span>`;
+    submitBtn.innerHTML = `<span>Abrindo WhatsApp Oficial...</span>`;
     submitBtn.disabled = true;
 
     setTimeout(() => {
@@ -324,7 +320,7 @@ Meu WhatsApp: ${phone}`;
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
       form.reset();
-    }, 500);
+    }, 450);
   });
 }
 
